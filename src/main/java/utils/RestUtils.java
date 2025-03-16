@@ -9,6 +9,16 @@ import java.util.Objects;
 
 public class RestUtils {
 
+    public static Response performPost1(String endPoint, String payload, Map<String, String> headers) {
+        Response response = RestAssured.given().log().body()
+                .headers(headers)
+                .contentType(ContentType.JSON)
+                .body(payload)
+                .post(endPoint);
+        return response;
+    }
+
+
     public static Response performPost(String endPoint, String payload, Map<String, String> headers) {
                 Response response = RestAssured.given().log().body()
                 .baseUri(endPoint)
