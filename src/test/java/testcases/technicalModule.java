@@ -66,7 +66,59 @@ public class technicalModule {
 
     }
 
+    @Test(priority = 2)
+    public void getAssignedLeads() {
+        System.out.println("Fetching Assigned Leads");
+
+        Response response=null;
+        Map<String, String> headers;
+        String endPoint = PropertiesReadWrite.getValue("baseURL") +"/ilos/v1/technical/get-assigned-leads";
+
+        Map<String, String> queryParams = new HashMap<>();
+        queryParams.put("role", "TC");
+        queryParams.put("filter_type", "VENDOR_PENDING");
+        queryParams.put("application_id", PropertiesReadWrite.getValue("application_id"));
+        String token = PropertiesReadWrite.getValue("token1");
+
+        headers = getHeaders(token); // Get headers with the token
+        response = RestUtils.performGet(endPoint, headers, queryParams);
+
+        System.out.println("Fetching Assigned Leads - Completed");
+
+        // Print API Response
+        System.out.println("Response: " + response.asPrettyString());
+        Assert.assertEquals(response.getStatusCode(), 200, "API request failed! Expected 200 but got " + response.getStatusCode());
+    }
+
+    @Test(priority = 3)
+    public void fetchVendorList() {
+        Map<String, String> headers = getHeaders(PropertiesReadWrite.getValue("token1"));
+
+        // Construct API URL
+        String url = PropertiesReadWrite.getValue("baseURL") + "/ilos/v1/technical/vendor-list";
+
+        // Construct request body
+        String requestBody = "{" +
+                "\"application_id\": \"" + PropertiesReadWrite.getValue("application_id") + "\"," +
+                "\"property_id\": 1," +
+                "\"activity_code\": \"TECHNICAL_1\"}";
 
 
+
+
+        // Perform API request
+        Response response = RestUtils.performPost(url, requestBody, headers);
+
+        // Validate response
+        Assert.assertEquals(response.getStatusCode(), 200);
+
+        System.out.println("  --data-raw '" + response.prettyPrint());
 
     }
+
+
+
+
+
+
+}

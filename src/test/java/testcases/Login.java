@@ -41,4 +41,19 @@ public class Login {
         System.out.println("size "+tokenvalue.size());
         System.out.println("token "+tokenvalue);
     }
+
+    @Test(enabled = true)
+    public void loginTestAOM() {
+        String endPoint = PropertiesReadWrite.getValue("baseURL") + "/ilosuser/v1/login";
+
+        Map<String, Object> payload = LoginPayload.getLoginPayloadMap(PropertiesReadWrite.getValue("TechUser"), PropertiesReadWrite.getValue("CPPassword"));
+        Response response = RestUtils.performPost(endPoint, payload, new HashMap<>());
+        Assert.assertEquals(response.getStatusCode(), 200);
+
+        String tokenvalue =JsonPath.from(response.asString()).getString("dt.token");
+        PropertiesReadWrite.setValue("token1",tokenvalue);
+        System.out.println("token 1 : "+tokenvalue);
+
+        System.out.println("token 1 : "+tokenvalue);
+    }
 }
