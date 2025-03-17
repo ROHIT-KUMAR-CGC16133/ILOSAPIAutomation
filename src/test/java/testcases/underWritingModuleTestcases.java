@@ -16,6 +16,7 @@ import static payloads.Header.getHeaders;
 public class underWritingModuleTestcases {
 
     Response leadJsonResponse=null;
+    String baseUrl =  PropertiesReadWrite.getValue("baseURL");
 
 @Test(enabled = true,priority = 1)
 public void getAllOpenLead(){
@@ -66,7 +67,7 @@ public void getAllOpenLead(){
 }
 
 @Test(enabled = true,priority = 3)
-    public void comleteUnderWriting(){
+    public void comleteUnderWriting() throws InterruptedException {
     System.out.println("get lead json");
     String url = PropertiesReadWrite.getValue("baseURL")+"/ilos/v1/assignee/lead/"+PropertiesReadWrite.getValue("obj_id");
     Map<String, String> headers;
@@ -76,29 +77,36 @@ public void getAllOpenLead(){
     Assert.assertEquals(response.getStatusCode(), 200);
   //  response.prettyPrint();
     if(JsonPath.from(response.asString()).get("dt.skip_cpu_changes")==null){
-        System.out.println("skip_cpu_changes id is not present");
+        System.out.println("skip_cpu_changes key is not present");
         String url1 = PropertiesReadWrite.getValue("baseURL")+"/ilos/v1/misc/lead-action";
         String requestBody = "{ \"act_typ\": \"SKIP_CPU_CHANGES\", \"app_id\": \"" + PropertiesReadWrite.getValue("application_id") + "\" }";
         Response response1=RestUtils.performPost(url1,requestBody,headers);
         Assert.assertEquals(response1.getStatusCode(), 200);
         response1.prettyPrint();
     }else {
-        System.out.println("skip_cpu_changes id is present");
+        System.out.println("skip_cpu_changes key is present");
+    }
+    System.out.println("lead result api call");
+    String lead_result_url = baseUrl+"/ilos/v1/underwriter/lead/result/"+PropertiesReadWrite.getValue("obj_id");
+    Response response1=RestUtils.performGet(lead_result_url,headers);
+    if(response1.getStatusCode()!=200){
+        response1.prettyPrint();
+        Assert.assertEquals(response1.getStatusCode(), 200);
     }
 
-
     System.out.println("generate PDF");
-    String url2 = "https://ilosapi-uat.capriglobal.in/ilos/v1/application/generate-pdf/" + PropertiesReadWrite.getValue("application_id");
+    String url2 = baseUrl+"/ilos/v1/application/generate-pdf/" + PropertiesReadWrite.getValue("application_id");
     Response response2=RestUtils.performGet(url2,headers);
     if(response2.getStatusCode()!=200){
         response2.prettyPrint();
         Assert.assertEquals(response2.getStatusCode(), 200);
     }
 
+    Thread.sleep(5000);
+
     System.out.println("submit lead to dedupe");
-    String url3="https://ilosapi-uat.capriglobal.in/ilos/v1/underwriter/lead/submit/"+PropertiesReadWrite.getValue("obj_id");
+    String url3=baseUrl+"/ilos/v1/underwriter/lead/submit/"+PropertiesReadWrite.getValue("obj_id");
     Response response3=RestUtils.sendPatchRequest(url3,headers);
-    response3.prettyPrint();
     if(response3.getStatusCode()!=200){
         response3.prettyPrint();
         Assert.assertEquals(response3.getStatusCode(), 200);

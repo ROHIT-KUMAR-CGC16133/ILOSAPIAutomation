@@ -35,10 +35,10 @@ public class Login {
 
         Map<String, Object> payload = LoginPayload.getLoginPayloadMap(PropertiesReadWrite.getValue("CPUser"), PropertiesReadWrite.getValue("CPPassword"));
         Response response = RestUtils.performPost(endPoint, payload, new HashMap<>());
+       // response.prettyPrint();
         Assert.assertEquals(response.getStatusCode(), 200);
-        List<String> tokenvalue =JsonPath.from(response.asString()).getList("dt.permission");
-      //  PropertiesReadWrite.setValue("token",tokenvalue);
-        System.out.println("size "+tokenvalue.size());
+        String tokenvalue =JsonPath.from(response.asString()).getString("dt.token");
+        PropertiesReadWrite.setValue("token",tokenvalue);
         System.out.println("token "+tokenvalue);
     }
 }

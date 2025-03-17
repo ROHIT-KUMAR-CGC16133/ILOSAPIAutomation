@@ -46,12 +46,11 @@ public class DedupeModule {
             searchcustomer_response.prettyPrint();
             Assert.assertEquals(searchcustomer_response.getStatusCode(), 200);
         }
-        String createcustomer=PropertiesReadWrite.getValue("baseURL")+"/ilos/v1/customer/posidex/create-customer";
+        String createcustomer_url=PropertiesReadWrite.getValue("baseURL")+"/ilos/v1/customer/posidex/create-customer";
         String mapcustomer_url=PropertiesReadWrite.getValue("baseURL")+"/ilos/v1/customer/map";
         if(JsonPath.from(searchcustomer_response.asString()).getList("data").isEmpty()){
             System.out.println("create customer api for applicant");
-         //   String createcustomer=PropertiesReadWrite.getValue("baseURL")+"/ilos/v1/customer/posidex/create-customer";
-            Response createcustomer_response = RestUtils.performPost(createcustomer,requestBody,headers);
+            Response createcustomer_response = RestUtils.performPost(createcustomer_url,requestBody,headers);
             if(createcustomer_response.getStatusCode()!=200){
                 createcustomer_response.prettyPrint();
                 Assert.assertEquals(createcustomer_response.getStatusCode(), 200);
@@ -76,8 +75,8 @@ public class DedupeModule {
         int coapp_count = JsonPath.from(response.asString()).getList("dt.applicant.co_applicant").size();
         for(int i=0;i<coapp_count;i++) {
             int coapp_id = JsonPath.from(response.asString()).getInt("dt.applicant.co_applicant[" + i + "].id");
-            System.out.println("coapp_id" + coapp_id);
-            System.out.println("search customer api for co app");
+            System.out.println("coapp_id " + coapp_id);
+            System.out.println("search customer api for co app " + i+1);
 
             String requestBody_coapp = "{"
                     + "\"customer_type\": \"co_applicant\","
@@ -85,21 +84,20 @@ public class DedupeModule {
                     + "\"customer_id\": " + coapp_id
                     + "}";
             Response search_coapp_response = RestUtils.performPost(url1, requestBody_coapp, headers);
-            //  search_coapp_response.prettyPrint();
             if (search_coapp_response.getStatusCode() != 200) {
                 search_coapp_response.prettyPrint();
                 Assert.assertEquals(search_coapp_response.getStatusCode(), 200);
             }
             if (JsonPath.from(search_coapp_response.asString()).getList("data").isEmpty()) {
-                System.out.println("create customer api for co applicant");
-                Response createcustomer_coapp_response = RestUtils.performPost(createcustomer, requestBody_coapp, headers);
+                System.out.println("create customer api for co applicant "+i+1);
+                Response createcustomer_coapp_response = RestUtils.performPost(createcustomer_url, requestBody_coapp, headers);
                 if (createcustomer_coapp_response.getStatusCode() != 200) {
                     createcustomer_coapp_response.prettyPrint();
                     Assert.assertEquals(createcustomer_coapp_response.getStatusCode(), 200);
                 }
             } else {
                 String ucic = JsonPath.from(search_coapp_response.asString()).getString("data[0].UCIC");
-                System.out.println("map customer api for co applicant");
+                System.out.println("map customer api for co applicant "+i+1);
                 Map<String, Object> requestData = new HashMap<>();
                 requestData.put("customer_type", "co_applicant");
                 requestData.put("application_id", application_id);
@@ -115,14 +113,54 @@ public class DedupeModule {
 
 
         }
-        System.out.println("section complete api");
-        String marksection_url = PropertiesReadWrite.getValue("baseURL")+"/ilos/v1/assignee/lead/mark-section-complete/"+PropertiesReadWrite.getValue("obj_id");
-        Response marksection_response = RestUtils.sendPatchRequest(marksection_url,"{\"section\":\"dedupe-posidex\"}",headers);
+        int guarantor_count = JsonPath.from(response.asString()).getList("dt.applicant.guarantors").size();
+        for(int i=0;i<guarantor_count;i++) {
+            int guarantor_id = JsonPath.from(response.asString()).getInt("dt.applicant.guarantors[" + i + "].id");
+            System.out.println("guarantor_id " + guarantor_id);
+            System.out.println("search customer api for guarantor " + i + 1);
 
-        if(marksection_response.getStatusCode()!=200){
-            marksection_response.prettyPrint();
-            Assert.assertEquals(marksection_response.getStatusCode(), 200);
+            String requestBody_guarantor = "{"
+                    + "\"customer_type\": \"guarantor\","
+                    + "\"application_id\": \"" + application_id + "\","
+                    + "\"customer_id\": " + guarantor_id
+                    + "}";
+            Response search_guarantor_response = RestUtils.performPost(url1, requestBody_guarantor, headers);
+            if (search_guarantor_response.getStatusCode() != 200) {
+                search_guarantor_response.prettyPrint();
+                Assert.assertEquals(search_guarantor_response.getStatusCode(), 200);
+            }
+            if (JsonPath.from(search_guarantor_response.asString()).getList("data").isEmpty()) {
+                System.out.println("create customer api for guarantor " + i + 1);
+                Response createcustomer_guarantor_response = RestUtils.performPost(createcustomer_url, requestBody_guarantor, headers);
+                if (createcustomer_guarantor_response.getStatusCode() != 200) {
+                    createcustomer_guarantor_response.prettyPrint();
+                    Assert.assertEquals(createcustomer_guarantor_response.getStatusCode(), 200);
+                }
+            } else {
+                String ucic = JsonPath.from(search_guarantor_response.asString()).getString("data[0].UCIC");
+                System.out.println("map customer api for guarantor " + i + 1);
+                Map<String, Object> requestData = new HashMap<>();
+                requestData.put("customer_type", "guarantor");
+                requestData.put("application_id", application_id);
+                requestData.put("customer_id", guarantor_id);
+                requestData.put("ucic", ucic);
+                System.out.println(requestData);
+                Response mapcustome_response = RestUtils.sendPatchRequest(mapcustomer_url, requestData, headers);
+                if (mapcustome_response.getStatusCode() != 200) {
+                    mapcustome_response.prettyPrint();
+                    Assert.assertEquals(mapcustome_response.getStatusCode(), 200);
+                }
+            }
         }
+
+            System.out.println("section complete api");
+            String marksection_url = PropertiesReadWrite.getValue("baseURL") + "/ilos/v1/assignee/lead/mark-section-complete/" + PropertiesReadWrite.getValue("obj_id");
+            Response marksection_response = RestUtils.sendPatchRequest(marksection_url, "{\"section\":\"dedupe-posidex\"}", headers);
+
+            if (marksection_response.getStatusCode() != 200) {
+                marksection_response.prettyPrint();
+                Assert.assertEquals(marksection_response.getStatusCode(), 200);
+            }
 
 
 
@@ -147,8 +185,12 @@ public class DedupeModule {
             + "\"customer_id\": " + applicant_id
             + "}";
     Response searchcustomer_response = RestUtils.performPost(url1,requestBody,headers);
-    searchcustomer_response.prettyPrint();
-    Assert.assertEquals(searchcustomer_response.getStatusCode(), 200);
+
+    if(searchcustomer_response.getStatusCode()!=200) {
+        searchcustomer_response.prettyPrint();
+        Assert.assertEquals(searchcustomer_response.getStatusCode(), 200);
+    }
+
 
     System.out.println("search customer api for co app");
     if(coapp_count==1) {
