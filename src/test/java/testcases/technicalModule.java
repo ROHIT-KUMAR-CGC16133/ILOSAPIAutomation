@@ -1,7 +1,10 @@
 package testcases;
 //		https://codeshare.io/AprpPN tenical lead
 
+// https://codeshare.io/ldg4ym more than one prop
+
 import io.restassured.RestAssured;
+import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -9,6 +12,7 @@ import utils.PropertiesReadWrite;
 import utils.RestUtils;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import static payloads.Header.getHeaders;
@@ -90,29 +94,50 @@ public class technicalModule {
         Assert.assertEquals(response.getStatusCode(), 200, "API request failed! Expected 200 but got " + response.getStatusCode());
     }
 
+
     @Test(priority = 3)
-    public void fetchVendorList() {
-        Map<String, String> headers = getHeaders(PropertiesReadWrite.getValue("token1"));
+    public void completeTechnical() {
 
-        // Construct API URL
-        String url = PropertiesReadWrite.getValue("baseURL") + "/ilos/v1/technical/vendor-list";
-
-        // Construct request body
-        String requestBody = "{" +
-                "\"application_id\": \"" + PropertiesReadWrite.getValue("application_id") + "\"," +
-                "\"property_id\": 1," +
-                "\"activity_code\": \"TECHNICAL_1\"}";
-
-
-
-
-        // Perform API request
-        Response response = RestUtils.performPost(url, requestBody, headers);
-
-        // Validate response
+        System.out.println("get lead json");
+        String url = PropertiesReadWrite.getValue("baseURL")+"/ilos/v1/assignee/lead/"+PropertiesReadWrite.getValue("obj_id");
+        Map<String, String> headers;
+        headers = getHeaders(PropertiesReadWrite.getValue("token1"));
+        Response response=null;
+        response=RestUtils.performGet(url,headers);
         Assert.assertEquals(response.getStatusCode(), 200);
+        System.out.println("get lead response "+ response.prettyPrint());
 
-        System.out.println("  --data-raw '" + response.prettyPrint());
+        // Get property_details and check its size
+        List<Object> propertyDetails = JsonPath.from(response.asString()).getList("dt.applicant.primary.property_details");
+        int size1 =propertyDetails.size();
+        System.out.println("Property Details Size1: " + size1);
+
+        System.out.println("pd_loan_recommended_range Details Size: " + JsonPath.from(response.asString()).get("dt.pd_loan_recommended_range"));
+
+        if (JsonPath.from(response.asString()).get("dt.pd_loan_recommended_range").equals("LESS_THAN_50")){
+            for (int i = 0; i < size1; i++) {
+                String vendorListUrl = PropertiesReadWrite.getValue("baseURL") + "/ilos/v1/technical/vendor-list";
+
+                // Construct request body with dynamic property_id (i + 1)
+                String requestBody = "{" +
+                        "\"application_id\": \"" + PropertiesReadWrite.getValue("application_id") + "\"," +
+                        "\"property_id\": " + (i + 1) + "," +
+                        "\"activity_code\": \"TECHNICAL_1\"}";
+
+                // Perform API request
+                Response vendorResponse = RestUtils.performPost(vendorListUrl, requestBody, headers);
+
+                // Validate response
+                Assert.assertEquals(vendorResponse.getStatusCode(), 200);
+                System.out.println("Vendor List Response for property_id " + (i + 1) + ": " + vendorResponse.prettyPrint());
+
+            }
+
+            System.out.println("success");
+        }
+
+
+
 
     }
 
