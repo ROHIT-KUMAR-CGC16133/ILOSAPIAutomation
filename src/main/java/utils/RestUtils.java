@@ -9,7 +9,7 @@ import java.util.Objects;
 
 public class RestUtils {
 
-    public static Response performPost1(String endPoint, String payload, Map<String, String> headers) {
+    public static Response performPost1(String endPoint, String payload, Map<String, Object> headers) {
         Response response = RestAssured.given().log().body()
                 .headers(headers)
                 .contentType(ContentType.JSON)
@@ -19,7 +19,7 @@ public class RestUtils {
     }
 
 
-    public static Response performPost(String endPoint, String payload, Map<String, String> headers) {
+    public static Response performPost(String endPoint, String payload, Map<String, Object> headers) {
                 Response response = RestAssured.given().log().body()
                 .baseUri(endPoint)
                 .headers(headers)
@@ -40,7 +40,7 @@ public class RestUtils {
         return response;
     }
 
-    public static Response performGet(String endPoint, Map<String, String> headers) {
+    public static Response performGet(String endPoint, Map<String, Object> headers) {
         Response response = RestAssured.given()
                 .baseUri(endPoint)
                 .headers(headers)
@@ -49,7 +49,7 @@ public class RestUtils {
         return response;
     }
 
-    public static Response performGet(String endPoint, Map<String, String> headers, Map<String, String> queryParams) {
+    public static Response performGet(String endPoint, Map<String, Object> headers, Map<String, Object> queryParams) {
         Response response = RestAssured.given()
                 .baseUri(endPoint)
                 .headers(headers)
@@ -59,7 +59,7 @@ public class RestUtils {
         return response;
     }
 
-    public static Response sendPatchRequest(String url, Map<String, String> headers) {
+    public static Response sendPatchRequest(String url, Map<String, Object> headers) {
         return RestAssured.given()
                 .headers(headers) // Set headers
                 .contentType(ContentType.JSON) // Set Content-Type
@@ -69,7 +69,7 @@ public class RestUtils {
                 .extract()
                 .response();
     }
-    public static Response sendPatchRequest(String url,String payload, Map<String, String> headers) {
+    public static Response sendPatchRequest(String url,String payload, Map<String, Object> headers) {
         return RestAssured.given()
                 .headers(headers) // Set headers
                 .contentType(ContentType.JSON)
@@ -80,7 +80,7 @@ public class RestUtils {
                 .extract()
                 .response();
     }
-    public static Response sendPatchRequest(String url, Map<String, Object> payload, Map<String, String> headers) {
+    public static Response sendPatchRequest(String url, Map<String, Object> payload, Map<String, Object> headers) {
         return RestAssured.given().log().body()
                 .headers(headers) // Set headers
                 .contentType(ContentType.JSON)

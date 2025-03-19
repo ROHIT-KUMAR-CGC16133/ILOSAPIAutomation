@@ -21,10 +21,10 @@ public class underWritingModuleTestcases {
 @Test(enabled = true,priority = 1)
 public void getAllOpenLead(){
     Response response=null;
-    Map<String, String> headers;
+    Map<String, Object> headers;
     String endPoint = PropertiesReadWrite.getValue("baseURL") +"/ilos/v1/underwriter/lead";
 
-    Map<String, String> queryParams = new HashMap<>();
+    Map<String, Object> queryParams = new HashMap<>();
     queryParams.put("status", "PENDING_FOR_DDE");
     String token = PropertiesReadWrite.getValue("token");
 
@@ -51,7 +51,7 @@ public void getAllOpenLead(){
 @Test(enabled = true,priority = 2)
     public void assignLeadToCP(){
     String url = PropertiesReadWrite.getValue("baseURL")+"/ilos/v1/underwriter/lead/self_assign/"+PropertiesReadWrite.getValue("obj_id");
-    Map<String, String> headers;
+    Map<String, Object> headers;
     headers = getHeaders(PropertiesReadWrite.getValue("token"));
     Response response=null;
     response=RestUtils.sendPatchRequest(url,headers);
@@ -70,7 +70,7 @@ public void getAllOpenLead(){
     public void comleteUnderWriting() throws InterruptedException {
     System.out.println("get lead json");
     String url = PropertiesReadWrite.getValue("baseURL")+"/ilos/v1/assignee/lead/"+PropertiesReadWrite.getValue("obj_id");
-    Map<String, String> headers;
+    Map<String, Object> headers;
     headers = getHeaders(PropertiesReadWrite.getValue("token"));
     Response response=null;
     response=RestUtils.performGet(url,headers);

@@ -25,11 +25,11 @@ public class technicalModule {
 
         // Construct the URL
         String endPoint = PropertiesReadWrite.getValue("baseURL") +"/ilos/v1/technical/get-home-leads";
-        Map<String, String> queryParams = new HashMap<>();
+        Map<String, Object> queryParams = new HashMap<>();
         queryParams.put("role", "TC");
         queryParams.put("application_id", PropertiesReadWrite.getValue("application_id"));
         String token = PropertiesReadWrite.getValue("token1");
-        Map<String, String> headers;
+        Map<String, Object> headers;
 
         headers = getHeaders(token);
 
@@ -53,7 +53,7 @@ public class technicalModule {
 
         // Headers
         String token = PropertiesReadWrite.getValue("token1");
-        Map<String, String> headers = getHeaders(token);
+        Map<String, Object> headers = getHeaders(token);
 
         // Request Body
         String requestBody = "{ \"application_id\": \"" + PropertiesReadWrite.getValue("application_id") + "\", \"is_refer\": false }";
@@ -75,10 +75,10 @@ public class technicalModule {
         System.out.println("Fetching Assigned Leads");
 
         Response response=null;
-        Map<String, String> headers;
+        Map<String, Object> headers;
         String endPoint = PropertiesReadWrite.getValue("baseURL") +"/ilos/v1/technical/get-assigned-leads";
 
-        Map<String, String> queryParams = new HashMap<>();
+        Map<String, Object> queryParams = new HashMap<>();
         queryParams.put("role", "TC");
         queryParams.put("filter_type", "VENDOR_PENDING");
         queryParams.put("application_id", PropertiesReadWrite.getValue("application_id"));
@@ -100,7 +100,7 @@ public class technicalModule {
         System.out.println("get lead json");
         String url = PropertiesReadWrite.getValue("baseURL") + "/ilos/v1/assignee/lead/" + PropertiesReadWrite.getValue("obj_id");
 
-        Map<String, String> headers = getHeaders(PropertiesReadWrite.getValue("token1"));
+        Map<String, Object> headers = getHeaders(PropertiesReadWrite.getValue("token1"));
         Response response = RestUtils.performGet(url, headers);
 
         try {
