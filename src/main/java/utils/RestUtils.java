@@ -28,7 +28,7 @@ public class RestUtils {
                 .post();
         return response;
     }
-    public static Response performPost(String endPoint, Map<String, Object> payload, Map<String, String> headers) {
+    public static Response performPost(String endPoint, Map<String, Object> payload, Map<String, Object> headers) {
         Response response = RestAssured.given()
                 .baseUri(endPoint)
                 .headers(headers)
