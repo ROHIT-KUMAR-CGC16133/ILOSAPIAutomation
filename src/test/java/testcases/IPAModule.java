@@ -20,7 +20,7 @@ public class IPAModule {
     Map<String, Object> headers;
     Response response;
     String appId = PropertiesReadWrite.getValue("application_id");
-    String url = baseUrl + "/ilos/v1/ipa/lead/" + PropertiesReadWrite.getValue("obj_id");
+    String url = baseUrl + "/ilos/v1/assignee/lead/" + PropertiesReadWrite.getValue("obj_id");
 
     @Test(priority = 1)
     public void generateCibil() {
@@ -35,20 +35,24 @@ public class IPAModule {
             validateResponse(response);
 
             System.out.println("hit generate_cibil for applicant api");
-            String cibil_pdf_url = JsonPath.from(IPA_lead_res.asString()).getString("dt.applicant.primary.bureau_check.pdfUrl");
-            System.out.println("cibil_pdf_url : " + cibil_pdf_url);
-            String generate_presigned_url = baseUrl + "/ilos/v1/misc/generate-presigned-url";
-            Map<String, Object> generate_presigned_queryparam = Map.of("object_id", cibil_pdf_url);
-            Response generate_cibil_app_res = RestUtils.performGet(generate_presigned_url, headers, generate_presigned_queryparam);
-            validateResponse(generate_cibil_app_res);
+            String entity_type = JsonPath.from(IPA_lead_res.asString()).getString("dt.applicant.primary.entity_type");
+            if(!entity_type.equals("Organization")) {
+                String cibil_pdf_url = JsonPath.from(IPA_lead_res.asString()).getString("dt.applicant.primary.bureau_check.pdfUrl");
+                System.out.println("cibil_pdf_url : " + cibil_pdf_url);
+                String generate_presigned_url = baseUrl + "/ilos/v1/misc/generate-presigned-url";
+                Map<String, Object> generate_presigned_queryparam = Map.of("object_id", cibil_pdf_url);
+                Response generate_cibil_app_res = RestUtils.performGet(generate_presigned_url, headers, generate_presigned_queryparam);
+                validateResponse(generate_cibil_app_res);
+                long createdAt = JsonPath.from(response.asString()).getLong("dt.applicant.primary.bureau_check.created_at");
+                long daysAgo = System.currentTimeMillis() - (Integer.parseInt(PropertiesReadWrite.getValue("cibil_rerun_days")) * 24L * 60 * 60 * 1000);
+                System.out.println("daysAgo " + daysAgo);
 
-            long createdAt = JsonPath.from(response.asString()).getLong("dt.applicant.primary.bureau_check.created_at");
-            long daysAgo = System.currentTimeMillis() - (Integer.parseInt(PropertiesReadWrite.getValue("cibil_rerun_days")) * 24L * 60 * 60 * 1000);
-            System.out.println("daysAgo " + daysAgo);
-
-            if (daysAgo > createdAt) {
-                rerunCibilReport("true", null, null);
+                if (daysAgo > createdAt) {
+                    rerunCibilReport("true", null, null);
+                }
             }
+
+
 
             processCoApplicants();
             processGuarantors();
@@ -173,7 +177,7 @@ public class IPAModule {
         validateResponse(uploadBankStatementRes);
     }
 
-@Test(priority = 5)
+@Test(priority = 5 )
 public void submitLead() {
     // Constructing the API URL
     String url = PropertiesReadWrite.getValue("baseURL") + "/ilos/v1/ipa/lead/submit/" + PropertiesReadWrite.getValue("obj_id");
