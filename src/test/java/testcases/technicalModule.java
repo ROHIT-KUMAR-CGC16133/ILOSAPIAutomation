@@ -1,4 +1,5 @@
-package testcases;
+
+        package testcases;
 //		https://codeshare.io/AprpPN tenical lead
 
 // https://codeshare.io/ldg4ym more than one prop
@@ -121,6 +122,7 @@ public class technicalModule {
 
         if ("LESS_THAN_50".equals(recommendedRange)) {
             for (int i = 0; i < size1; i++) {
+
                 String vendorListUrl = PropertiesReadWrite.getValue("baseURL") + "/ilos/v1/technical/vendor-list";
 
                 // Construct request body with dynamic property_id (i + 1)
@@ -175,7 +177,7 @@ public class technicalModule {
                         "    \"unique_request_id\": \""+ PropertiesReadWrite.getValue("application_id") + "_" + (i + 1) +"\", \n" +
                         "    \"techapp_unique_id\": 910904,\n" +
                         "    \"report_file\": \""+PropertiesReadWrite.getValue("technicalReport")+"\",\n" +
-                       // "    \"report_file\": \"JVBERi0xLjQKJeLjz9MKMyAwIG9iago8PC9\",\n" +
+                        // "    \"report_file\": \"JVBERi0xLjQKJeLjz9MKMyAwIG9iago8PC9\",\n" +
                         "    \"report_filename\": \"valuation_report.pdf\",\n" +
                         "    \"report_meta\": {\n" +
                         "        \"property_owner_name\": \"Rameshwar Patil\",\n" +
@@ -284,20 +286,106 @@ public class technicalModule {
 
                 // Print response
                 System.out.println("Response Body1: " + selfassignvetterresponse.prettyPrint());
-            //#
+
+                //#
+                String UpdatePropertyUrl = PropertiesReadWrite.getValue("baseURL") + "/ilos/v1/technical/update-property";
+
+                String requestBody5= "{"
+                        + "\"application_id\": \"" + PropertiesReadWrite.getValue("application_id") + "\","
+                        + "\"property_id\": " + (i + 1) + ","
+                        + "\"property_data\": {"
+                        +     "\"property_locality\": \"Urban\""
+                        + "}"
+                        + "}";
+
+                // Perform API request
+                Response UpdatePropertyResponse = RestUtils.performPost(UpdatePropertyUrl, requestBody5, headers);
 
 
-///
+                try {
+                    Assert.assertEquals(selfassignvetterresponse.getStatusCode(), 200);
+                    System.out.println("API request successful!");
+                } catch (AssertionError e) {
+                    System.err.println("Assertion failed: Expected 200 but got " + selfassignvetterresponse.getStatusCode());
+                }
+                System.out.println("UpdateProperty Response for property_id " + (i + 1) + ": " + UpdatePropertyResponse.prettyPrint());
+
+                //#
+                // Define the URL
+                String submitPropertyValuationUrl = PropertiesReadWrite.getValue("baseURL") + "/ilos/v1/technical/submit-property-valuation";
+
+// Construct the request body
+                String requestBodySubmitValuation = "{"
+                        + "\"application_id\": \"" + PropertiesReadWrite.getValue("application_id") + "\","
+                        + "\"property_id\": " + (i + 1)
+                        + "}";
+
+// Perform API request
+                Response submitValuationResponse = RestUtils.performPost(submitPropertyValuationUrl, requestBodySubmitValuation, headers);
+
+// Validate response
+                try {
+                    Assert.assertEquals(selfassignvetterresponse.getStatusCode(), 200);
+                    System.out.println("API request successful!");
+                } catch (AssertionError e) {
+                    System.err.println("Assertion failed: Expected 200 but got " + selfassignvetterresponse.getStatusCode());
+                }
+// Print response for debugging
+                System.out.println("SubmitPropertyValuation Response for property_id " + (i + 1) + ": " + submitValuationResponse.prettyPrint());
+
+                //#
+
+                // Set API endpoint
+                String technicalApprovalUrl = PropertiesReadWrite.getValue("baseURL") + "/ilos/v1/technical/technical-approval";
+
+// Prepare request body
+                String requestBody6 = "{"
+                        + "\"application_id\": \"" + PropertiesReadWrite.getValue("application_id") + "\","
+                        + "\"remarks\": \"ok\","
+                        + "\"status\": \"POSITIVE\","
+                        + "\"last_comment_id\": null"
+                        + "}";
+
+// Perform POST request
+                Response technicalApprovalResponse = RestUtils.performPost(technicalApprovalUrl, requestBody6, headers);
+
+// Assert response status
+                try {
+                    Assert.assertEquals(selfassignvetterresponse.getStatusCode(), 200);
+                    System.out.println("API request successful!");
+                } catch (AssertionError e) {
+                    System.err.println("Assertion failed: Expected 200 but got " + selfassignvetterresponse.getStatusCode());
+                }
+// Print the response for debugging
+                System.out.println("Technical Approval Response: " + technicalApprovalResponse.prettyPrint());
+                //#
+                // Define the API URL
+                String creditApprovalUrl = PropertiesReadWrite.getValue("baseURL") + "/ilos/v1/technical/credit-approval";
+
+// Build request body
+                String requestBody7 = "{"
+                        + "\"application_id\": \"" + PropertiesReadWrite.getValue("application_id") + "\""
+                        + "}";
+
+// Perform API request
+                Response creditApprovalResponse = RestUtils.performPost(creditApprovalUrl, requestBody7, headers);
+
+// Assert response status
+                try {
+                    Assert.assertEquals(selfassignvetterresponse.getStatusCode(), 200);
+                    System.out.println("API request successful!");
+                } catch (AssertionError e) {
+                    System.err.println("Assertion failed: Expected 200 but got " + selfassignvetterresponse.getStatusCode());
+                }
+// Print response for debugging
+                System.out.println("CreditApproval Response: " + creditApprovalResponse.prettyPrint());
+
+                //#
             }
 
             System.out.println("Success");
-            
+
         }
     }
-
-
-
-
-
 
 }
