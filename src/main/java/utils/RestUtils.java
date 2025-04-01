@@ -18,6 +18,15 @@ public class RestUtils {
         return response;
     }
 
+    public static Response performPatch1(String endPoint, String payload, Map<String, String> headers) {
+        Response response = RestAssured.given().log().body()
+                .headers(headers)
+                .contentType(ContentType.JSON)
+                .body(payload)
+                .patch(endPoint);
+        return response;
+    }
+
 
     public static Response performPost(String endPoint, String payload, Map<String, String> headers) {
                 Response response = RestAssured.given().log().body()
@@ -27,7 +36,11 @@ public class RestUtils {
                 .body(payload)
                 .post();
         return response;
+
+
     }
+
+
     public static Response performPost(String endPoint, Map<String, Object> payload, Map<String, String> headers) {
         Response response = RestAssured.given()
                 .baseUri(endPoint)
