@@ -21,4 +21,12 @@ public class LoginPayload {
                 "l_t", "capri_user"
         );
     }
+
+    public static Map<String, Object> getLoginPayloadMapVendor(String username, String password) {
+        return Map.of(
+                "user", username,
+                "pswd", password,
+                "l_t", "vendor"
+        );
+    }
 }
