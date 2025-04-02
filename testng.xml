@@ -1,21 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="All Test Suite">
+    <listeners>
+        <listener class-name="reporting.ExtentReportListener"/>
+    </listeners>
     <test verbose="2" preserve-order="true" name="/Users/rohit.kumar/Downloads/RestAssuredPOC">
     <classes>
-        <class name="testcases.DedupeModule">
-            <methods><include name="complete_UCIC_Dedupe"/>
-                <include name="completeFlexcubeDedupe"/></methods>
-        </class>
-        <class name="testcases.Login">
-            <methods><include name="loginTestwithStringPayload"/>
-                <include name="loginTestwithMapPayload"/></methods>
-        </class>
-        <class name="testcases.underWritingModuleTestcases">
-            <methods><include name="getAllOpenLead"/>
-                <include name="assignLeadToCP"/><include name="comleteUnderWriting"/>
-            </methods>
-        </class>
+        <class name="testcases.Login"/>
+        <class name="testcases.underWritingModuleTestcases"/>
+        <class name="testcases.DedupeModule"/>
+        <class name="testcases.IPAModule"/>
+        <class name="testcases.ObligationModule"/>
+        <class name="testcases.technicalModule"/>
     </classes>
 </test>
 </suite>
