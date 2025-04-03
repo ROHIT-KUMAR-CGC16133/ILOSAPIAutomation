@@ -13,6 +13,7 @@ import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
+import static io.restassured.RestAssured.given;
 import static payloads.Header.getHeaders;
 
 public class IPAModule {
@@ -21,14 +22,14 @@ public class IPAModule {
     Response response;
     String appId = PropertiesReadWrite.getValue("application_id");
     String url = baseUrl + "/ilos/v1/assignee/lead/" + PropertiesReadWrite.getValue("obj_id");
-
+    Response IPA_lead_res;
     @Test(priority = 1)
     public void generateCibil() {
         try {
             System.out.println("Hit IPA lead api");
             headers = getHeaders(PropertiesReadWrite.getValue("token"));
             Map<String, Object> queryParams = Map.of("view", "true");
-            Response IPA_lead_res = RestUtils.performGet(url, headers, queryParams);
+            IPA_lead_res = RestUtils.performGet(url, headers, queryParams);
             validateResponse(IPA_lead_res);
 
             response = RestUtils.performGet(url, headers);
@@ -45,15 +46,10 @@ public class IPAModule {
                 validateResponse(generate_cibil_app_res);
                 long createdAt = JsonPath.from(response.asString()).getLong("dt.applicant.primary.bureau_check.created_at");
                 long daysAgo = System.currentTimeMillis() - (Integer.parseInt(PropertiesReadWrite.getValue("cibil_rerun_days")) * 24L * 60 * 60 * 1000);
-                System.out.println("daysAgo " + daysAgo);
-
                 if (daysAgo > createdAt) {
                     rerunCibilReport("true", null, null);
                 }
             }
-
-
-
             processCoApplicants();
             processGuarantors();
         } catch (Exception e) {
@@ -69,54 +65,52 @@ public class IPAModule {
         String generate_upload_url = PropertiesReadWrite.getValue("baseURL") + "/ilos/v1/misc/generate-upload-url";
         headers = getHeaders(PropertiesReadWrite.getValue("token"));
         String appId = PropertiesReadWrite.getValue("application_id");
-        String requestBody = """
-        {
-            "dsn": "BANK DOCUMENTS=LATEST 6 MONTHS SAVINGS ACCOUNT BANK STATEMENT",
-            "fn": "Banking.pdf",
-            "app_id": "%s",
-            "ext": "pdf",
-            "ft": "application/pdf"
-        }
-    """.formatted(appId);
+        System.out.println("hit generate-upload-url api");
+        Map<String, Object> requestBody = new HashMap<>();
+        requestBody.put("fn", "Banking.pdf");
+        requestBody.put("ext", "pdf");
+        requestBody.put("app_id", appId); // Use the variable here
+        requestBody.put("dsn", "BANK DOCUMENTS=LATEST 6 MONTHS SAVINGS ACCOUNT BANK STATEMENT");
+        requestBody.put("ft", "application/pdf");
 
         Response generate_upload_res = RestUtils.performPost(generate_upload_url, requestBody, headers);
         validateResponse(generate_upload_res);
-        String url = "https://s3.ap-south-1.amazonaws.com/cgcl-ilos-uat-ui";
-        //headers = getHeaders(PropertiesReadWrite.getValue("token"));
-
-       // Map<String, Object> headers = getHeaders(PropertiesReadWrite.getValue("token"));
-        Map<String, Object> headers1 = new HashMap<>();
-        headers1.put("Accept", "application/json, text/plain, */*");
-        headers1.put("Accept-Language", "en-GB,en-US;q=0.9,en;q=0.8");
-        headers1.put("Connection", "keep-alive");
-        headers1.put("Content-Type", "multipart/form-data; boundary=----WebKitFormBoundaryonu2u6HSdqoLVx4v");
-        headers1.put("Origin", "https://ilos-uat.capriglobal.in");
-        headers1.put("Referer", "https://ilos-uat.capriglobal.in/");
-        headers1.put("Sec-Fetch-Dest", "empty");
-        headers1.put("Sec-Fetch-Mode", "cors");
-        headers1.put("Sec-Fetch-Site", "cross-site");
-        headers1.put("User-Agent", "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36");
-        headers1.put("sec-ch-ua", "\"Chromium\";v=\"134\", \"Not:A-Brand\";v=\"24\", \"Google Chrome\";v=\"134\"");
-        headers1.put("sec-ch-ua-mobile", "?0");
-        headers1.put("sec-ch-ua-platform", "\"macOS\"");
-
-        Map<String, String> formParams = new HashMap<String,String>();
-        formParams.put("key", "upload_docs/user/914365_bankstatment.pdf_1742474264457.pdf");
-        formParams.put("Content-Type", "application/pdf");
-        formParams.put("x-amz-algorithm", "AWS4-HMAC-SHA256");
-        formParams.put("x-amz-credential", "ASIA2WCRTZ2V3IBPSU6E/20250320/ap-south-1/s3/aws4_request");
-        formParams.put("x-amz-date", "20250320T103413Z");
-        formParams.put("x-amz-signature", "12b8017c5b0eb2c23984385da0bedaadb4983e2411379d3530c01f12ab86c65b");
         File file = new File(System.getProperty("user.dir") + "/src/main/resources/file/bankstatment.pdf");
+        RestAssured.baseURI = "https://s3.ap-south-1.amazonaws.com/cgcl-ilos-uat-ui";
+        Response response = given()
+                .header("Accept", "application/json, text/plain, */*")
+                .header("Accept-Language", "en-GB,en-US;q=0.9,en;q=0.8")
+                .header("Connection", "keep-alive")
+                .header("Origin", "https://ilos-uat.capriglobal.in")
+                .header("Referer", "https://ilos-uat.capriglobal.in/")
+                .header("Sec-Fetch-Dest", "empty")
+                .header("Sec-Fetch-Mode", "cors")
+                .header("Sec-Fetch-Site", "cross-site")
+                .header("User-Agent", "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36")
+                .header("sec-ch-ua", "\"Chromium\";v=\"134\", \"Not:A-Brand\";v=\"24\", \"Google Chrome\";v=\"134\"")
+                .header("sec-ch-ua-mobile", "?0")
+                .header("sec-ch-ua-platform", "\"macOS\"")
+                .multiPart("Content-Type", "application/pdf")
+                .multiPart("key", "upload_docs/user/914109_bankstatment.pdf_1743094433634.pdf")
+                .multiPart("x-amz-algorithm", "AWS4-HMAC-SHA256")
+                .multiPart("x-amz-credential", "ASIA2WCRTZ2VSKRSL6EO/20250403/ap-south-1/s3/aws4_request")
+                .multiPart("x-amz-date", "20250403T123320Z")
+                .multiPart("x-amz-security-token", "IQoJb3JpZ2luX2VjEIP//////////wEaCmFwLXNvdXRoLTEiSDBGAiEApx52ucnE2sX/ZS2Pi6w1kEIZaeKrghzP33TfvMdyk+8CIQCLiifxB0aHkOfAgyZIuh7wKbk3XmmLxuwlcWLrOnhGRCqRBAjt//////////8BEAEaDDczNDYxMDU3NTAxOSIMa5TGWnoq+p93E638KuUDDXSh/dWoUxomG7WVztfbrus0vlLqClqeHgGE8Zai/Qo7YrzfX9NB3mGKrMPFr2aP8zs6ScXwIFc4XbNKyA7QaOULC3ANG1c2u635Wx8iZ/WCTjQT3u2hQxr/qxUWGs4mCSVcCQSipGc0JWAQi5fLWDnUGnpsihofmzlN+L8zEuMM4OKMKH8CC6/n9PcMng5I9YTZv/zImt7/37CyHMQNt0gLQMduEjy6ECnGaJsTrMY5noaokoI0isBOpgL+4a1U8fPoE+zoZqbIqI19/ASefoLCdFcjxWhYHFLqQL2w7pXbSc9dlfp2PbX3pchEhN4BUGfO+jSZGuuJ8IJKiej1XtqVYEjOo9j/6z2eRBT4iKD3oR4cAo7xeNNTURs3kh7zBLUqNoOA9dwl2Er3bepyt5ONiAc3A3fFKCnwqfeYz55PPPN4SCnqg/fmeDhF1pFd8tmX1zyrkftaOFG9u27ADP8jR+GUbLKnSUR5XXHJpZHPeampWWD2k9yVN5ev57dTV/tI0ZdoVdFwKO5+mBASvZGEl0LMVcKS2Jj+oxsh5g9fnRW+FCO0JdvsdXv1zOVnaiNS/D68c94g0QFKnLjuQ7zo+qTcualXBYD7LeqSVA3Q9/zD9HHZEWF7J4BUKxZ0icr1FtYw8OC5vwY6pAGzzyLYi/V2UbZ8vxPqITXrKcBxFMhUFnwhNDD2+XXePU7DD1C47ueXxjYJMhgbFpRIbk0LSvfpLNVl58QNMRpfJB5OMOXQ5swd+9ORK5DgafH+G6XAqNMW/fsBYcnUB6zLDoV+bvGfC1JlTHB8ZFz5dOz67CjOFZxSnA6OSyU7gbwTpi2Z43cFA4DaSC4NZI285QS8UUKKQAPrpgUOCIJQst5DfA==")
 
-        Response awsUploadResponse = RestAssured.given()
-                .headers(headers1)
-                .multiPart("file", file, "application/pdf")
-                .formParams(formParams)
-                .post(url);
-        awsUploadResponse.prettyPrint();
-        System.out.println("awsUploadResponse "+awsUploadResponse.getStatusCode());
-       // validateResponse(awsUploadResponse);
+
+                .multiPart("policy", "eyJleHBpcmF0aW9uIjogIjIwMjUtMDQtMDNUMTI6MzU6MjBaIiwgImNvbmRpdGlvbnMiOiBbWyJzdGFydHMtd2l0aCIsICIkQ29udGVudC1UeXBlIiwgIiJdLCB7ImJ1Y2tldCI6ICJjZ2NsLWlsb3MtdWF0LXVpIn0sIHsia2V5IjogInVwbG9hZF9kb2NzL3VzZXIvOTE0MTA5X2JhbmtzdGF0bWVudC5wZGZfMTc0MzA5NDQzMzYzNC5wZGYifSwgeyJ4LWFtei1hbGdvcml0aG0iOiAiQVdTNC1ITUFDLVNIQTI1NiJ9LCB7IngtYW16LWNyZWRlbnRpYWwiOiAiQVNJQTJXQ1JUWjJWU0tSU0w2RU8vMjAyNTA0MDMvYXAtc291dGgtMS9zMy9hd3M0X3JlcXVlc3QifSwgeyJ4LWFtei1kYXRlIjogIjIwMjUwNDAzVDEyMzMyMFoifSwgeyJ4LWFtei1zZWN1cml0eS10b2tlbiI6ICJJUW9KYjNKcFoybHVYMlZqRUlQLy8vLy8vLy8vL3dFYUNtRndMWE52ZFhSb0xURWlTREJHQWlFQXB4NTJ1Y25FMnNYL1pTMlBpNncxa0VJWmFlS3JnaHpQMzNUZnZNZHlrKzhDSVFDTGlpZnhCMGFIa09mQWd5Wkl1aDd3S2JrM1htbUx4dXdsY1dMck9uaEdSQ3FSQkFqdC8vLy8vLy8vLy84QkVBRWFERGN6TkRZeE1EVTNOVEF4T1NJTWE1VEdXbm9xK3A5M0U2MzhLdVVERFhTaC9kV29VeG9tRzdXVnp0ZmJydXMwdmxMcUNscWVIZ0dFOFphaS9RbzdZcnpmWDlOQjNtR0tyTVBGcjJhUDh6czZTY1h3SUZjNFhiTkt5QTdRYU9VTEMzQU5HMWMydTYzNVd4OGlaL1dDVGpRVDN1MmhReHIvcXhVV0dzNG1DU1ZjQ1FTaXBHYzBKV0FRaTVmTFdEblVHbnBzaWhvZm16bE4rTDh6RXVNTTRPS01LSDhDQzYvbjlQY01uZzVJOVlUWnYvekltdDcvMzdDeUhNUU50MGdMUU1kdUVqeTZFQ25HYUpzVHJNWTVub2Fva29JMGlzQk9wZ0wrNGExVThmUG9FK3pvWnFiSXFJMTkvQVNlZm9MQ2RGY2p4V2hZSEZMcVFMMnc3cFhiU2M5ZGxmcDJQYlgzcGNoRWhONEJVR2ZPK2pTWkd1dUo4SUpLaWVqMVh0cVZZRWpPbzlqLzZ6MmVSQlQ0aUtEM29SNGNBbzd4ZU5OVFVSczNraDd6QkxVcU5vT0E5ZHdsMkVyM2JlcHl0NU9OaUFjM0EzZkZLQ253cWZlWXo1NVBQUE40U0NucWcvZm1lRGhGMXBGZDh0bVgxenlya2Z0YU9GRzl1MjdBRFA4alIrR1ViTEtuU1VSNVhYSEpwWkhQZWFtcFdXRDJrOXlWTjVldjU3ZFRWL3RJMFpkb1ZkRndLTzUrbUJBU3ZaR0VsMExNVmNLUzJKaitveHNoNWc5Zm5SVytGQ08wSmR2c2RYdjF6T1ZuYWlOUy9ENjhjOTRnMFFGS25ManVRN3pvK3FUY3VhbFhCWUQ3TGVxU1ZBM1E5L3pEOUhIWkVXRjdKNEJVS3haMGljcjFGdFl3OE9DNXZ3WTZwQUd6enlMWWkvVjJVYlo4dnhQcUlUWHJLY0J4Rk1oVUZud2hOREQyK1hYZVBVN0REMUM0N3VlWHhqWUpNaGdiRnBSSWJrMExTdmZwTE5WbDU4UU5NUnBmSkI1T01PWFE1c3dkKzlPUks1RGdhZkgrRzZYQXFOTVcvZnNCWWNuVUI2ekxEb1YrYnZHZkMxSmxUSEI4WkZ6NWRPejY3Q2pPRlp4U25BNk9TeVU3Z2J3VHBpMlo0M2NGQTREYVNDNE5aSTI4NVFTOFVVS0tRQVBycGdVT0NJSlFzdDVEZkE9PSJ9XX0=")
+
+                // Replace with actual policy
+                .multiPart("x-amz-signature", "1d5d4abb3564a063c7c4eff8ef93338031d0d3090156232ff2fd1480b2234722")
+                .multiPart("file", file, "application/pdf") // Attach file
+                .when()
+                .post()
+                .then()// Validate success response
+                .extract()
+                .response();
+
+        System.out.println("Response of aws upload: " + response.prettyPrint());
+
 
         String endPoint = PropertiesReadWrite.getValue("baseURL") + "/ilos/v2/document-handler/67b31bf13d40b17c547b4fcb";
         Map<String, Object> headers = Header.getHeaders(PropertiesReadWrite.getValue("token"));
@@ -139,64 +133,65 @@ public class IPAModule {
         validateResponse(document_handler_res);
 
 
-
-
-
     }
 
     @Test(priority = 3)
     public void uploadBankStatement() {
-        String url = PropertiesReadWrite.getValue("baseURL") + "/ilos/v1/ipa/lead/bank-statement-upload/" + PropertiesReadWrite.getValue("obj_id");
+        String upload_bank_statement_url = PropertiesReadWrite.getValue("baseURL") + "/ilos/v1/ipa/lead/bank-statement-upload/" + PropertiesReadWrite.getValue("obj_id");
         headers = getHeaders(PropertiesReadWrite.getValue("token"));
         String appId = PropertiesReadWrite.getValue("application_id");
+        IPA_lead_res = RestUtils.performGet(url+"?view=true", headers);
+        validateResponse(IPA_lead_res);
+        String acc_no =JsonPath.from(IPA_lead_res.asString()).getString("dt.applicant.primary.bank_acc_details[0].account_number");
         Map<String, Object> requestBody = new HashMap<>();
         requestBody.put("is_prm_app", true);
         requestBody.put("coapp_id", null);
         requestBody.put("app_id", appId); // Use the variable here
-        requestBody.put("acc_no", "0437010100151");
+        requestBody.put("acc_no", acc_no);
         requestBody.put("dsn", "BANK DOCUMENTS=LATEST 6 MONTHS SAVINGS ACCOUNT BANK STATEMENT");
         requestBody.put("stmt", "cgcl-ilos-uat-ui/upload_docs/user/" + appId + "_bankstatment.pdf_1742474264457.pdf");
 
-        Response upload_bank_statement_res = RestUtils.sendPatchRequest(url, requestBody, headers);
+        Response upload_bank_statement_res = RestUtils.sendPatchRequest(upload_bank_statement_url, requestBody, headers);
         validateResponse(upload_bank_statement_res);
 
     }
     @Test(priority = 4)
     public void initiate_novel(){
-        String url = PropertiesReadWrite.getValue("baseURL") + "/ilos/v1/ipa/lead/initiate-novel/" + PropertiesReadWrite.getValue("obj_id");
+        String initiate_novel_url = PropertiesReadWrite.getValue("baseURL") + "/ilos/v1/ipa/lead/initiate-novel/" + PropertiesReadWrite.getValue("obj_id");
         headers = getHeaders(PropertiesReadWrite.getValue("token"));
+        IPA_lead_res = RestUtils.performGet(url+"?view=true", headers);
+        String acc_no =JsonPath.from(IPA_lead_res.asString()).getString("dt.applicant.primary.bank_acc_details[0].account_number");
+        String bank_name_with_account_no =JsonPath.from(IPA_lead_res.asString()).getString("dt.applicant.primary.bank_acc_details[0].bank_name")+" ("+acc_no+")";
         Map<String, Object> requestBody = new HashMap<>();
         requestBody.put("is_prm_app", true);
         requestBody.put("coapp_id", null);
         requestBody.put("app_id", appId);
-        requestBody.put("acc_no", "0437010100151");
+        requestBody.put("acc_no", acc_no);
         requestBody.put("dsn", "BANK DOCUMENTS=LATEST 6 MONTHS SAVINGS ACCOUNT BANK STATEMENT");
         requestBody.put("stmt", "cgcl-ilos-uat-ui/upload_docs/user/" + appId + "_bankstatment.pdf_1742474264457.pdf");
-        requestBody.put("fn", "AXIS BANK (0437010100151)");
-        Response uploadBankStatementRes = RestUtils.sendPatchRequest(url, requestBody, headers);
+        requestBody.put("fn", bank_name_with_account_no);
+        Response uploadBankStatementRes = RestUtils.sendPatchRequest(initiate_novel_url, requestBody, headers);
         validateResponse(uploadBankStatementRes);
     }
 
 @Test(priority = 5 )
 public void submitLead() {
-    // Constructing the API URL
-    String url = PropertiesReadWrite.getValue("baseURL") + "/ilos/v1/ipa/lead/submit/" + PropertiesReadWrite.getValue("obj_id");
-
-    // Setting up headers
+    String submit_url = PropertiesReadWrite.getValue("baseURL") + "/ilos/v1/ipa/lead/submit/" + PropertiesReadWrite.getValue("obj_id");
     headers = getHeaders(PropertiesReadWrite.getValue("token"));
-
-    // Creating request body
+    IPA_lead_res = RestUtils.performGet(url+"?view=true", headers);
+    String acc_no =JsonPath.from(IPA_lead_res.asString()).getString("dt.applicant.primary.bank_acc_details[0].account_number");
+    String bank_name_with_account_no =JsonPath.from(IPA_lead_res.asString()).getString("dt.applicant.primary.bank_acc_details[0].bank_name")+" ("+acc_no+")";
     Map<String, Object> requestBody = new HashMap<>();
     requestBody.put("is_prm_app", true);
     requestBody.put("coapp_id", null);
     requestBody.put("app_id", appId);
-    requestBody.put("acc_no", "0437010100151");
+    requestBody.put("acc_no", acc_no);
     requestBody.put("dsn", "BANK DOCUMENTS=LATEST 6 MONTHS SAVINGS ACCOUNT BANK STATEMENT");
     requestBody.put("stmt", "cgcl-ilos-uat-ui/upload_docs/user/" + appId + "_bankstatment.pdf_1742474264457.pdf");
-    requestBody.put("fn", "AXIS BANK (0437010100151)");
+    requestBody.put("fn", bank_name_with_account_no);
 
     // Sending PATCH request
-    Response response = RestUtils.sendPatchRequest(url, requestBody, headers);
+    Response response = RestUtils.sendPatchRequest(submit_url, requestBody, headers);
 
     // Validate Response
     validateResponse(response);

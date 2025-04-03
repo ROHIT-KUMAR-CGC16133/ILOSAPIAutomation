@@ -26,7 +26,7 @@ public class ObligationModule {
         validateResponse(response);
         String obligation_lead_url = PropertiesReadWrite.getValue("baseURL") + "/ilos/v1/obligation/lead/" + PropertiesReadWrite.getValue("obj_id");
         Map<String, Object> queryParams = Map.of("view", "true");
-        Response obligation_lead_res = RestUtils.performGet(url, headers, queryParams);
+        Response obligation_lead_res = RestUtils.performGet(obligation_lead_url, headers, queryParams);
         validateResponse(obligation_lead_res);
 
 

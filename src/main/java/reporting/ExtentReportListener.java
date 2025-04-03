@@ -12,7 +12,9 @@ import java.util.Arrays;
 public class ExtentReportListener implements ITestListener {
     public static ExtentReports extentReports;
     public static ThreadLocal<ExtentTest> extentTest = new ThreadLocal<>();
-
+    public static ExtentTest getTest() {
+        return extentTest.get();
+    }
     public void onStart(ITestContext context) {
         String fileName = ExtentReportManager.getReportNameWithTimeStamp();
         String fullReportPath = System.getProperty("user.dir") + "/src/main/report/" + fileName;
