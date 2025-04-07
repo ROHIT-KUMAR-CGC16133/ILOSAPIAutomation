@@ -38,7 +38,8 @@ public void getAllOpenLead(){
         response=RestUtils.performGet(endPoint, headers, queryParams);
     }
    // response.prettyPrint();
-    Assert.assertEquals(response.getStatusCode(), 200);
+    validateResponse(response);
+
    int leadcount = JsonPath.from(response.asString()).getInt("tct");
     if(leadcount>0){
         PropertiesReadWrite.setValue("obj_id", JsonPath.from(response.asString()).getString("dt[0]._id"));
@@ -62,7 +63,7 @@ public void getAllOpenLead(){
         response=RestUtils.sendPatchRequest(url,headers);
     }
    // response.prettyPrint();
-    Assert.assertEquals(response.getStatusCode(), 200);
+    validateResponse(response);
     System.out.println("assign lead to CPA");
 }
 
@@ -89,28 +90,21 @@ public void getAllOpenLead(){
     System.out.println("lead result api call");
     String lead_result_url = baseUrl+"/ilos/v1/underwriter/lead/result/"+PropertiesReadWrite.getValue("obj_id");
     Response response1=RestUtils.performGet(lead_result_url,headers);
-    if(response1.getStatusCode()!=200){
-        response1.prettyPrint();
-        Assert.assertEquals(response1.getStatusCode(), 200);
-    }
+    validateResponse(response1);
 
     System.out.println("generate PDF");
     String url2 = baseUrl+"/ilos/v1/application/generate-pdf/" + PropertiesReadWrite.getValue("application_id");
     Response response2=RestUtils.performGet(url2,headers);
-    if(response2.getStatusCode()!=200){
-        response2.prettyPrint();
-        Assert.assertEquals(response2.getStatusCode(), 200);
-    }
+    validateResponse(response2);
+
 
     Thread.sleep(5000);
 
     System.out.println("submit lead to dedupe");
     String url3=baseUrl+"/ilos/v1/underwriter/lead/submit/"+PropertiesReadWrite.getValue("obj_id");
     Response response3=RestUtils.sendPatchRequest(url3,headers);
-    if(response3.getStatusCode()!=200){
-        response3.prettyPrint();
-        Assert.assertEquals(response3.getStatusCode(), 200);
-    }
+    validateResponse(response3);
+
 
     System.out.println("Underwriting completed ");
 
@@ -124,7 +118,11 @@ public void getAllOpenLead(){
 
 
 
-
-
+    private void validateResponse(Response response) {
+        if (response.getStatusCode() != 200) {
+            response.prettyPrint();
+            Assert.assertEquals(response.getStatusCode(), 200);
+        }
+    }
 
 }

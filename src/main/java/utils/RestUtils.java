@@ -92,24 +92,23 @@ public class RestUtils {
     }
 
 
-
     private static void logRequestResponse(RequestSpecification requestSpec, Response response) {
         QueryableRequestSpecification queryableRequestSpecification = SpecificationQuerier.query(requestSpec);
+      //  System.out.println("Request URL is " + queryableRequestSpecification.getBaseUri());
+      //  System.out.println("query param"+queryableRequestSpecification.getQueryParams());
         if(ExtentReportListener.getTest() != null) {
-
-
             ExtentReportManager.logInfoDetails("Endpoint: " + queryableRequestSpecification.getBaseUri());
             ExtentReportManager.logInfoDetails("Method: " + queryableRequestSpecification.getMethod());
-       /* if(queryableRequestSpecification.getQueryParams() != null) {
-            System.out.println("Query Params: -----------" + queryableRequestSpecification.getQueryParams());
-            ExtentReportManager.logInfoDetails("Query Params: " + queryableRequestSpecification.getQueryParams());
-        }*/
             if (queryableRequestSpecification.getBody() != null) {
                 ExtentReportManager.logInfoDetails("Request body is ");
                 ExtentReportManager.logJson(queryableRequestSpecification.getBody().toString());
             }
             ExtentReportManager.logInfoDetails("Response Status: " + response.getStatusCode());
             ExtentReportManager.logInfoDetails("Response Time: " + response.getTime() + " ms");
+            if(response.getStatusCode() != 200) {
+                ExtentReportManager.logInfoDetails("Response body is ");
+                ExtentReportManager.logInfoDetails(response.getBody().prettyPrint());
+            }
 //        ExtentReportManager.logInfoDetails("Response body is ");
 //        ExtentReportManager.logInfoDetails(response.getBody().prettyPrint());
 
