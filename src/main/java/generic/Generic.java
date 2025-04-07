@@ -23,5 +23,12 @@ public class Generic {
         return tokenvalue;
     }
 
+    public static void validateResponse(Response response) {
+        if (response.getStatusCode() != 200) {
+            response.prettyPrint();
+            Assert.assertEquals(response.getStatusCode(), 200);
+        }
+    }
+
 
 }
