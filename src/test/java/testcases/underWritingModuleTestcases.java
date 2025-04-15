@@ -17,6 +17,8 @@ public class underWritingModuleTestcases {
 
     Response leadJsonResponse=null;
     String baseUrl =  PropertiesReadWrite.getValue("baseURL");
+    String CPuser = PropertiesReadWrite.getValue("CPUser");
+    String CPpassword = PropertiesReadWrite.getValue("CPPassword");
 
 @Test(enabled = true,priority = 1)
 public void getAllOpenLead(){
@@ -28,15 +30,15 @@ public void getAllOpenLead(){
     queryParams.put("status", "PENDING_FOR_DDE");
     String token = PropertiesReadWrite.getValue("token");
 
-    headers = getHeaders(token); // Get headers with the token
+    headers = getHeaders(CPuser,CPpassword); // Get headers with the token
      response = RestUtils.performGet(endPoint, headers, queryParams);
 
-    if (response.getStatusCode() == 403) { // Token expired
-        String newToken = Generic.getToken(PropertiesReadWrite.getValue("CPUser"),PropertiesReadWrite.getValue("CPPassword"));
-        PropertiesReadWrite.setValue("token", newToken);
-        headers = getHeaders(newToken); // Update headers with the new token
-        response=RestUtils.performGet(endPoint, headers, queryParams);
-    }
+//    if (response.getStatusCode() == 403) { // Token expired
+//        String newToken = Generic.getToken(PropertiesReadWrite.getValue("CPUser"),PropertiesReadWrite.getValue("CPPassword"));
+//        PropertiesReadWrite.setValue("token", newToken);
+//        headers = getHeaders(newToken); // Update headers with the new token
+//        response=RestUtils.performGet(endPoint, headers, queryParams);
+//    }
    // response.prettyPrint();
     validateResponse(response);
 
@@ -53,15 +55,15 @@ public void getAllOpenLead(){
     public void assignLeadToCP(){
     String url = PropertiesReadWrite.getValue("baseURL")+"/ilos/v1/underwriter/lead/self_assign/"+PropertiesReadWrite.getValue("obj_id");
     Map<String, Object> headers;
-    headers = getHeaders(PropertiesReadWrite.getValue("token"));
+    headers = getHeaders(CPuser, CPpassword);
     Response response=null;
     response=RestUtils.sendPatchRequest(url,headers);
-    if (response.getStatusCode() == 403) { // Token expired
-        String newToken = Generic.getToken(PropertiesReadWrite.getValue("CPUser"),PropertiesReadWrite.getValue("CPPassword"));
-        PropertiesReadWrite.setValue("token", newToken);
-        headers = getHeaders(newToken); // Update headers with the new token
-        response=RestUtils.sendPatchRequest(url,headers);
-    }
+//    if (response.getStatusCode() == 403) { // Token expired
+//        String newToken = Generic.getToken(PropertiesReadWrite.getValue("CPUser"),PropertiesReadWrite.getValue("CPPassword"));
+//        PropertiesReadWrite.setValue("token", newToken);
+//        headers = getHeaders(newToken); // Update headers with the new token
+//        response=RestUtils.sendPatchRequest(url,headers);
+//    }
    // response.prettyPrint();
     validateResponse(response);
     System.out.println("assign lead to CPA");
@@ -72,7 +74,7 @@ public void getAllOpenLead(){
     System.out.println("get lead json");
     String url = PropertiesReadWrite.getValue("baseURL")+"/ilos/v1/assignee/lead/"+PropertiesReadWrite.getValue("obj_id");
     Map<String, Object> headers;
-    headers = getHeaders(PropertiesReadWrite.getValue("token"));
+    headers = getHeaders(CPuser, CPpassword);
     Response response=null;
     response=RestUtils.performGet(url,headers);
     Assert.assertEquals(response.getStatusCode(), 200);

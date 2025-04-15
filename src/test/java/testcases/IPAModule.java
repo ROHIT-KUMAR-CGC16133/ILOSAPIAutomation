@@ -22,12 +22,14 @@ public class IPAModule {
     Response response;
     String appId = PropertiesReadWrite.getValue("application_id");
     String url = baseUrl + "/ilos/v1/assignee/lead/" + PropertiesReadWrite.getValue("obj_id");
+    String CPuser = PropertiesReadWrite.getValue("CPUser");
+    String CPpassword = PropertiesReadWrite.getValue("CPPassword");
     Response IPA_lead_res;
     @Test(priority = 1)
     public void generateCibil() {
         try {
             System.out.println("Hit IPA lead api");
-            headers = getHeaders(PropertiesReadWrite.getValue("token"));
+            headers = getHeaders(CPuser, CPpassword);
             Map<String, Object> queryParams = Map.of("view", "true");
             IPA_lead_res = RestUtils.performGet(url, headers, queryParams);
             validateResponse(IPA_lead_res);
@@ -62,10 +64,10 @@ public class IPAModule {
 
     @Test(priority = 2)
     public void complete_bank_novel(){
-        headers = getHeaders(PropertiesReadWrite.getValue("token"));
+        headers = getHeaders(CPuser, CPpassword);
         response = RestUtils.performGet(url, headers);
         String generate_upload_url = PropertiesReadWrite.getValue("baseURL") + "/ilos/v1/misc/generate-upload-url";
-        headers = getHeaders(PropertiesReadWrite.getValue("token"));
+        headers = getHeaders(CPuser, CPpassword);
         String appId = PropertiesReadWrite.getValue("application_id");
         System.out.println("hit generate-upload-url api");
         Map<String, Object> requestBody = new HashMap<>();
@@ -121,7 +123,7 @@ public class IPAModule {
 
 
         String endPoint = PropertiesReadWrite.getValue("baseURL") + "/ilos/v2/document-handler/67b31bf13d40b17c547b4fcb";
-        Map<String, Object> headers = Header.getHeaders(PropertiesReadWrite.getValue("token"));
+        Map<String, Object> headers = Header.getHeaders(CPuser, CPpassword);
         String applicantId = response.jsonPath().getString("dt.applicant.primary.id");
 
         Map<String, Object> payload = Map.of(
@@ -146,7 +148,7 @@ public class IPAModule {
     @Test(priority = 3)
     public void uploadBankStatement() {
         String upload_bank_statement_url = PropertiesReadWrite.getValue("baseURL") + "/ilos/v1/ipa/lead/bank-statement-upload/" + PropertiesReadWrite.getValue("obj_id");
-        headers = getHeaders(PropertiesReadWrite.getValue("token"));
+        headers = getHeaders(CPuser, CPpassword);
         String appId = PropertiesReadWrite.getValue("application_id");
         IPA_lead_res = RestUtils.performGet(url+"?view=true", headers);
         validateResponse(IPA_lead_res);
@@ -167,7 +169,7 @@ public class IPAModule {
     @Test(priority = 4)
     public void initiate_novel(){
         String initiate_novel_url = PropertiesReadWrite.getValue("baseURL") + "/ilos/v1/ipa/lead/initiate-novel/" + PropertiesReadWrite.getValue("obj_id");
-        headers = getHeaders(PropertiesReadWrite.getValue("token"));
+        headers = getHeaders(CPuser, CPpassword);
         IPA_lead_res = RestUtils.performGet(url+"?view=true", headers);
         String acc_no =JsonPath.from(IPA_lead_res.asString()).getString("dt.applicant.primary.bank_acc_details[0].account_number");
         String bank_name_with_account_no =JsonPath.from(IPA_lead_res.asString()).getString("dt.applicant.primary.bank_acc_details[0].bank_name")+" ("+acc_no+")";
@@ -187,7 +189,7 @@ public class IPAModule {
 @Test(priority = 5 )
 public void submitLead() {
     String submit_url = PropertiesReadWrite.getValue("baseURL") + "/ilos/v1/ipa/lead/submit/" + PropertiesReadWrite.getValue("obj_id");
-    headers = getHeaders(PropertiesReadWrite.getValue("token"));
+    headers = getHeaders(CPuser, CPpassword);
     IPA_lead_res = RestUtils.performGet(url+"?view=true", headers);
     String acc_no =JsonPath.from(IPA_lead_res.asString()).getString("dt.applicant.primary.bank_acc_details[0].account_number");
     String bank_name_with_account_no =JsonPath.from(IPA_lead_res.asString()).getString("dt.applicant.primary.bank_acc_details[0].bank_name")+" ("+acc_no+")";

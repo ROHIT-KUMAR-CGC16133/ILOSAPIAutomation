@@ -18,10 +18,12 @@ public class ObligationModule {
     Response response;
     String appId = PropertiesReadWrite.getValue("application_id");
     String url = baseUrl + "/ilos/v1/assignee/lead/" + PropertiesReadWrite.getValue("obj_id");
+    String CPuser = PropertiesReadWrite.getValue("CPUser");
+    String CPpassword = PropertiesReadWrite.getValue("CPPassword");
 
     @Test(priority = 1)
     public void LoanObligation() {
-        headers = getHeaders(PropertiesReadWrite.getValue("token"));
+        headers = getHeaders(CPuser, CPpassword);
         response = RestUtils.performGet(url, headers);
         validateResponse(response);
         String obligation_lead_url = PropertiesReadWrite.getValue("baseURL") + "/ilos/v1/obligation/lead/" + PropertiesReadWrite.getValue("obj_id");
@@ -34,7 +36,7 @@ public class ObligationModule {
 
     @Test(priority = 2)
     public void Obligation_Submit(){
-        headers = getHeaders(PropertiesReadWrite.getValue("token"));
+        headers = getHeaders(CPuser, CPpassword);
         String submit_url = baseUrl+"/ilos/v1/obligation/lead/submit/"+PropertiesReadWrite.getValue("obj_id");
         Map<String, Object> payload = Map.of("is_prm_app", true,"roi",10.11,"rt","SEMI-FIXED");
         Response submit_res = RestUtils.sendPatchRequest(submit_url,payload,headers);

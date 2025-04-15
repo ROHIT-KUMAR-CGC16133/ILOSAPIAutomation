@@ -19,11 +19,13 @@ public class DedupeModule {
     String baseurl=PropertiesReadWrite.getValue("baseURL");
     String obj_id =PropertiesReadWrite.getValue("obj_id");
     String url = baseurl+"/ilos/v1/assignee/lead/"+PropertiesReadWrite.getValue("obj_id");
+    String CPuser = PropertiesReadWrite.getValue("CPUser");
+    String CPpassword = PropertiesReadWrite.getValue("CPPassword");
 
     @Test(enabled = true,priority = 1)
     public void complete_UCIC_Dedupe(){
         System.out.println("lead json api");
-        headers = getHeaders(PropertiesReadWrite.getValue("token"));
+        headers = getHeaders(CPuser, CPpassword);
         response= RestUtils.performGet(url,headers);
 
         if(response.getStatusCode()!=200){
@@ -168,7 +170,7 @@ public class DedupeModule {
 
 @Test(enabled = true,priority = 2)
     public void completeFlexcubeDedupe(){
-    headers = getHeaders(PropertiesReadWrite.getValue("token"));
+    headers = getHeaders(CPuser, CPpassword);
     response= RestUtils.performGet(url,headers);
    // response.prettyPrint();
    System.out.println("search customer api for applicant");

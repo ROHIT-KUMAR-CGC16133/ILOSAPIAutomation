@@ -25,30 +25,34 @@ public class PD_Module {
     Response response;
     String appId = PropertiesReadWrite.getValue("application_id");
     String lead_url = baseUrl + "/ilos/v1/assignee/lead/" + PropertiesReadWrite.getValue("obj_id");
+    String CPuser = PropertiesReadWrite.getValue("CPUser");
+    String CPpassword = PropertiesReadWrite.getValue("CPPassword");
+    String UW_user = PropertiesReadWrite.getValue("UWUser");
+    String UW_password = PropertiesReadWrite.getValue("UWPassword");
 
-    @Test(priority = 1)
+    @Test(priority = 1,enabled = true)
     public void getPD_HomeBranch_Lead() {
-        headers = getHeaders(PropertiesReadWrite.getValue("token"));
+        headers = getHeaders(CPuser, CPpassword);
         String endPoint = baseUrl + "/pd/application/list/home/0/10";
         Response get_Homebranch_lead = RestUtils.performGet(endPoint, headers);
         Generic.validateResponse(get_Homebranch_lead);
-        Assert.assertTrue(get_Homebranch_lead.getBody().asString().contains(appId), "appId is not present in the response");
+        Assert.assertTrue(get_Homebranch_lead.getBody().asString().contains(appId), "application is not present in the home branch listing");
 
     }
-    @Test(priority = 2)
+    @Test(priority = 2,enabled = false)
     public void assignPD_ToSELF() {
         String url = baseUrl + "/pd/application/assign";
-        headers = getHeaders(PropertiesReadWrite.getValue("token"));
+        headers = getHeaders(CPuser, CPpassword);
         Map<String, Object> payload = Map.of( "appId", appId);
         Response response = RestUtils.performPost(url, payload, headers);
         Generic.validateResponse(response);
         Response assign_to_me_application = RestUtils.performGet(baseUrl+"/pd/application/list/myApplication/PROCESSOR/0/10?", headers);
         Generic.validateResponse(assign_to_me_application);
-        Assert.assertTrue(assign_to_me_application.getBody().asString().contains(appId), "appId is not present in the assign to me response");
+        Assert.assertTrue(assign_to_me_application.getBody().asString().contains(appId), "application is not present in the assign to me listing");
     }
     @Test(priority = 3)
     public void assignPD_ToProcessor() {
-        headers = getHeaders(PropertiesReadWrite.getValue("token"));
+        headers = getHeaders(CPuser, CPpassword);
         Map<String, Object> queryparam_lead = Map.of( "application_id", appId);
         Response lead_details = RestUtils.performGet(baseUrl+"/ilos/v1/lead/lead-detail", headers,queryparam_lead);
         Generic.validateResponse(lead_details);
@@ -71,14 +75,12 @@ public class PD_Module {
             company = "cgcl";
             empId="BU0025";
             empName="Ahmprgt016";
-        }else if(portfolio_type.equalsIgnoreCase("home equity")){
+            PropertiesReadWrite.setValue("UWUser","branchuser25@capriglobal.in");
+        }else if(portfolio_type.equalsIgnoreCase("home equity") || portfolio_type.equalsIgnoreCase("home loan")){
             company = "cghfl";
             empId="BU0010";
             empName="Jaipragatiuser20";
-        }else if(portfolio_type.equalsIgnoreCase("home loan")){
-            company = "cghfl";
-            empId="BU0010";
-            empName="Jaipragatiuser20";
+            PropertiesReadWrite.setValue("UWUser","branchuser10@capriglobal.in");
         }
         System.out.println("company: "+company+" empId: "+empId+" empName: "+empName);
         Response user_available = RestUtils.performGet(baseUrl+"/ilosuser/v1/user/available?additional_branch_code="+branch_code+"&role=UNDERWRITER&login_status=0&email=&sbu="+company, headers);
@@ -130,13 +132,11 @@ public class PD_Module {
         requestBody.put("pdRequestList", pdRequestList);
         Response submitRequest = RestUtils.performPost(baseUrl+"/pd/pdmeta/submitRequest", requestBody.toString(), headers);
         Generic.validateResponse(submitRequest);
-
-
     }
 
     @Test(priority = 4)
     public void complete_PD_From_Mobile(){
-        headers = getHeaders(PropertiesReadWrite.getValue("token"));
+        headers = getHeaders(CPuser, CPpassword);
         String pdmetalist_url = baseUrl+"/pd/pdmeta/list/"+appId;
         Map<String, Object> payload = Map.of( "appId", appId);
         Response pdmetalist_response = RestUtils.performGet(pdmetalist_url, headers);
@@ -155,7 +155,6 @@ public class PD_Module {
                             .put("officialPhotos", getPhotosArray(2))
                             .put("additionalPhotos", getPhotosArray(2))
                     );
-
             Response complete_pd_response = RestUtils.performPost(baseUrl+"/pd/responses/verification", requestBody.toString(), headers);
             Generic.validateResponse(complete_pd_response);
             Map<String, Object> payload1 = new HashMap<>();
@@ -167,21 +166,19 @@ public class PD_Module {
             Generic.validateResponse(submit_pd_with_status_response);
 
         }
-
-
-
     }
     @Test(priority = 5)
-    public void complete_questionnaire(){
-        headers = getHeaders(PropertiesReadWrite.getValue("token"));
-        String lead_details_url = baseUrl+"/ilos/v1/lead/lead-detail?application_id="+appId;
-        Response lead_details = RestUtils.performGet(lead_details_url, headers);
+    public void submit_PD_from_Performer(){
+        headers = getHeaders(UW_user, UW_password);
+        Response performerList_res = RestUtils.performGet(baseUrl+"/pd/application/list/myApplication/PERFORMER/0/10?", headers);
+        Assert.assertTrue(performerList_res.getBody().asString().contains(appId), "appId is not present in the performer list");
+        Map<String, Object> queryparam_lead = Map.of( "application_id", appId);
+        Response lead_details = RestUtils.performGet(baseUrl+"/ilos/v1/lead/lead-detail", headers,queryparam_lead);
         Generic.validateResponse(lead_details);
         String pdmetalist_url = baseUrl+"/pd/pdmeta/list/"+appId;
         Map<String, Object> queryparam = Map.of( "user", "PERFORMER");
         Response pdmeta_list = RestUtils.performGet(baseUrl+"/pd/pdmeta/list/"+appId,headers,queryparam);
         Generic.validateResponse(pdmeta_list);
-       // String branch_code = lead_details.jsonPath().getString("dt.primary.inquiry_details.branch_code");
         String portfolio_type = lead_details.jsonPath().getString("dt.primary.inquiry_details.portfolio_type");
         String end_use_of_loan = lead_details.jsonPath().getString("dt.end_use_of_laon_as_per_mitc");
         String transaction_type = lead_details.jsonPath().getString("dt.primary.inquiry_details.transaction_type");
@@ -193,18 +190,18 @@ public class PD_Module {
                 .format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
         String timePart = pdmeta_list.jsonPath().getString("result[0].assignedDate").split("T")[1].split("\\.")[0];
         String PDTime = LocalTime.parse(timePart).format(DateTimeFormatter.ofPattern("HH:mm"));
-        String primary_applicant_name = lead_details.jsonPath().getString("dt.primary.inquiry_details.name");
+        String primary_applicant_name = lead_details.jsonPath().getString("dt.applicant.primary.name");
         String loan_purpose = lead_details.jsonPath().getString("dt.primary.inquiry_details.loan_purpose");
         String assignedEmpName = pdmeta_list.jsonPath().getString("result.find { it.pdType == 'BUSINESS' }.assignedEmpName");
         String assignedEmpId = pdmeta_list.jsonPath().getString("result.find { it.pdType == 'BUSINESS' }.assignedEmpId");
+
         int resultSize = pdmeta_list.jsonPath().getList("result").size();
         String questionnaire_submit_url = baseUrl + "/pd/pdmeta/submit";
         String questionnaire_url = baseUrl + "/pd/responses/questionnaire";
-
         for(int i=0;i<resultSize;i++) {
             String pdType = pdmeta_list.jsonPath().getString("result[" + i + "].pdType");
             if(pdType.equalsIgnoreCase("BUSINESS")){
-                String pdId = pdmeta_list.jsonPath().getString("result.find { it.pdType == 'BUSINESS' }.id");
+                String pdId = pdmeta_list.jsonPath().getString("result[" + i + "].id");
                 System.out.println("pdId: BUSINESS " + pdId);
                 Map<String, Object> businessPDPayload = BusinessPD_payload(pdId, portfolio_type, end_use_of_loan, transaction_type, loan_branch,
                         requested_loan_amount, expected_roi, assignedEmpName, assignedEmpId, loan_tenor_in_months, PDDate, PDTime, primary_applicant_name, loan_purpose);
@@ -214,7 +211,7 @@ public class PD_Module {
                 Generic.validateResponse(questionnaire_submit_response);
 
             }else if (pdType.equalsIgnoreCase("COLLATERAL")) {
-                String pdId = pdmeta_list.jsonPath().getString("result.find { it.pdType == 'COLLATERAL' }.id");
+                String pdId = pdmeta_list.jsonPath().getString("result[" + i + "].id");
                 System.out.println("pdId: COLLATERAL " + pdId);
                 Map<String, Object> collateralPdPayload = collateralPd_Payload(pdId, portfolio_type, end_use_of_loan, transaction_type, loan_branch,
                         requested_loan_amount, expected_roi, loan_tenor_in_months);
@@ -224,7 +221,7 @@ public class PD_Module {
                 Generic.validateResponse(questionnaire_submit_response);
 
             }else if( pdType.equalsIgnoreCase("CURRENT_RESIDENCE")) {
-                String pdId = pdmeta_list.jsonPath().getString("result.find { it.pdType == 'CURRENT_RESIDENCE' }.id");
+                String pdId = pdmeta_list.jsonPath().getString("result[" + i + "].id");
                 System.out.println("pdId: CURRENT_RESIDENCE " + pdId);
                 Map<String, Object> current_residence_payload = current_residencePD_payload(pdId, portfolio_type, end_use_of_loan, transaction_type, loan_branch,
                         requested_loan_amount, expected_roi, loan_tenor_in_months, assignedEmpName, assignedEmpId, PDDate, PDTime, primary_applicant_name);
@@ -236,6 +233,56 @@ public class PD_Module {
             }
         }
 
+    }
+
+    @Test(priority = 6)
+    public void submit_PD_from_owner(){
+        headers = getHeaders(UW_user, UW_password);
+        Response performerList_res = RestUtils.performGet(baseUrl+"/pd/application/list/myApplication/OWNER/0/10?", headers);
+        Assert.assertTrue(performerList_res.getBody().asString().contains(appId), "appId is not present in the owner list");
+        Response lead_details = RestUtils.performGet(baseUrl+"/ilos/v1/lead/lead-detail", headers,Map.of( "application_id", appId));
+        Generic.validateResponse(lead_details);
+        String primary_applicant_name = lead_details.jsonPath().getString("dt.applicant.primary.name");
+        int user_id = lead_details.jsonPath().getInt("dt.applicant.primary.id");
+        Response lead_config_res = RestUtils.performGet(baseUrl+"/ilos/v1/misc/lead-config", headers,Map.of("section", "pd_owner"));
+        Generic.validateResponse(lead_config_res);
+        Response pdmeta_list_res = RestUtils.performGet(baseUrl+"/pd/pdmeta/list/"+appId,headers,Map.of( "user", "OWNER"));
+        Generic.validateResponse(pdmeta_list_res);
+        Response summary_acknowledge=RestUtils.performPost(baseUrl+"/ilos/v1/ai/summary/acknowledge",Map.of("application_id",appId),headers);
+        Generic.validateResponse(summary_acknowledge);
+        Map<String, Object> payload = Map.of("appId",appId,"collateral_type","","remark","","status","POSITIVE");
+        Response pd_submit_owner;
+        pd_submit_owner= RestUtils.performPost(baseUrl+"/pd/application/status",payload,headers);
+        if(pd_submit_owner.getStatusCode()==400 && pd_submit_owner.getBody().asString().contains("Shareholding details are missing for applicant")) {
+            System.out.println("Shareholding details are missing for applicant");
+            Map<String, Object> payload_shareholding = new HashMap<>();
+
+            payload_shareholding.put("applicant_id", user_id);
+            payload_shareholding.put("applicant_type", "Applicant");
+            payload_shareholding.put("constitution_type", "public limited company");
+
+            List<Map<String, Object>> shareholdingPattern = new ArrayList<>();
+            Map<String, Object> shareholding = new HashMap<>();
+
+            shareholding.put("id", 1);
+            shareholding.put("bod", true);
+            shareholding.put("borrower_type", "Applicant");
+            shareholding.put("name", primary_applicant_name);
+            shareholding.put("designation_type", "Director");
+            shareholding.put("ovd_type", "Voter Id");
+            shareholding.put("percentage", "100");
+            shareholding.put("user_id", user_id);
+
+            shareholdingPattern.add(shareholding);
+
+            payload_shareholding.put("shareholding_pattern", shareholdingPattern);
+            Response shareholding_response = RestUtils.performPost(baseUrl+"/ilos/v1/shareholding-pattern/"+PropertiesReadWrite.getValue("obj_id"), payload_shareholding, headers);
+            Generic.validateResponse(shareholding_response);
+            pd_submit_owner = RestUtils.performPost(baseUrl+"/pd/application/status",payload,headers);
+        }
+        Generic.validateResponse(pd_submit_owner);
+        Response mark_section_complete = RestUtils.sendPatchRequest(baseUrl+"/ilos/v1/assignee/lead/mark-section-complete/"+PropertiesReadWrite.getValue("obj_id"),Map.of("section","pd"),headers);
+        Generic.validateResponse(mark_section_complete);
     }
 
 

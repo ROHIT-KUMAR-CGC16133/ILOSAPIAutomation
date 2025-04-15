@@ -18,6 +18,8 @@ import java.util.Map;
 import static payloads.Header.getHeaders;
 
 public class technicalModule {
+    String TechUser = PropertiesReadWrite.getValue("CPUser");
+    String CPpassword = PropertiesReadWrite.getValue("CPPassword");
 
     @Test(priority = 0)
     public void fetchHomeLeads() {
@@ -31,7 +33,7 @@ public class technicalModule {
         String token = PropertiesReadWrite.getValue("token1");
         Map<String, Object> headers;
 
-        headers = getHeaders(token);
+        headers = getHeaders(TechUser,CPpassword);
 
         Response response = RestUtils.performGet(endPoint, headers, queryParams);
 
@@ -53,7 +55,7 @@ public class technicalModule {
 
         // Headers
         String token = PropertiesReadWrite.getValue("token1");
-        Map<String, Object> headers = getHeaders(token);
+        Map<String, Object> headers =getHeaders(TechUser,CPpassword);
 
         // Request Body
         String requestBody = "{ \"application_id\": \"" + PropertiesReadWrite.getValue("application_id") + "\", \"is_refer\": false }";
@@ -84,7 +86,7 @@ public class technicalModule {
         queryParams.put("application_id", PropertiesReadWrite.getValue("application_id"));
         String token = PropertiesReadWrite.getValue("token1");
 
-        headers = getHeaders(token); // Get headers with the token
+        headers = getHeaders(TechUser,CPpassword);; // Get headers with the token
         response = RestUtils.performGet(endPoint, headers, queryParams);
 
         System.out.println("Fetching Assigned Leads - Completed");
@@ -100,7 +102,7 @@ public class technicalModule {
         System.out.println("get lead json");
         String url = PropertiesReadWrite.getValue("baseURL") + "/ilos/v1/assignee/lead/" + PropertiesReadWrite.getValue("obj_id");
 
-        Map<String, Object> headers = getHeaders(PropertiesReadWrite.getValue("token1"));
+        Map<String, Object> headers = getHeaders(TechUser,CPpassword);
         Response response = RestUtils.performGet(url, headers);
 
         try {
