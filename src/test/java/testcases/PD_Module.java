@@ -27,8 +27,8 @@ public class PD_Module {
     String lead_url = baseUrl + "/ilos/v1/assignee/lead/" + PropertiesReadWrite.getValue("obj_id");
     String CPuser = PropertiesReadWrite.getValue("CPUser");
     String CPpassword = PropertiesReadWrite.getValue("CPPassword");
-    String UW_user = PropertiesReadWrite.getValue("UWUser");
-    String UW_password = PropertiesReadWrite.getValue("UWPassword");
+    String UWUser = PropertiesReadWrite.getValue("UWUser");
+    String UWPassword = PropertiesReadWrite.getValue("UWPassword");
 
     @Test(priority = 1,enabled = true)
     public void getPD_HomeBranch_Lead() {
@@ -39,7 +39,7 @@ public class PD_Module {
         Assert.assertTrue(get_Homebranch_lead.getBody().asString().contains(appId), "application is not present in the home branch listing");
 
     }
-    @Test(priority = 2,enabled = false)
+    @Test(priority = 2,enabled = true)
     public void assignPD_ToSELF() {
         String url = baseUrl + "/pd/application/assign";
         headers = getHeaders(CPuser, CPpassword);
@@ -169,7 +169,7 @@ public class PD_Module {
     }
     @Test(priority = 5)
     public void submit_PD_from_Performer(){
-        headers = getHeaders(UW_user, UW_password);
+        headers = getHeaders(UWUser, UWPassword);
         Response performerList_res = RestUtils.performGet(baseUrl+"/pd/application/list/myApplication/PERFORMER/0/10?", headers);
         Assert.assertTrue(performerList_res.getBody().asString().contains(appId), "appId is not present in the performer list");
         Map<String, Object> queryparam_lead = Map.of( "application_id", appId);
@@ -237,13 +237,12 @@ public class PD_Module {
 
     @Test(priority = 6)
     public void submit_PD_from_owner(){
-        headers = getHeaders(UW_user, UW_password);
+        headers = getHeaders(UWUser, UWPassword);
         Response performerList_res = RestUtils.performGet(baseUrl+"/pd/application/list/myApplication/OWNER/0/10?", headers);
         Assert.assertTrue(performerList_res.getBody().asString().contains(appId), "appId is not present in the owner list");
         Response lead_details = RestUtils.performGet(baseUrl+"/ilos/v1/lead/lead-detail", headers,Map.of( "application_id", appId));
         Generic.validateResponse(lead_details);
         String primary_applicant_name = lead_details.jsonPath().getString("dt.applicant.primary.name");
-        int user_id = lead_details.jsonPath().getInt("dt.applicant.primary.id");
         Response lead_config_res = RestUtils.performGet(baseUrl+"/ilos/v1/misc/lead-config", headers,Map.of("section", "pd_owner"));
         Generic.validateResponse(lead_config_res);
         Response pdmeta_list_res = RestUtils.performGet(baseUrl+"/pd/pdmeta/list/"+appId,headers,Map.of( "user", "OWNER"));
@@ -255,34 +254,79 @@ public class PD_Module {
         pd_submit_owner= RestUtils.performPost(baseUrl+"/pd/application/status",payload,headers);
         if(pd_submit_owner.getStatusCode()==400 && pd_submit_owner.getBody().asString().contains("Shareholding details are missing for applicant")) {
             System.out.println("Shareholding details are missing for applicant");
-            Map<String, Object> payload_shareholding = new HashMap<>();
+            Response lead_json_res = RestUtils.performGet(lead_url, headers);
+            Generic.validateResponse(lead_json_res);
+            String applicant_EntityType = lead_json_res.jsonPath().getString("dt.applicant.primary.entity_type");
+            int applicantId = lead_json_res.jsonPath().getInt("dt.applicant.primary.id");
+                if(applicant_EntityType.equalsIgnoreCase("Organization") && lead_json_res.jsonPath().getString("dt.applicant.primary.shareholding_pattern")==null){
+                    String user_id = lead_json_res.jsonPath().getString("dt.applicant.primary.id");;
+                    String applicant_type = "Applicant";
+                    String constitution_type = lead_json_res.jsonPath().getString("dt.applicant.primary.organization_info.constitution");
+                    String designation= lead_json_res.jsonPath().getString("dt.applicant.primary.designation");
+                    Map<String, Object> payload_shareholding = getPayload_shareholding(user_id, applicant_type, constitution_type, designation, primary_applicant_name, applicantId);
+                    Response shareholding_response = RestUtils.performPost(baseUrl+"/ilos/v1/shareholding-pattern/"+PropertiesReadWrite.getValue("obj_id"), payload_shareholding, headers);
+                    Generic.validateResponse(shareholding_response);
+                }
+            int coapp_count = lead_json_res.jsonPath().getList("dt.applicant.co_applicant").size();
+            for(int i=0;i<coapp_count;i++) {
+                if ((lead_json_res.jsonPath().getString("dt.applicant.co_applicant[" + i + "].shareholding_pattern") == null) &&
+                        (lead_json_res.jsonPath().getString("dt.applicant.co_applicant[" + i + "].entity_type").equalsIgnoreCase("Organization"))) {
+                    String coapplicant_id = lead_json_res.jsonPath().getString("dt.applicant.co_applicant[" + i + "].id");
+                    String applicant_type = "Co-Applicant";
+                    String constitution_type = lead_json_res.jsonPath().getString("dt.applicant.co_applicant[" + i + "].organization_info.constitution");
+                    //  String designation= lead_json_res.jsonPath().getString("dt.applicant.co_applicant["+i+"].designation");
+                    String designation = "Proprietor";
+                    Map<String, Object> payload_shareholding = getPayload_shareholding(coapplicant_id, applicant_type, constitution_type, designation, primary_applicant_name, applicantId);
+                    Response shareholding_response = RestUtils.performPost(baseUrl + "/ilos/v1/shareholding-pattern/" + PropertiesReadWrite.getValue("obj_id"), payload_shareholding, headers);
+                    Generic.validateResponse(shareholding_response);
 
-            payload_shareholding.put("applicant_id", user_id);
-            payload_shareholding.put("applicant_type", "Applicant");
-            payload_shareholding.put("constitution_type", "public limited company");
+                }
+            }
+            int guarantor_count = lead_json_res.jsonPath().getList("dt.applicant.guarantors").size();
+            for(int i=0;i<guarantor_count;i++) {
+                if ((lead_json_res.jsonPath().getString("dt.applicant.guarantors[" + i + "].shareholding_pattern") == null) &&
+                        (lead_json_res.jsonPath().getString("dt.applicant.guarantors[" + i + "].entity_type").equalsIgnoreCase("Organization"))) {
+                    String guarantor_id = lead_json_res.jsonPath().getString("dt.applicant.guarantors[" + i + "].id");
+                    String applicant_type = "Guarantor";
+                    String constitution_type = lead_json_res.jsonPath().getString("dt.applicant.guarantors[" + i + "].organization_info.constitution");
+                    //  String designation= lead_json_res.jsonPath().getString("dt.applicant.co_applicant["+i+"].designation");
+                    String designation = "Proprietor";
+                    Map<String, Object> payload_shareholding = getPayload_shareholding(guarantor_id, applicant_type, constitution_type, designation, primary_applicant_name, applicantId);
+                    Response shareholding_response = RestUtils.performPost(baseUrl + "/ilos/v1/shareholding-pattern/" + PropertiesReadWrite.getValue("obj_id"), payload_shareholding, headers);
+                    Generic.validateResponse(shareholding_response);
 
-            List<Map<String, Object>> shareholdingPattern = new ArrayList<>();
-            Map<String, Object> shareholding = new HashMap<>();
-
-            shareholding.put("id", 1);
-            shareholding.put("bod", true);
-            shareholding.put("borrower_type", "Applicant");
-            shareholding.put("name", primary_applicant_name);
-            shareholding.put("designation_type", "Director");
-            shareholding.put("ovd_type", "Voter Id");
-            shareholding.put("percentage", "100");
-            shareholding.put("user_id", user_id);
-
-            shareholdingPattern.add(shareholding);
-
-            payload_shareholding.put("shareholding_pattern", shareholdingPattern);
-            Response shareholding_response = RestUtils.performPost(baseUrl+"/ilos/v1/shareholding-pattern/"+PropertiesReadWrite.getValue("obj_id"), payload_shareholding, headers);
-            Generic.validateResponse(shareholding_response);
+                }
+            }
             pd_submit_owner = RestUtils.performPost(baseUrl+"/pd/application/status",payload,headers);
         }
         Generic.validateResponse(pd_submit_owner);
         Response mark_section_complete = RestUtils.sendPatchRequest(baseUrl+"/ilos/v1/assignee/lead/mark-section-complete/"+PropertiesReadWrite.getValue("obj_id"),Map.of("section","pd"),headers);
         Generic.validateResponse(mark_section_complete);
+    }
+
+    private static Map<String, Object> getPayload_shareholding(String user_id,String applicant_type, String constitution_type,String designation_type,String primary_applicant_name,int applicant_id) {
+        Map<String, Object> payload_shareholding = new HashMap<>();
+
+        payload_shareholding.put("applicant_id", user_id);
+        payload_shareholding.put("applicant_type", applicant_type);
+        payload_shareholding.put("constitution_type", constitution_type);
+
+        List<Map<String, Object>> shareholdingPattern = new ArrayList<>();
+        Map<String, Object> shareholding = new HashMap<>();
+
+        shareholding.put("id", 1);
+        shareholding.put("bod", true);
+        shareholding.put("borrower_type", "Applicant");
+        shareholding.put("name", primary_applicant_name);
+        shareholding.put("designation_type", designation_type);
+        shareholding.put("ovd_type", "Voter Id");
+        shareholding.put("percentage", "100");
+        shareholding.put("user_id", applicant_id);
+
+        shareholdingPattern.add(shareholding);
+
+        payload_shareholding.put("shareholding_pattern", shareholdingPattern);
+        return payload_shareholding;
     }
 
 
