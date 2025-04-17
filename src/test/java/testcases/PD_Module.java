@@ -27,8 +27,8 @@ public class PD_Module {
     String lead_url = baseUrl + "/ilos/v1/assignee/lead/" + PropertiesReadWrite.getValue("obj_id");
     String CPuser = PropertiesReadWrite.getValue("CPUser");
     String CPpassword = PropertiesReadWrite.getValue("CPPassword");
-    String UWUser = PropertiesReadWrite.getValue("UWUser");
-    String UWPassword = PropertiesReadWrite.getValue("UWPassword");
+   // String UWUser = PropertiesReadWrite.getValue("UWUser");
+   // String UWPassword = PropertiesReadWrite.getValue("UWPassword");
 
     @Test(priority = 1,enabled = true)
     public void getPD_HomeBranch_Lead() {
@@ -169,7 +169,7 @@ public class PD_Module {
     }
     @Test(priority = 5)
     public void submit_PD_from_Performer(){
-        headers = getHeaders(UWUser, UWPassword);
+        headers = getHeaders(PropertiesReadWrite.getValue("UWUser"), PropertiesReadWrite.getValue("UWPassword"));
         Response performerList_res = RestUtils.performGet(baseUrl+"/pd/application/list/myApplication/PERFORMER/0/10?", headers);
         Assert.assertTrue(performerList_res.getBody().asString().contains(appId), "appId is not present in the performer list");
         Map<String, Object> queryparam_lead = Map.of( "application_id", appId);
@@ -186,10 +186,6 @@ public class PD_Module {
         String expected_roi = lead_details.jsonPath().getString("dt.primary.inquiry_details.expected_roi");
         String loan_tenor_in_months = lead_details.jsonPath().getString("dt.primary.inquiry_details.loan_tenor_in_months");
         String loan_branch = lead_details.jsonPath().getString("dt.primary.inquiry_details.loan_branch");
-        String PDDate = LocalDate.parse(pdmeta_list.jsonPath().getString("result[0].assignedDate").split("T")[0])
-                .format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
-        String timePart = pdmeta_list.jsonPath().getString("result[0].assignedDate").split("T")[1].split("\\.")[0];
-        String PDTime = LocalTime.parse(timePart).format(DateTimeFormatter.ofPattern("HH:mm"));
         String primary_applicant_name = lead_details.jsonPath().getString("dt.applicant.primary.name");
         String loan_purpose = lead_details.jsonPath().getString("dt.primary.inquiry_details.loan_purpose");
         String assignedEmpName = pdmeta_list.jsonPath().getString("result.find { it.pdType == 'BUSINESS' }.assignedEmpName");
@@ -202,6 +198,10 @@ public class PD_Module {
             String pdType = pdmeta_list.jsonPath().getString("result[" + i + "].pdType");
             if(pdType.equalsIgnoreCase("BUSINESS")){
                 String pdId = pdmeta_list.jsonPath().getString("result[" + i + "].id");
+                String PDDate = LocalDate.parse(pdmeta_list.jsonPath().getString("result[" + i + "].eventSnapshotList[0].timestamp").split("T")[0])
+                .format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+                String timePart = pdmeta_list.jsonPath().getString("result[" + i + "].eventSnapshotList[0].timestamp").split("T")[1].split("\\.")[0];
+                String PDTime = LocalTime.parse(timePart).format(DateTimeFormatter.ofPattern("HH:mm"));
                 System.out.println("pdId: BUSINESS " + pdId);
                 Map<String, Object> businessPDPayload = BusinessPD_payload(pdId, portfolio_type, end_use_of_loan, transaction_type, loan_branch,
                         requested_loan_amount, expected_roi, assignedEmpName, assignedEmpId, loan_tenor_in_months, PDDate, PDTime, primary_applicant_name, loan_purpose);
@@ -222,6 +222,10 @@ public class PD_Module {
 
             }else if( pdType.equalsIgnoreCase("CURRENT_RESIDENCE")) {
                 String pdId = pdmeta_list.jsonPath().getString("result[" + i + "].id");
+                String PDDate = LocalDate.parse(pdmeta_list.jsonPath().getString("result[" + i + "].eventSnapshotList[0].timestamp").split("T")[0])
+                        .format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+                String timePart = pdmeta_list.jsonPath().getString("result[" + i + "].eventSnapshotList[0].timestamp").split("T")[1].split("\\.")[0];
+                String PDTime = LocalTime.parse(timePart).format(DateTimeFormatter.ofPattern("HH:mm"));
                 System.out.println("pdId: CURRENT_RESIDENCE " + pdId);
                 Map<String, Object> current_residence_payload = current_residencePD_payload(pdId, portfolio_type, end_use_of_loan, transaction_type, loan_branch,
                         requested_loan_amount, expected_roi, loan_tenor_in_months, assignedEmpName, assignedEmpId, PDDate, PDTime, primary_applicant_name);
@@ -237,7 +241,7 @@ public class PD_Module {
 
     @Test(priority = 6)
     public void submit_PD_from_owner(){
-        headers = getHeaders(UWUser, UWPassword);
+        headers = getHeaders(PropertiesReadWrite.getValue("UWUser"), PropertiesReadWrite.getValue("UWPassword"));
         Response performerList_res = RestUtils.performGet(baseUrl+"/pd/application/list/myApplication/OWNER/0/10?", headers);
         Assert.assertTrue(performerList_res.getBody().asString().contains(appId), "appId is not present in the owner list");
         Response lead_details = RestUtils.performGet(baseUrl+"/ilos/v1/lead/lead-detail", headers,Map.of( "application_id", appId));
@@ -258,25 +262,24 @@ public class PD_Module {
             Generic.validateResponse(lead_json_res);
             String applicant_EntityType = lead_json_res.jsonPath().getString("dt.applicant.primary.entity_type");
             int applicantId = lead_json_res.jsonPath().getInt("dt.applicant.primary.id");
-                if(applicant_EntityType.equalsIgnoreCase("Organization") && lead_json_res.jsonPath().getString("dt.applicant.primary.shareholding_pattern")==null){
+            if(applicant_EntityType.equalsIgnoreCase("Organization") && lead_json_res.jsonPath().getString("dt.applicant.primary.shareholding_pattern")==null){
+                    System.out.println("submitting shareholding pattern for primary applicant");
                     String user_id = lead_json_res.jsonPath().getString("dt.applicant.primary.id");;
                     String applicant_type = "Applicant";
                     String constitution_type = lead_json_res.jsonPath().getString("dt.applicant.primary.organization_info.constitution");
-                    String designation= lead_json_res.jsonPath().getString("dt.applicant.primary.designation");
-                    Map<String, Object> payload_shareholding = getPayload_shareholding(user_id, applicant_type, constitution_type, designation, primary_applicant_name, applicantId);
+                    Map<String, Object> payload_shareholding = getPayload_shareholding(user_id, applicant_type, constitution_type, primary_applicant_name, applicantId);
                     Response shareholding_response = RestUtils.performPost(baseUrl+"/ilos/v1/shareholding-pattern/"+PropertiesReadWrite.getValue("obj_id"), payload_shareholding, headers);
                     Generic.validateResponse(shareholding_response);
-                }
+            }
             int coapp_count = lead_json_res.jsonPath().getList("dt.applicant.co_applicant").size();
             for(int i=0;i<coapp_count;i++) {
                 if ((lead_json_res.jsonPath().getString("dt.applicant.co_applicant[" + i + "].shareholding_pattern") == null) &&
                         (lead_json_res.jsonPath().getString("dt.applicant.co_applicant[" + i + "].entity_type").equalsIgnoreCase("Organization"))) {
+                    System.out.println("submitting shareholding pattern for coapplicant "+i);
                     String coapplicant_id = lead_json_res.jsonPath().getString("dt.applicant.co_applicant[" + i + "].id");
                     String applicant_type = "Co-Applicant";
                     String constitution_type = lead_json_res.jsonPath().getString("dt.applicant.co_applicant[" + i + "].organization_info.constitution");
-                    //  String designation= lead_json_res.jsonPath().getString("dt.applicant.co_applicant["+i+"].designation");
-                    String designation = "Proprietor";
-                    Map<String, Object> payload_shareholding = getPayload_shareholding(coapplicant_id, applicant_type, constitution_type, designation, primary_applicant_name, applicantId);
+                    Map<String, Object> payload_shareholding = getPayload_shareholding(coapplicant_id, applicant_type, constitution_type, primary_applicant_name, applicantId);
                     Response shareholding_response = RestUtils.performPost(baseUrl + "/ilos/v1/shareholding-pattern/" + PropertiesReadWrite.getValue("obj_id"), payload_shareholding, headers);
                     Generic.validateResponse(shareholding_response);
 
@@ -286,12 +289,13 @@ public class PD_Module {
             for(int i=0;i<guarantor_count;i++) {
                 if ((lead_json_res.jsonPath().getString("dt.applicant.guarantors[" + i + "].shareholding_pattern") == null) &&
                         (lead_json_res.jsonPath().getString("dt.applicant.guarantors[" + i + "].entity_type").equalsIgnoreCase("Organization"))) {
+                    System.out.println("submitting shareholding pattern for guarantor "+i);
                     String guarantor_id = lead_json_res.jsonPath().getString("dt.applicant.guarantors[" + i + "].id");
                     String applicant_type = "Guarantor";
                     String constitution_type = lead_json_res.jsonPath().getString("dt.applicant.guarantors[" + i + "].organization_info.constitution");
                     //  String designation= lead_json_res.jsonPath().getString("dt.applicant.co_applicant["+i+"].designation");
                     String designation = "Proprietor";
-                    Map<String, Object> payload_shareholding = getPayload_shareholding(guarantor_id, applicant_type, constitution_type, designation, primary_applicant_name, applicantId);
+                    Map<String, Object> payload_shareholding = getPayload_shareholding(guarantor_id, applicant_type, constitution_type, primary_applicant_name, applicantId);
                     Response shareholding_response = RestUtils.performPost(baseUrl + "/ilos/v1/shareholding-pattern/" + PropertiesReadWrite.getValue("obj_id"), payload_shareholding, headers);
                     Generic.validateResponse(shareholding_response);
 
@@ -304,7 +308,7 @@ public class PD_Module {
         Generic.validateResponse(mark_section_complete);
     }
 
-    private static Map<String, Object> getPayload_shareholding(String user_id,String applicant_type, String constitution_type,String designation_type,String primary_applicant_name,int applicant_id) {
+    private static Map<String, Object> getPayload_shareholding(String user_id,String applicant_type, String constitution_type,String primary_applicant_name,int applicant_id) {
         Map<String, Object> payload_shareholding = new HashMap<>();
 
         payload_shareholding.put("applicant_id", user_id);
@@ -313,7 +317,7 @@ public class PD_Module {
 
         List<Map<String, Object>> shareholdingPattern = new ArrayList<>();
         Map<String, Object> shareholding = new HashMap<>();
-
+        String designation_type = getDesignation_type(constitution_type);
         shareholding.put("id", 1);
         shareholding.put("bod", true);
         shareholding.put("borrower_type", "Applicant");
@@ -328,7 +332,20 @@ public class PD_Module {
         payload_shareholding.put("shareholding_pattern", shareholdingPattern);
         return payload_shareholding;
     }
-
+private static String getDesignation_type(String designation) {
+    return switch (designation.toLowerCase()) {
+        case "huf" -> "Director";
+        case "partnership" -> "Partner";
+        case "private limited company" -> "Director";
+        case "public limited company" -> "Director";
+        case "sole proprietorship" -> "Proprietor";
+        case "llp" -> "Partner";
+        case "trust" -> "Chairman";
+        case "societies" -> "Chairman";
+        case "association" -> "Chairman";
+        default -> throw new IllegalStateException("Unexpected value: " + designation);
+    };
+    }
 
     private JSONArray getPhotosArray() {
         return getPhotosArray(4);
