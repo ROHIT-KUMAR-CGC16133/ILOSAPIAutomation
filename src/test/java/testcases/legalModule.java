@@ -76,22 +76,24 @@ import static payloads.Header.getHeaders;
                 for (int i = 0; i < size1; i++) {
                     int propertyId = i + 1;
                     System.out.println("\n--- Step 1 for allocate vendor: " + propertyId + " ---");
-                    allocateVendorToProperty(propertyId, headers);
+                 //   allocateVendorToProperty(propertyId, headers);
 
                 }
 
                 // Step 4: LC Submit (once)
-                lcSubmit(headers);
+            //    lcSubmit(headers);
 
                 for (int i = 0; i < size1; i++) {
                     int propertyId = i + 1;
                     System.out.println("\n--- Step 1 for allocate vendor: " + propertyId + " ---");
-                   submitLVForm(propertyId, headers1);
-                    updateLegalDocument(propertyId, headers1);
-                    submitLVForm1(propertyId, headers1);
+//                   submitLVForm(propertyId, headers1);
+//                    updateLegalDocument(propertyId, headers1);
+//                    submitLVForm1(propertyId, headers1);
 
 
                 }
+
+                lmSelfAssign(headers);
 
             }
 
@@ -211,6 +213,48 @@ import static payloads.Header.getHeaders;
                 Response lvSubmitResponse = RestUtils.performPatch1(lvSubmitURL, requestBody, headers);
                 Assert.assertEquals(lvSubmitResponse.getStatusCode(), 200, "LV Submit Failed for property_id: " + propertyId);
                 System.out.println("LV Submit one Response for property_id " + propertyId + ": " + lvSubmitResponse.prettyPrint());
+            }
+
+            private void lmSelfAssign(Map<String, String> headers) {
+                RestAssured.baseURI = PropertiesReadWrite.getValue("baseURL");;
+                String lmAssignendPoint = "/ilos/v1/legal/self-assign?role=LM&prop_assign=False";
+
+                String lmAssignrequestBody = "{\"application_id\":\""+ PropertiesReadWrite.getValue("application_id") +"\"}";
+
+                Response selfassignLMresponse = RestUtils.performPost1(lmAssignendPoint, lmAssignrequestBody, headers);
+
+                Assert.assertEquals(selfassignLMresponse.getStatusCode(), 200, "Self-assign Vetter Failed");
+                System.out.println("Response Body1 is: " + selfassignLMresponse.prettyPrint());
+            }
+
+            private void submitLegalRecommendation(List<Integer> propertyIds, Map<String, String> headers) {
+                RestAssured.baseURI = PropertiesReadWrite.getValue("baseURL"); // ex: https://ilosapi-uat.capriglobal.in
+                String submitURL = "/ilos/v1/legal/submit-recommend?role=LM";
+                System.out.println("Legal Submit Recommendation URL: " + submitURL);
+
+                StringBuilder propertyIdArray = new StringBuilder("[");
+                for (int i = 0; i < propertyIds.size(); i++) {
+                    propertyIdArray.append(propertyIds.get(i));
+                    if (i < propertyIds.size() - 1) {
+                        propertyIdArray.append(", ");
+                    }
+                }
+                propertyIdArray.append("]");
+
+                String requestBody = "{\n" +
+                        "    \"application_id\": \"" + PropertiesReadWrite.getValue("application_id") + "\",\n" +
+                        "    \"remarks\": \"ok\",\n" +
+                        "    \"status\": \"APPROVE\",\n" +
+                        "    \"is_referred\": false,\n" +
+                        "    \"designation\": \"\",\n" +
+                        "    \"reject_reasons\": \"\",\n" +
+                        "    \"property_id\": " + propertyIdArray.toString() + ",\n" +
+                        "    \"is_single_prop\": false\n" +
+                        "}";
+
+                Response response = RestUtils.performPatch1(submitURL, requestBody, headers);
+                Assert.assertEquals(response.getStatusCode(), 200, "Submit Recommendation Failed");
+                System.out.println("Submit Recommendation Response: " + response.prettyPrint());
             }
 
 
