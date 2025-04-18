@@ -12,6 +12,7 @@ import utils.PropertiesReadWrite;
 import utils.RestUtils;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -76,25 +77,32 @@ import static payloads.Header.getHeaders;
                 for (int i = 0; i < size1; i++) {
                     int propertyId = i + 1;
                     System.out.println("\n--- Step 1 for allocate vendor: " + propertyId + " ---");
-                 //   allocateVendorToProperty(propertyId, headers);
+                    allocateVendorToProperty(propertyId, headers);
 
                 }
 
                 // Step 4: LC Submit (once)
-            //    lcSubmit(headers);
+                lcSubmit(headers);
 
                 for (int i = 0; i < size1; i++) {
                     int propertyId = i + 1;
                     System.out.println("\n--- Step 1 for allocate vendor: " + propertyId + " ---");
-//                   submitLVForm(propertyId, headers1);
-//                    updateLegalDocument(propertyId, headers1);
-//                    submitLVForm1(propertyId, headers1);
+                   submitLVForm(propertyId, headers1);
+                    updateLegalDocument(propertyId, headers1);
+                    submitLVForm1(propertyId, headers1);
 
 
                 }
 
                 lmSelfAssign(headers);
 
+                List<Integer> propertyIds = new ArrayList<>();
+                for (int i = 0; i < size1; i++) {
+                    propertyIds.add(i + 1);
+                }
+               submitLegalRecommendation(propertyIds, headers);
+
+                creditApproval(headers);
             }
 
 
@@ -117,7 +125,6 @@ import static payloads.Header.getHeaders;
                 Assert.assertEquals(allocatevendorResponse.getStatusCode(), 200, "Vendor List Failed for property_id: " + propertyId);
                 System.out.println("Vendor List Response for property_id " + (propertyId) + ": " + allocatevendorResponse.prettyPrint());
             }
-
 
             private void lcSubmit(Map<String, String> headers) {
                 RestAssured.baseURI = PropertiesReadWrite.getValue("baseURL");;
@@ -227,6 +234,46 @@ import static payloads.Header.getHeaders;
                 System.out.println("Response Body1 is: " + selfassignLMresponse.prettyPrint());
             }
 
+            private void submitLegalRecommendation(List<Integer> propertyIds, Map<String, String> headers) {
+                RestAssured.baseURI = PropertiesReadWrite.getValue("baseURL"); // ex: https://ilosapi-uat.capriglobal.in
+                String submitURL = "/ilos/v1/legal/submit-recommend?role=LM";
+                System.out.println("Legal Submit Recommendation URL: " + submitURL);
 
+                StringBuilder propertyIdArray = new StringBuilder("[");
+                for (int i = 0; i < propertyIds.size(); i++) {
+                    propertyIdArray.append(propertyIds.get(i));
+                    if (i < propertyIds.size() - 1) {
+                        propertyIdArray.append(", ");
+                    }
+                }
+                propertyIdArray.append("]");
+
+                String requestBody = "{\n" +
+                        "    \"application_id\": \"" + PropertiesReadWrite.getValue("application_id") + "\",\n" +
+                        "    \"remarks\": \"ok\",\n" +
+                        "    \"status\": \"APPROVE\",\n" +
+                        "    \"is_referred\": false,\n" +
+                        "    \"designation\": \"\",\n" +
+                        "    \"reject_reasons\": \"\",\n" +
+                        "    \"property_id\": " + propertyIdArray.toString() + ",\n" +
+                        "    \"is_single_prop\": false\n" +
+                        "}";
+
+                Response response = RestUtils.performPatch1(submitURL, requestBody, headers);
+                Assert.assertEquals(response.getStatusCode(), 200, "Submit Recommendation Failed");
+                System.out.println("Submit Recommendation Response: " + response.prettyPrint());
+            }
+
+            private void creditApproval(Map<String, String> headers) {
+                RestAssured.baseURI = PropertiesReadWrite.getValue("baseURL");;
+                String creditApprovalendPoint = "/ilos/v1/legal/credit-approval";
+
+                String creditApprovalrequestBody = "{\"application_id\":\""+ PropertiesReadWrite.getValue("application_id") +"\"}";
+
+                Response creditApprovalresponse = RestUtils.performPost1(creditApprovalendPoint, creditApprovalrequestBody, headers);
+
+                Assert.assertEquals(creditApprovalresponse.getStatusCode(), 200, "Self-assign Vetter Failed");
+                System.out.println("creditApprovalrequestBody Response Body is: " + creditApprovalresponse.prettyPrint());
+            }
 
         }
