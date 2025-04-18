@@ -227,35 +227,6 @@ import static payloads.Header.getHeaders;
                 System.out.println("Response Body1 is: " + selfassignLMresponse.prettyPrint());
             }
 
-            private void submitLegalRecommendation(List<Integer> propertyIds, Map<String, String> headers) {
-                RestAssured.baseURI = PropertiesReadWrite.getValue("baseURL"); // ex: https://ilosapi-uat.capriglobal.in
-                String submitURL = "/ilos/v1/legal/submit-recommend?role=LM";
-                System.out.println("Legal Submit Recommendation URL: " + submitURL);
-
-                StringBuilder propertyIdArray = new StringBuilder("[");
-                for (int i = 0; i < propertyIds.size(); i++) {
-                    propertyIdArray.append(propertyIds.get(i));
-                    if (i < propertyIds.size() - 1) {
-                        propertyIdArray.append(", ");
-                    }
-                }
-                propertyIdArray.append("]");
-
-                String requestBody = "{\n" +
-                        "    \"application_id\": \"" + PropertiesReadWrite.getValue("application_id") + "\",\n" +
-                        "    \"remarks\": \"ok\",\n" +
-                        "    \"status\": \"APPROVE\",\n" +
-                        "    \"is_referred\": false,\n" +
-                        "    \"designation\": \"\",\n" +
-                        "    \"reject_reasons\": \"\",\n" +
-                        "    \"property_id\": " + propertyIdArray.toString() + ",\n" +
-                        "    \"is_single_prop\": false\n" +
-                        "}";
-
-                Response response = RestUtils.performPatch1(submitURL, requestBody, headers);
-                Assert.assertEquals(response.getStatusCode(), 200, "Submit Recommendation Failed");
-                System.out.println("Submit Recommendation Response: " + response.prettyPrint());
-            }
 
 
         }
