@@ -24,7 +24,7 @@ import static payloads.Header.getHeaders;
 
 
             @Test(priority = 1)
-            public void selfAssignLead() {
+            public void selfAssignLead() { //api 1
                 System.out.println("Self Assigning Leads");
 
                 // Construct the URL
@@ -76,20 +76,22 @@ import static payloads.Header.getHeaders;
                 for (int i = 0; i < size1; i++) {
                     int propertyId = i + 1;
                     System.out.println("\n--- Step 1 for allocate vendor: " + propertyId + " ---");
-                 //   allocateVendorToProperty(propertyId, headers);
+                    allocateVendorToProperty(propertyId, headers);
 
                 }
 
                 // Step 4: LC Submit (once)
-             //   lcSubmit(headers);
+                lcSubmit(headers);
 
                 for (int i = 0; i < size1; i++) {
                     int propertyId = i + 1;
                     System.out.println("\n--- Step 1 for allocate vendor: " + propertyId + " ---");
-                    submitLVForm(propertyId, headers1);
+                   submitLVForm(propertyId, headers1);
+                    updateLegalDocument(propertyId, headers1);
+                    submitLVForm1(propertyId, headers1);
+
 
                 }
-
 
             }
 
@@ -177,7 +179,39 @@ import static payloads.Header.getHeaders;
                 System.out.println("LV Form Submit Response for property_id " + propertyId + ": " + response.prettyPrint());
             }
 
+            private void updateLegalDocument(int propertyId, Map<String, String> headers) {
+                RestAssured.baseURI = PropertiesReadWrite.getValue("baseURL");
+                String documentPatchURL = "/ilos/v1/legal/document-patch?role=LV";
+                System.out.println("Document Patch URL: " + documentPatchURL);
 
+                String requestBody = "{\n" +
+                        "    \"application_id\": \"" + PropertiesReadWrite.getValue("application_id") + "\",\n" +
+                        "    \"property_id\": " + propertyId + ",\n" +
+                        "    \"document_type\": \"VERIFICATION_DOCUMENT\",\n" +
+                        "    \"document_url\": \"cgcl-ilos-uat-ui/upload_docs/user/910370_CLONE1_axis-bank-file_2.pdf_1743098400000.pdf\",\n" +
+                        "    \"is_search_report\": true\n" +
+                        "}";
+
+                Response documentPatchResponse = RestUtils.performPost1(documentPatchURL, requestBody, headers);
+                Assert.assertEquals(documentPatchResponse.getStatusCode(), 200, "Legal Document Patch Failed for property_id: " + propertyId);
+                System.out.println("Legal Document Patch Response for property_id " + propertyId + ": " + documentPatchResponse.prettyPrint());
+            }
+
+            private void submitLVForm1(int propertyId, Map<String, String> headers) {
+                RestAssured.baseURI = PropertiesReadWrite.getValue("baseURL"); // ex: https://ilosapi-uat.capriglobal.in
+                String lvSubmitURL = "/ilos/v1/legal/lv-submit?role=LV";
+                System.out.println("LV Submit URL: " + lvSubmitURL);
+
+                String requestBody = "{\n" +
+                        "    \"application_id\": \"" + PropertiesReadWrite.getValue("application_id") + "\",\n" +
+                        "    \"property_id\": " + propertyId + ",\n" +
+                        "    \"vendor_remarks\": \"ok\"\n" +
+                        "}";
+
+                Response lvSubmitResponse = RestUtils.performPatch1(lvSubmitURL, requestBody, headers);
+                Assert.assertEquals(lvSubmitResponse.getStatusCode(), 200, "LV Submit Failed for property_id: " + propertyId);
+                System.out.println("LV Submit one Response for property_id " + propertyId + ": " + lvSubmitResponse.prettyPrint());
+            }
 
 
         }
