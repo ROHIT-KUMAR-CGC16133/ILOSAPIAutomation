@@ -3,13 +3,38 @@ package utils;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
+import io.restassured.specification.QueryableRequestSpecification;
+import io.restassured.specification.RequestSpecification;
+import io.restassured.specification.SpecificationQuerier;
+import reporting.ExtentReportListener;
+import reporting.ExtentReportManager;
 
 import java.util.Map;
 import java.util.Objects;
 
 public class RestUtils {
+    private static RequestSpecification getRequestSpecification(String endPoint, Object requestPayload, Map<String,Object>headers) {
+        return RestAssured.given()
+                .baseUri(endPoint)
+                .headers(headers)
+                .contentType(ContentType.JSON)
+                .body(requestPayload);
+    }
+    private static RequestSpecification getRequestSpecification(String endPoint, Map<String,Object>headers) {
+        return RestAssured.given()
+                .baseUri(endPoint)
+                .headers(headers)
+                .contentType(ContentType.JSON);
+    }
+    private static RequestSpecification getRequestSpecification_with_queryparam(String endPoint, Map<String,Object>queryParams, Map<String,Object>headers) {
+        return RestAssured.given()
+                .baseUri(endPoint)
+                .headers(headers)
+                .queryParams(queryParams)
+                .contentType(ContentType.JSON);
+    }
 
-    public static Response performPost1(String endPoint, String payload, Map<String, String> headers) {
+    public static Response performPost1(String endPoint, String payload, Map<String, Object> headers) {
         Response response = RestAssured.given().log().body()
                 .headers(headers)
                 .contentType(ContentType.JSON)
@@ -28,84 +53,101 @@ public class RestUtils {
     }
 
 
-    public static Response performPost(String endPoint, String payload, Map<String, String> headers) {
-                Response response = RestAssured.given().log().body()
-                .baseUri(endPoint)
-                .headers(headers)
-                .contentType(ContentType.JSON)
-                .body(payload)
-                .post();
+//    public static Response performPost(String endPoint, String payload, Map<String, String> headers) {
+//        Response response = RestAssured.given().log().body()
+//                .baseUri(endPoint)
+//                .headers(headers)
+//                .contentType(ContentType.JSON)
+//                .body(payload)
+//                .post();
+//        return response;
+//    }
+
+    public static Response performPost(String endPoint, String payload, Map<String, Object> headers) {
+        RequestSpecification requestSpec = getRequestSpecification(endPoint, payload, headers);
+        Response response = requestSpec.post();
+        logRequestResponse(requestSpec, response);
         return response;
 
 
     }
 
 
-    public static Response performPost(String endPoint, Map<String, Object> payload, Map<String, String> headers) {
-        Response response = RestAssured.given()
-                .baseUri(endPoint)
-                .headers(headers)
-                .contentType(ContentType.JSON)
-                .body(payload)
-                .post();
+
+//    public static Response performPost(String endPoint, Map<String, Object> payload, Map<String, String> headers) {
+//        Response response = RestAssured.given()
+//                .baseUri(endPoint)
+//                .headers(headers)
+//                .contentType(ContentType.JSON)
+//                .body(payload)
+//                .post();
+
+    public static Response performPost(String endPoint, Map<String, Object> payload, Map<String, Object> headers) {
+        RequestSpecification requestSpec = getRequestSpecification(endPoint, payload, headers);
+        Response response = requestSpec.post();
+        logRequestResponse(requestSpec, response);
       //  response.prettyPrint();
 
         return response;
     }
 
-    public static Response performGet(String endPoint, Map<String, String> headers) {
-        Response response = RestAssured.given()
-                .baseUri(endPoint)
-                .headers(headers)
-                .contentType(ContentType.JSON)
-                .get();
+    public static Response performGet(String endPoint, Map<String, Object> headers) {
+        RequestSpecification requestSpec = getRequestSpecification(endPoint, headers);
+        Response response = requestSpec.get();
+        logRequestResponse(requestSpec, response);
+
         return response;
     }
 
-    public static Response performGet(String endPoint, Map<String, String> headers, Map<String, String> queryParams) {
-        Response response = RestAssured.given()
-                .baseUri(endPoint)
-                .headers(headers)
-                .queryParams(queryParams)
-                .contentType(ContentType.JSON)
-                .get();
+    public static Response performGet(String endPoint, Map<String, Object> headers, Map<String, Object> queryParams) {
+        RequestSpecification requestSpec = getRequestSpecification_with_queryparam(endPoint,queryParams, headers);
+        Response response = requestSpec.get();
+        logRequestResponse(requestSpec, response);
         return response;
     }
 
-    public static Response sendPatchRequest(String url, Map<String, String> headers) {
-        return RestAssured.given()
-                .headers(headers) // Set headers
-                .contentType(ContentType.JSON) // Set Content-Type
-                .when()
-                .patch(url) // PATCH request
-                .then()
-                .extract()
-                .response();
+    public static Response sendPatchRequest(String url, Map<String, Object> headers) {
+        RequestSpecification requestSpec = getRequestSpecification(url, headers);
+        Response response = requestSpec.patch();
+        logRequestResponse(requestSpec, response);
+        return response;
     }
-    public static Response sendPatchRequest(String url,String payload, Map<String, String> headers) {
-        return RestAssured.given()
-                .headers(headers) // Set headers
-                .contentType(ContentType.JSON)
-                .body(payload)
-                .when()
-                .patch(url) // PATCH request
-                .then()
-                .extract()
-                .response();
+    public static Response sendPatchRequest(String url,String payload, Map<String, Object> headers) {
+        RequestSpecification requestSpec = getRequestSpecification(url, payload, headers);
+        Response response = requestSpec.patch();
+        logRequestResponse(requestSpec, response);
+        return response;
     }
-    public static Response sendPatchRequest(String url, Map<String, Object> payload, Map<String, String> headers) {
-        return RestAssured.given().log().body()
-                .headers(headers) // Set headers
-                .contentType(ContentType.JSON)
-                .body(payload)
-                .when()
-                .patch(url) // PATCH request
-                .then()
-                .extract()
-                .response();
+    public static Response sendPatchRequest(String url, Map<String, Object> payload, Map<String, Object> headers) {
+        RequestSpecification requestSpec = getRequestSpecification(url, payload, headers);
+        Response response = requestSpec.patch();
+        logRequestResponse(requestSpec, response);
+        return response;
     }
 
 
+    private static void logRequestResponse(RequestSpecification requestSpec, Response response) {
+        QueryableRequestSpecification queryableRequestSpecification = SpecificationQuerier.query(requestSpec);
+      //  System.out.println("Request URL is " + queryableRequestSpecification.getBaseUri());
+      //  System.out.println("query param"+queryableRequestSpecification.getQueryParams());
+        if(ExtentReportListener.getTest() != null) {
+            ExtentReportManager.logInfoDetails("Endpoint: " + queryableRequestSpecification.getBaseUri());
+            ExtentReportManager.logInfoDetails("Method: " + queryableRequestSpecification.getMethod());
+            if (queryableRequestSpecification.getBody() != null) {
+                ExtentReportManager.logInfoDetails("Request body is ");
+                ExtentReportManager.logJson(queryableRequestSpecification.getBody().toString());
+            }
+            ExtentReportManager.logInfoDetails("Response Status: " + response.getStatusCode());
+            ExtentReportManager.logInfoDetails("Response Time: " + response.getTime() + " ms");
+            if(response.getStatusCode() != 200) {
+                ExtentReportManager.logInfoDetails("Response body is ");
+                ExtentReportManager.logInfoDetails(response.getBody().prettyPrint());
+            }
+//        ExtentReportManager.logInfoDetails("Response body is ");
+//        ExtentReportManager.logInfoDetails(response.getBody().prettyPrint());
+
+        }
+    }
 
 
 
