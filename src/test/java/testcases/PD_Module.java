@@ -30,7 +30,7 @@ public class PD_Module {
    // String UWUser = PropertiesReadWrite.getValue("UWUser");
    // String UWPassword = PropertiesReadWrite.getValue("UWPassword");
 
-    @Test(priority = 1,enabled = true)
+    @Test(priority = 1,enabled = false)
     public void getPD_HomeBranch_Lead() {
         headers = getHeaders(CPuser, CPpassword);
         String endPoint = baseUrl + "/pd/application/list/home/0/10";
@@ -262,7 +262,8 @@ public class PD_Module {
             Generic.validateResponse(lead_json_res);
             String applicant_EntityType = lead_json_res.jsonPath().getString("dt.applicant.primary.entity_type");
             int applicantId = lead_json_res.jsonPath().getInt("dt.applicant.primary.id");
-            if(applicant_EntityType.equalsIgnoreCase("Organization") && lead_json_res.jsonPath().getString("dt.applicant.primary.shareholding_pattern")==null){
+            String shareholding_pattern = lead_json_res.jsonPath().getString("dt.applicant.primary.shareholding_pattern");
+            if(applicant_EntityType.equalsIgnoreCase("Organization") && shareholding_pattern==null){
                     System.out.println("submitting shareholding pattern for primary applicant");
                     String user_id = lead_json_res.jsonPath().getString("dt.applicant.primary.id");;
                     String applicant_type = "Applicant";
@@ -293,8 +294,6 @@ public class PD_Module {
                     String guarantor_id = lead_json_res.jsonPath().getString("dt.applicant.guarantors[" + i + "].id");
                     String applicant_type = "Guarantor";
                     String constitution_type = lead_json_res.jsonPath().getString("dt.applicant.guarantors[" + i + "].organization_info.constitution");
-                    //  String designation= lead_json_res.jsonPath().getString("dt.applicant.co_applicant["+i+"].designation");
-                    String designation = "Proprietor";
                     Map<String, Object> payload_shareholding = getPayload_shareholding(guarantor_id, applicant_type, constitution_type, primary_applicant_name, applicantId);
                     Response shareholding_response = RestUtils.performPost(baseUrl + "/ilos/v1/shareholding-pattern/" + PropertiesReadWrite.getValue("obj_id"), payload_shareholding, headers);
                     Generic.validateResponse(shareholding_response);

@@ -22,7 +22,8 @@ import static payloads.Header.getHeaders;
 
         public class legalModule {
 
-
+        String TechUser = PropertiesReadWrite.getValue("TechUser");
+        String CPPassword = PropertiesReadWrite.getValue("CPPassword");
 
             @Test(priority = 1)
             public void selfAssignLead() { //api 1
@@ -34,7 +35,7 @@ import static payloads.Header.getHeaders;
 
                 // Headers
                 String token = PropertiesReadWrite.getValue("token2");
-                Map<String, String> headers = getHeaders(token);
+                Map<String, Object> headers = getHeaders(TechUser, CPPassword);
 
                 // Request Body
                 String requestBody = "{ \"application_id\": \"" + PropertiesReadWrite.getValue("application_id") + "\" }";
@@ -55,10 +56,10 @@ import static payloads.Header.getHeaders;
                 System.out.println("get lead json");
                 String url = PropertiesReadWrite.getValue("baseURL") + "/ilos/v1/assignee/lead/" + PropertiesReadWrite.getValue("obj_id");
 
-                Map<String, String> headers = getHeaders(PropertiesReadWrite.getValue("token2"));
+                Map<String, Object> headers = getHeaders(TechUser, CPPassword);
                 Response response = RestUtils.performGet(url, headers);
 
-                Map<String, String> headers1 = getHeaders(PropertiesReadWrite.getValue("legalVendorToken"));
+                Map<String, Object> headers1 = getHeaders(TechUser, CPPassword);
                 Response response1 = RestUtils.performGet(url, headers);
 
                 try {
@@ -107,7 +108,7 @@ import static payloads.Header.getHeaders;
 
 
 
-            private void allocateVendorToProperty(int propertyId, Map<String, String> headers) {
+            private void allocateVendorToProperty(int propertyId, Map<String, Object> headers) {
                 RestAssured.baseURI = PropertiesReadWrite.getValue("baseURL"); // example: https://ilosapi-uat.capriglobal.in
                 String allocatevendorURL = "/ilos/v1/legal/property_allocation?role=LC&allocate_vendor=True";
                 System.out.println("allocatevendorURL url is " + allocatevendorURL);
@@ -121,24 +122,24 @@ import static payloads.Header.getHeaders;
                         "    \"vendor_name\": \"vijay jain\"\n" +
                         "}";
 
-                        Response allocatevendorResponse = RestUtils.performPatch1(allocatevendorURL, requestBody, headers);
+                        Response allocatevendorResponse = RestUtils.sendPatchRequest(allocatevendorURL, requestBody, headers);
                 Assert.assertEquals(allocatevendorResponse.getStatusCode(), 200, "Vendor List Failed for property_id: " + propertyId);
                 System.out.println("Vendor List Response for property_id " + (propertyId) + ": " + allocatevendorResponse.prettyPrint());
             }
 
-            private void lcSubmit(Map<String, String> headers) {
+            private void lcSubmit(Map<String, Object> headers) {
                 RestAssured.baseURI = PropertiesReadWrite.getValue("baseURL");;
                 String lcSubmitendPoint = "/ilos/v1/legal/lc-submit?role=LC";
 
                 String lcSubmitrequestBody = "{\"application_id\":\""+ PropertiesReadWrite.getValue("application_id") +"\"}";
 
-                Response selfassignvetterresponse = RestUtils.performPatch1(lcSubmitendPoint, lcSubmitrequestBody, headers);
+                Response selfassignvetterresponse = RestUtils.sendPatchRequest(lcSubmitendPoint, lcSubmitrequestBody, headers);
 
                 Assert.assertEquals(selfassignvetterresponse.getStatusCode(), 200, "Self-assign Vetter Failed");
                 System.out.println("Response Body1 is: " + selfassignvetterresponse.prettyPrint());
             }
 
-            private void submitLVForm(int propertyId, Map<String, String> headers1) {
+            private void submitLVForm(int propertyId, Map<String, Object> headers1) {
                 RestAssured.baseURI = PropertiesReadWrite.getValue("baseURL");
                 String lvSubmitURL = "/ilos/v1/legal/lv-form-submit?role=LV";
                 System.out.println("LV Submit URL is " + lvSubmitURL);
@@ -188,7 +189,7 @@ import static payloads.Header.getHeaders;
                 System.out.println("LV Form Submit Response for property_id " + propertyId + ": " + response.prettyPrint());
             }
 
-            private void updateLegalDocument(int propertyId, Map<String, String> headers) {
+            private void updateLegalDocument(int propertyId, Map<String, Object> headers) {
                 RestAssured.baseURI = PropertiesReadWrite.getValue("baseURL");
                 String documentPatchURL = "/ilos/v1/legal/document-patch?role=LV";
                 System.out.println("Document Patch URL: " + documentPatchURL);
@@ -206,7 +207,7 @@ import static payloads.Header.getHeaders;
                 System.out.println("Legal Document Patch Response for property_id " + propertyId + ": " + documentPatchResponse.prettyPrint());
             }
 
-            private void submitLVForm1(int propertyId, Map<String, String> headers) {
+            private void submitLVForm1(int propertyId, Map<String, Object> headers) {
                 RestAssured.baseURI = PropertiesReadWrite.getValue("baseURL"); // ex: https://ilosapi-uat.capriglobal.in
                 String lvSubmitURL = "/ilos/v1/legal/lv-submit?role=LV";
                 System.out.println("LV Submit URL: " + lvSubmitURL);
@@ -217,12 +218,12 @@ import static payloads.Header.getHeaders;
                         "    \"vendor_remarks\": \"ok\"\n" +
                         "}";
 
-                Response lvSubmitResponse = RestUtils.performPatch1(lvSubmitURL, requestBody, headers);
+                Response lvSubmitResponse = RestUtils.sendPatchRequest(lvSubmitURL, requestBody, headers);
                 Assert.assertEquals(lvSubmitResponse.getStatusCode(), 200, "LV Submit Failed for property_id: " + propertyId);
                 System.out.println("LV Submit one Response for property_id " + propertyId + ": " + lvSubmitResponse.prettyPrint());
             }
 
-            private void lmSelfAssign(Map<String, String> headers) {
+            private void lmSelfAssign(Map<String, Object> headers) {
                 RestAssured.baseURI = PropertiesReadWrite.getValue("baseURL");;
                 String lmAssignendPoint = "/ilos/v1/legal/self-assign?role=LM&prop_assign=False";
 
@@ -234,7 +235,7 @@ import static payloads.Header.getHeaders;
                 System.out.println("Response Body1 is: " + selfassignLMresponse.prettyPrint());
             }
 
-            private void submitLegalRecommendation(List<Integer> propertyIds, Map<String, String> headers) {
+            private void submitLegalRecommendation(List<Integer> propertyIds, Map<String, Object> headers) {
                 RestAssured.baseURI = PropertiesReadWrite.getValue("baseURL"); // ex: https://ilosapi-uat.capriglobal.in
                 String submitURL = "/ilos/v1/legal/submit-recommend?role=LM";
                 System.out.println("Legal Submit Recommendation URL: " + submitURL);
@@ -259,12 +260,12 @@ import static payloads.Header.getHeaders;
                         "    \"is_single_prop\": false\n" +
                         "}";
 
-                Response response = RestUtils.performPatch1(submitURL, requestBody, headers);
+                Response response = RestUtils.sendPatchRequest(submitURL, requestBody, headers);
                 Assert.assertEquals(response.getStatusCode(), 200, "Submit Recommendation Failed");
                 System.out.println("Submit Recommendation Response: " + response.prettyPrint());
             }
 
-            private void creditApproval(Map<String, String> headers) {
+            private void creditApproval(Map<String, Object> headers) {
                 RestAssured.baseURI = PropertiesReadWrite.getValue("baseURL");;
                 String creditApprovalendPoint = "/ilos/v1/legal/credit-approval";
 
