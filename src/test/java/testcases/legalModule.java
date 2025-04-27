@@ -22,8 +22,12 @@ import static payloads.Header.getHeaders;
 
         public class legalModule {
 
-        String TechUser = PropertiesReadWrite.getValue("TechUser");
+        String LegalUser = PropertiesReadWrite.getValue("LegalUser");
         String CPPassword = PropertiesReadWrite.getValue("CPPassword");
+
+            String LegalVendorUser = PropertiesReadWrite.getValue("LegalUser");
+            String LegalVendorPassword = PropertiesReadWrite.getValue("CPPassword");
+
 
             @Test(priority = 1)
             public void selfAssignLead() { //api 1
@@ -35,7 +39,7 @@ import static payloads.Header.getHeaders;
 
                 // Headers
                 String token = PropertiesReadWrite.getValue("token2");
-                Map<String, Object> headers = getHeaders(TechUser, CPPassword);
+                Map<String, Object> headers = getHeaders(LegalUser, CPPassword);
 
                 // Request Body
                 String requestBody = "{ \"application_id\": \"" + PropertiesReadWrite.getValue("application_id") + "\" }";
@@ -56,10 +60,10 @@ import static payloads.Header.getHeaders;
                 System.out.println("get lead json");
                 String url = PropertiesReadWrite.getValue("baseURL") + "/ilos/v1/assignee/lead/" + PropertiesReadWrite.getValue("obj_id");
 
-                Map<String, Object> headers = getHeaders(TechUser, CPPassword);
+                Map<String, Object> headers = getHeaders(LegalUser, CPPassword);
                 Response response = RestUtils.performGet(url, headers);
 
-                Map<String, Object> headers1 = getHeaders(TechUser, CPPassword);
+                Map<String, Object> headers1 = getHeaders(LegalVendorUser, LegalVendorPassword);
                 Response response1 = RestUtils.performGet(url, headers);
 
                 try {
