@@ -10,7 +10,6 @@ import reporting.ExtentReportListener;
 import reporting.ExtentReportManager;
 
 import java.util.Map;
-import java.util.Objects;
 
 public class RestUtils {
     private static RequestSpecification getRequestSpecification(String endPoint, Object requestPayload, Map<String,Object>headers) {
@@ -43,7 +42,7 @@ public class RestUtils {
         return response;
     }
 
-    public static Response performPatch1(String endPoint, String payload, Map<String, String> headers) {
+    public static Response performPatch1(String endPoint, String payload, Map<String, Object> headers) {
         Response response = RestAssured.given().log().body()
                 .headers(headers)
                 .contentType(ContentType.JSON)
