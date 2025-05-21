@@ -30,7 +30,7 @@ public class PD_Module {
    // String UWUser = PropertiesReadWrite.getValue("UWUser");
    // String UWPassword = PropertiesReadWrite.getValue("UWPassword");
 
-    @Test(priority = 1,enabled = false)
+    @Test(priority = 1,enabled = true)
     public void getPD_HomeBranch_Lead() {
         headers = getHeaders(CPuser, CPpassword);
         String endPoint = baseUrl + "/pd/application/list/home/0/10";

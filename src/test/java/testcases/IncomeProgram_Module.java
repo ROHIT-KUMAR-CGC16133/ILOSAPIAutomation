@@ -36,7 +36,7 @@ public class IncomeProgram_Module {
 
         Map<String, Object> payload = new HashMap<>();
         payload.put("dsn", "INCOME DOCUMENTS=ITR - FINANCIAL");
-        payload.put("fn", "Banking.pdf");
+        payload.put("fn", "bankstatment.pdf");
         payload.put("app_id", appId);
         payload.put("ext", "pdf");
         payload.put("ft", "application/pdf");
@@ -109,7 +109,6 @@ public class IncomeProgram_Module {
            String payload_surrogate = getPayload(applicantId, bank_name, account_holder, account_number, account_type);
            Response save_changes_bankingsurogate = RestUtils.performPost(baseUrl+"/ilos/v1/income-program/banking-surrogate/"+PropertiesReadWrite.getValue("obj_id"), payload_surrogate, headers);
            Generic.validateResponse(save_changes_bankingsurogate);
-
            final_submit_payload = Map.of("income_program","banking_surrogate","total_eligible_income",14567.25);
        }
 

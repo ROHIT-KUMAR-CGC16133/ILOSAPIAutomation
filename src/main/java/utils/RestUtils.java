@@ -20,6 +20,14 @@ public class RestUtils {
                 .contentType(ContentType.JSON)
                 .body(requestPayload);
     }
+    private static RequestSpecification getRequestSpecification(String endPoint, Object requestPayload, Map<String,Object>queryParams, Map<String,Object>headers) {
+        return RestAssured.given()
+                .baseUri(endPoint)
+                .headers(headers)
+                .queryParams(queryParams)
+                .contentType(ContentType.JSON)
+                .body(requestPayload);
+    }
     private static RequestSpecification getRequestSpecification(String endPoint, Map<String,Object>headers) {
         return RestAssured.given()
                 .baseUri(endPoint)
@@ -53,34 +61,19 @@ public class RestUtils {
     }
 
 
-//    public static Response performPost(String endPoint, String payload, Map<String, String> headers) {
-//        Response response = RestAssured.given().log().body()
-//                .baseUri(endPoint)
-//                .headers(headers)
-//                .contentType(ContentType.JSON)
-//                .body(payload)
-//                .post();
-//        return response;
-//    }
-
     public static Response performPost(String endPoint, String payload, Map<String, Object> headers) {
         RequestSpecification requestSpec = getRequestSpecification(endPoint, payload, headers);
         Response response = requestSpec.post();
         logRequestResponse(requestSpec, response);
         return response;
-
-
     }
 
-
-
-//    public static Response performPost(String endPoint, Map<String, Object> payload, Map<String, String> headers) {
-//        Response response = RestAssured.given()
-//                .baseUri(endPoint)
-//                .headers(headers)
-//                .contentType(ContentType.JSON)
-//                .body(payload)
-//                .post();
+    public static Response performPost(String endPoint, Map<String, Object> payload, Map<String, Object> queryParams, Map<String, Object> headers) {
+        RequestSpecification requestSpec = getRequestSpecification(endPoint, payload, queryParams, headers);
+        Response response = requestSpec.post();
+        logRequestResponse(requestSpec, response);
+        return response;
+    }
 
     public static Response performPost(String endPoint, Map<String, Object> payload, Map<String, Object> headers) {
         RequestSpecification requestSpec = getRequestSpecification(endPoint, payload, headers);
@@ -121,6 +114,13 @@ public class RestUtils {
     public static Response sendPatchRequest(String url, Map<String, Object> payload, Map<String, Object> headers) {
         RequestSpecification requestSpec = getRequestSpecification(url, payload, headers);
         Response response = requestSpec.patch();
+        logRequestResponse(requestSpec, response);
+        return response;
+    }
+    public static Response performPut(String endPoint, Object payload, Map<String, Object> queryParams, Map<String, Object> headers) {
+        RequestSpecification requestSpec = getRequestSpecification_with_queryparam(endPoint, queryParams, headers)
+                .body(payload);
+        Response response = requestSpec.put();
         logRequestResponse(requestSpec, response);
         return response;
     }
