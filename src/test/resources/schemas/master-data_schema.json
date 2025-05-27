@@ -1,0 +1,194 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Generated schema for Root",
+  "type": "object",
+  "properties": {
+    "msg": {
+      "type": "string"
+    },
+    "data": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "type": {
+            "type": "string"
+          },
+          "label": {
+            "type": "string"
+          },
+          "prev_values": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "dependencies": {
+                  "type": "object",
+                  "properties": {
+                    "Entity Type": {
+                      "type": "string"
+                    },
+                    "Portfolio Type": {
+                      "type": "string"
+                    },
+                    "Application Type": {
+                      "type": "string"
+                    },
+                    "SBU": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "Borrower Type": {
+                      "type": "string"
+                    },
+                    "Industry Sector": {
+                      "type": "string"
+                    },
+                    "Nature Of Business": {
+                      "type": "string"
+                    },
+                    "": {
+                      "type": "string"
+                    },
+                    "Secondary Income Type": {
+                      "type": "string"
+                    }
+                  },
+                  "required": []
+                },
+                "label": {
+                  "type": "string"
+                },
+                "default_value": {
+                  "type": "object",
+                  "properties": {
+                    "locale": {
+                      "type": "string"
+                    },
+                    "template_name": {
+                      "type": "string"
+                    },
+                    "Type Of Financial Institution": {
+                      "type": "string"
+                    },
+                    "Category Of Financial Institution": {
+                      "type": "string"
+                    }
+                  },
+                  "required": []
+                }
+              },
+              "required": []
+            }
+          },
+          "sublabel": {},
+          "additional_label": {},
+          "dependencies": {
+            "type": "object",
+            "properties": {
+              "Product Type": {
+                "type": "string"
+              },
+              "Portfolio Type": {
+                "type": "string"
+              },
+              "Entity Type": {
+                "type": "string"
+              },
+              "Borrower Type": {
+                "type": "string"
+              },
+              "SBU": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "Application Type": {
+                "type": "string"
+              },
+              "Loan Purpose": {
+                "type": "string"
+              },
+              "Applicant Type": {
+                "type": "string"
+              },
+              "Primary Portfolio Type": {
+                "type": "string"
+              },
+              "Secondary Income Type": {
+                "type": "string"
+              },
+              "Nature Of Business": {
+                "type": "string"
+              },
+              "Industry Sector": {
+                "type": "string"
+              },
+              "Transaction Type": {
+                "type": "string"
+              },
+              "show_on_guarantor": {
+                "type": "boolean"
+              },
+              "show_on_additonal_docs": {
+                "type": "boolean"
+              }
+            },
+            "required": []
+          },
+          "active": {
+            "type": "boolean"
+          },
+          "default_value": {
+            "type": "object",
+            "properties": {
+              "Type Of Financial Institution": {
+                "type": "string"
+              },
+              "Category Of Financial Institution": {
+                "type": "string"
+              },
+              "locale": {
+                "type": "string"
+              },
+              "template_name": {
+                "type": "string"
+              }
+            },
+            "required": []
+          },
+          "updated_at": {
+            "type": "number"
+          },
+          "updated_by": {
+            "type": "number"
+          },
+          "enabled_branches": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "id",
+          "type",
+          "label",
+          "sublabel",
+          "additional_label",
+          "active"
+        ]
+      }
+    }
+  },
+  "required": [
+    "msg",
+    "data"
+  ]
+}

@@ -5,34 +5,34 @@
         <listener class-name="reporting.ExtentReportListener"/>
     </listeners>
     <test verbose="2" preserve-order="true" name="/Users/rohit.kumar/Downloads/RestAssuredPOC">
-    <classes>
-<!--        <class name="testcases.DedupeModule">-->
-<!--            <methods><include name="complete_UCIC_Dedupe"/>-->
-<!--                <include name="completeFlexcubeDedupe"/></methods>-->
-<!--        </class>-->
-<!--        <class name="testcases.Login">-->
-<!--            <methods><include name="loginTestwithStringPayload"/>-->
-<!--                <include name="loginTestwithMapPayload"/></methods>-->
-<!--        </class>-->
-<!--        <class name="testcases.underWritingModuleTestcases">-->
-<!--            <methods><include name="getAllOpenLead"/>-->
-<!--                <include name="assignLeadToCP"/><include name="comleteUnderWriting"/>-->
-<!--            </methods>-->
-<!--        </class>-->
+        <classes>
+            <!--        <class name="testcases.DedupeModule">-->
+            <!--            <methods><include name="complete_UCIC_Dedupe"/>-->
+            <!--                <include name="completeFlexcubeDedupe"/></methods>-->
+            <!--        </class>-->
+            <!--        <class name="testcases.Login">-->
+            <!--            <methods><include name="loginTestwithStringPayload"/>-->
+            <!--                <include name="loginTestwithMapPayload"/></methods>-->
+            <!--        </class>-->
+            <!--        <class name="testcases.underWritingModuleTestcases">-->
+            <!--            <methods><include name="getAllOpenLead"/>-->
+            <!--                <include name="assignLeadToCP"/><include name="comleteUnderWriting"/>-->
+            <!--            </methods>-->
+            <!--        </class>-->
 
-        <class name="testcases.technicalModule">
-            <methods><include name="fetchHomeLeads"/>
-                <include name="selfAssignLead"/>
-                <include name="getAssignedLeads"/>
-                <include name="completeTechnical"/>
-            </methods>
-        </class>
-        <class name="testcases.Login"/>
-        <class name="testcases.underWritingModuleTestcases"/>
-        <class name="testcases.DedupeModule"/>
-        <class name="testcases.IPAModule"/>
-        <class name="testcases.ObligationModule"/>
-        <class name="testcases.technicalModule"/>
-    </classes>
-</test>
+            <class name="testcases.technicalModule">
+                <methods><include name="fetchHomeLeads"/>
+                    <include name="selfAssignLead"/>
+                    <include name="getAssignedLeads"/>
+                    <include name="completeTechnical"/>
+                </methods>
+            </class>
+            <class name="testcases.Login"/>
+            <class name="testcases.underWritingModuleTestcases"/>
+            <class name="testcases.DedupeModule"/>
+            <class name="testcases.IPAModule"/>
+            <class name="testcases.ObligationModule"/>
+            <class name="testcases.technicalModule"/>
+        </classes>
+    </test>
 </suite>

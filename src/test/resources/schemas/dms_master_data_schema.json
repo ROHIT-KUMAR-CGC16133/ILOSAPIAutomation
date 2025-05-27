@@ -1,0 +1,246 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Generated schema for Root",
+  "type": "object",
+  "properties": {
+    "msg": {
+      "type": "string"
+    },
+    "data": {
+      "type": "object",
+      "properties": {
+        "category": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "imf": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "docset": {
+          "type": "object",
+          "properties": {
+            "CHARGE CREATION": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "APPLICATION FORM": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "IMD CHEQUE": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "INSURANCE RELATED": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "INCOME DOCUMENTS": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "DISBURSEMENT DOCUMENTS": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "KYC DOCUMENTS": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "LOAN AGREEMENT KIT": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "LEGAL RELATED": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "POST DISBURSEMENT": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "SUPPORTING DOCUMENTS": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "SYSTEM-GENERATED DOCUMENTS": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "TECHNICAL RELATED": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "VERIFICATION DOCUMENTS": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "PROPERTY - DISBURSEMENT DOCUMENTS": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "PROPERTY - LEGAL DOCUMENT OR DISBURSEMENT KIT": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "ORIGNAL PROPERTY PAPER - OPP": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "RECORD OF RIGHTS TENANCY AND CROPS": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "PROPERTY - VERIFICATION DOCUMENTS": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "AGE PROOF": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "BANK DOCUMENTS": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "OTHERS": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "PHOTO AND SIGNATURE": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "PROPERTY PHOTOS": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "Indus Documents": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "LeadShare": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "Indus-LMS Documents": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "REKYC Documents": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "required": [
+            "CHARGE CREATION",
+            "APPLICATION FORM",
+            "IMD CHEQUE",
+            "INSURANCE RELATED",
+            "INCOME DOCUMENTS",
+            "DISBURSEMENT DOCUMENTS",
+            "KYC DOCUMENTS",
+            "LOAN AGREEMENT KIT",
+            "LEGAL RELATED",
+            "POST DISBURSEMENT",
+            "SUPPORTING DOCUMENTS",
+            "SYSTEM-GENERATED DOCUMENTS",
+            "TECHNICAL RELATED",
+            "VERIFICATION DOCUMENTS",
+            "PROPERTY - DISBURSEMENT DOCUMENTS",
+            "PROPERTY - LEGAL DOCUMENT OR DISBURSEMENT KIT",
+            "ORIGNAL PROPERTY PAPER - OPP",
+            "RECORD OF RIGHTS TENANCY AND CROPS",
+            "PROPERTY - VERIFICATION DOCUMENTS",
+            "AGE PROOF",
+            "BANK DOCUMENTS",
+            "OTHERS",
+            "PHOTO AND SIGNATURE",
+            "PROPERTY PHOTOS",
+            "Indus Documents",
+            "LeadShare",
+            "Indus-LMS Documents",
+            "REKYC Documents"
+          ]
+        },
+        "doc_types": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "category",
+        "imf",
+        "docset",
+        "doc_types"
+      ]
+    }
+  },
+  "required": [
+    "msg",
+    "data"
+  ]
+}

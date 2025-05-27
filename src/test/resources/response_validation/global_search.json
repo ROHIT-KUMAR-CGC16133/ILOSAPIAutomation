@@ -1,0 +1,112 @@
+{
+  "msg": "Success",
+  "total_count": 1,
+  "data": [
+    {
+      "_id": "682c22dde9d71b45df05eee4",
+      "application_id": "145798",
+      "entity_type": "individual",
+      "portfolio": "msme tl",
+      "applicant_name": "HARUN",
+      "lead_sub_status": "CREDIT_SANCTION",
+      "lead_status": "CREDIT_SANCTION",
+      "current_stages": [
+        {
+          "module_name": "COMMERCIAL_APPROVAL",
+          "module_status": "N/A",
+          "assignee_details": {
+            "email": "Shivangi.Singh@capriglobal.in",
+            "role": [
+              "BM",
+              "RSM"
+            ],
+            "name": "Shivangi Singh",
+            "designation": "branch manager",
+            "emp_code": "CGC31893"
+          },
+          "is_reassignment_disabled": false
+        }
+      ],
+      "verification_stages": [
+        {
+          "module_name": "FI",
+          "module_status": "N/A",
+          "assignee_details": {
+            "email": "N/A",
+            "role": [
+              "CP"
+            ]
+          },
+          "is_reassignment_disabled": false
+        },
+        {
+          "module_name": "TECHNICAL",
+          "module_status": "COMPLETED",
+          "assignee_details": {
+            "email": "ravi.gousar@capriglobal.in",
+            "role": [
+              "TC",
+              "TVET",
+              "UNDERWRITER",
+              "TA"
+            ],
+            "name": "Ravi Gousar",
+            "designation": "zonal technical manager",
+            "emp_code": "CGC4830"
+          },
+          "is_reassignment_disabled": true
+        },
+        {
+          "module_name": "RCU",
+          "module_status": "Positive",
+          "assignee_details": {
+            "email": "N/A",
+            "role": [
+              "UNDERWRITER"
+            ]
+          },
+          "is_reassignment_disabled": true
+        },
+        {
+          "module_name": "LEGAL",
+          "module_status": "ASSIGNED_TO_CREDIT",
+          "assignee_details": {
+            "email": "ayush.kumawat@caprihomeloans.com",
+            "role": [
+              "LM",
+              "LV",
+              "LA",
+              "UNDERWRITER",
+              "LC"
+            ],
+            "name": "Ayush Kumawat",
+            "designation": "legal manager",
+            "emp_code": "CGH1925"
+          },
+          "is_reassignment_disabled": false
+        }
+      ],
+      "branch_code": "surin102",
+      "relook_pool_history": null,
+      "hard_rejection_details": null,
+      "rm_bm_details": {
+        "sbu": "Urban Retail",
+        "name_of_rm": "Deepak Solanki",
+        "phone_of_rm": "9131540255",
+        "emp_id_of_rm": "CGC32000",
+        "email_of_rm": "Deepak.Solanki@capriglobal.in",
+        "functional_designation": "Assistant Branch Manager",
+        "rm_capri_branch_code": "SURIN102",
+        "rm_flex_branch_code": "50142",
+        "name_of_bm": "Shivangi Singh",
+        "phone_of_bm": "8319969057",
+        "emp_id_of_bm": "CGC31893",
+        "email_of_bm": "Shivangi.Singh@capriglobal.in"
+      },
+      "case_bt_topup": false,
+      "case_topup": false,
+      "bt_application_id": null,
+      "created_at": 1747722973323
+    }
+  ]
+}

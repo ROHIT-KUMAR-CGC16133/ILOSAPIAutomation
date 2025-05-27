@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="SanitySuite">
+    <listeners>
+        <listener class-name="reporting.ExtentReportListener"/>
+    </listeners>
+    <test verbose="2" preserve-order="true" name="/Users/rohit.kumar/Downloads/RestAssuredPOC">
+        <classes>
+            <class name="read_api.Global_read_view_api"></class>
+        </classes>
+    </test>
+</suite>

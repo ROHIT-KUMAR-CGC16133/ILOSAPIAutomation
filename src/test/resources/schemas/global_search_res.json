@@ -1,0 +1,236 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Generated schema for Root",
+  "type": "object",
+  "properties": {
+    "msg": {
+      "type": "string"
+    },
+    "total_count": {
+      "type": "number"
+    },
+    "data": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "_id": {
+            "type": "string"
+          },
+          "application_id": {
+            "type": "string"
+          },
+          "entity_type": {
+            "type": "string"
+          },
+          "portfolio": {
+            "type": "string"
+          },
+          "applicant_name": {
+            "type": "string"
+          },
+          "lead_sub_status": {
+            "type": "string"
+          },
+          "lead_status": {
+            "type": "string"
+          },
+          "current_stages": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "module_name": {
+                  "type": "string"
+                },
+                "module_status": {
+                  "type": "string"
+                },
+                "assignee_details": {
+                  "type": "object",
+                  "properties": {
+                    "email": {
+                      "type": "string"
+                    },
+                    "role": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "designation": {
+                      "type": "string"
+                    },
+                    "emp_code": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "email",
+                    "role"
+                  ]
+                },
+                "is_reassignment_disabled": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "module_name",
+                "module_status",
+                "assignee_details",
+                "is_reassignment_disabled"
+              ]
+            }
+          },
+          "verification_stages": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "module_name": {
+                  "type": "string"
+                },
+                "module_status": {
+                  "type": "string"
+                },
+                "assignee_details": {
+                  "type": "object",
+                  "properties": {
+                    "email": {
+                      "type": "string"
+                    },
+                    "role": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "designation": {
+                      "type": "string"
+                    },
+                    "emp_code": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "email",
+                    "role"
+                  ]
+                },
+                "is_reassignment_disabled": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "module_name",
+                "module_status",
+                "assignee_details",
+                "is_reassignment_disabled"
+              ]
+            }
+          },
+          "branch_code": {
+            "type": "string"
+          },
+          "relook_pool_history": {},
+          "hard_rejection_details": {},
+          "rm_bm_details": {
+            "type": "object",
+            "properties": {
+              "sbu": {
+                "type": "string"
+              },
+              "name_of_rm": {
+                "type": "string"
+              },
+              "phone_of_rm": {
+                "type": "string"
+              },
+              "emp_id_of_rm": {
+                "type": "string"
+              },
+              "email_of_rm": {
+                "type": "string"
+              },
+              "functional_designation": {
+                "type": "string"
+              },
+              "rm_capri_branch_code": {
+                "type": "string"
+              },
+              "rm_flex_branch_code": {
+                "type": "string"
+              },
+              "name_of_bm": {
+                "type": "string"
+              },
+              "phone_of_bm": {
+                "type": "string"
+              },
+              "emp_id_of_bm": {
+                "type": "string"
+              },
+              "email_of_bm": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "sbu",
+              "name_of_rm",
+              "phone_of_rm",
+              "emp_id_of_rm",
+              "email_of_rm",
+              "functional_designation",
+              "rm_capri_branch_code",
+              "rm_flex_branch_code",
+              "name_of_bm",
+              "phone_of_bm",
+              "emp_id_of_bm",
+              "email_of_bm"
+            ]
+          },
+          "case_bt_topup": {
+            "type": "boolean"
+          },
+          "case_topup": {
+            "type": "boolean"
+          },
+          "bt_application_id": {},
+          "created_at": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "_id",
+          "application_id",
+          "entity_type",
+          "portfolio",
+          "applicant_name",
+          "lead_sub_status",
+          "lead_status",
+          "current_stages",
+          "verification_stages",
+          "branch_code",
+          "relook_pool_history",
+          "hard_rejection_details",
+          "rm_bm_details",
+          "case_bt_topup",
+          "case_topup",
+          "bt_application_id",
+          "created_at"
+        ]
+      }
+    }
+  },
+  "required": [
+    "msg",
+    "total_count",
+    "data"
+  ]
+}

@@ -21,7 +21,7 @@ public class Generic {
         String endPoint = PropertiesReadWrite.getValue("baseURL") +"/ilosuser/v1/login";
         Map<String, Object> payload = LoginPayload.getLoginPayloadMap(user, password);
         Response response = RestUtils.performPost(endPoint, payload, new HashMap<>());
-        Assert.assertEquals(response.getStatusCode(), 200);
+        Generic.validateResponse(response);
         tokenvalue = JsonPath.from(response.asString()).getString("dt.token");
       //  PropertiesReadWrite.setValue("token",tokenvalue);
         return tokenvalue;
