@@ -3,26 +3,31 @@
   "total_count": 1,
   "data": [
     {
-      "_id": "682c22dde9d71b45df05eee4",
-      "application_id": "145798",
+      "_id": "682ec1a476e73a98539fb20e",
+      "application_id": "146387",
       "entity_type": "individual",
       "portfolio": "msme tl",
-      "applicant_name": "HARUN",
-      "lead_sub_status": "CREDIT_SANCTION",
-      "lead_status": "CREDIT_SANCTION",
+      "applicant_name": "VIKAS",
+      "lead_sub_status": "DISBURSEMENT",
+      "lead_status": "DISBURSEMENT",
       "current_stages": [
         {
-          "module_name": "COMMERCIAL_APPROVAL",
-          "module_status": "N/A",
+          "module_name": "DISBURSEMENT",
+          "module_status": "PUSHED_TO_LMS",
           "assignee_details": {
-            "email": "Shivangi.Singh@capriglobal.in",
+            "email": "Deepak.Gupta2@capriglobal.in",
             "role": [
-              "BM",
-              "RSM"
+              "TA",
+              "LA",
+              "LM",
+              "UNDERWRITER",
+              "MAKER",
+              "CHECKER",
+              "TVET"
             ],
-            "name": "Shivangi Singh",
-            "designation": "branch manager",
-            "emp_code": "CGC31893"
+            "name": "Deepak Gupta",
+            "designation": "operations executive",
+            "emp_code": "CGC30975"
           },
           "is_reassignment_disabled": false
         }
@@ -43,35 +48,35 @@
           "module_name": "TECHNICAL",
           "module_status": "COMPLETED",
           "assignee_details": {
-            "email": "ravi.gousar@capriglobal.in",
+            "email": "Gaurav.Thakur@capriglobal.in",
             "role": [
               "TC",
               "TVET",
               "UNDERWRITER",
               "TA"
             ],
-            "name": "Ravi Gousar",
-            "designation": "zonal technical manager",
-            "emp_code": "CGC4830"
+            "name": "Gaurav Singh Thakur",
+            "designation": "area technical manager",
+            "emp_code": "CGC17023"
           },
           "is_reassignment_disabled": true
         },
         {
           "module_name": "RCU",
-          "module_status": "Positive",
+          "module_status": "Waived Off",
           "assignee_details": {
             "email": "N/A",
             "role": [
               "UNDERWRITER"
             ]
           },
-          "is_reassignment_disabled": true
+          "is_reassignment_disabled": false
         },
         {
           "module_name": "LEGAL",
           "module_status": "ASSIGNED_TO_CREDIT",
           "assignee_details": {
-            "email": "ayush.kumawat@caprihomeloans.com",
+            "email": "Virendra.Chouhan@caprihomeloans.com",
             "role": [
               "LM",
               "LV",
@@ -79,34 +84,34 @@
               "UNDERWRITER",
               "LC"
             ],
-            "name": "Ayush Kumawat",
-            "designation": "legal manager",
-            "emp_code": "CGH1925"
+            "name": "Virendra",
+            "designation": "assistant legal manager",
+            "emp_code": "CGH7191"
           },
           "is_reassignment_disabled": false
         }
       ],
-      "branch_code": "surin102",
+      "branch_code": "surshg01",
       "relook_pool_history": null,
       "hard_rejection_details": null,
       "rm_bm_details": {
         "sbu": "Urban Retail",
-        "name_of_rm": "Deepak Solanki",
-        "phone_of_rm": "9131540255",
-        "emp_id_of_rm": "CGC32000",
-        "email_of_rm": "Deepak.Solanki@capriglobal.in",
-        "functional_designation": "Assistant Branch Manager",
-        "rm_capri_branch_code": "SURIN102",
-        "rm_flex_branch_code": "50142",
-        "name_of_bm": "Shivangi Singh",
-        "phone_of_bm": "8319969057",
-        "emp_id_of_bm": "CGC31893",
-        "email_of_bm": "Shivangi.Singh@capriglobal.in"
+        "name_of_rm": "Ishwar Singh",
+        "phone_of_rm": "9407161252",
+        "emp_id_of_rm": "CGC8353",
+        "email_of_rm": "Ishwar.Singh@capriglobal.in",
+        "functional_designation": "Relationship Manager",
+        "rm_capri_branch_code": "SURSHG01",
+        "rm_flex_branch_code": "50173",
+        "name_of_bm": "Sachin Kumar Soni",
+        "phone_of_bm": "9685353343",
+        "emp_id_of_bm": "CGC4868",
+        "email_of_bm": "soni.sachin@capriglobal.in"
       },
-      "case_bt_topup": false,
+      "case_bt_topup": true,
       "case_topup": false,
       "bt_application_id": null,
-      "created_at": 1747722973323
+      "created_at": 1747894692189
     }
   ]
 }

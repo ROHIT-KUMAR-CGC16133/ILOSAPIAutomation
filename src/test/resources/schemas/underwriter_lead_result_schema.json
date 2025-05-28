@@ -1,0 +1,55 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "msg": {
+      "type": "string"
+    },
+    "dt": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "entity_type": {
+          "type": "string"
+        },
+        "adding_co_applicant": {
+          "type": "boolean"
+        },
+        "remove_co_applicant": {
+          "type": "boolean"
+        },
+        "request_approval": {
+          "type": "boolean"
+        },
+        "max_limit_reached": {
+          "type": "boolean"
+        },
+        "max_guarantor_limit": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "message",
+        "status",
+        "entity_type",
+        "adding_co_applicant",
+        "remove_co_applicant",
+        "request_approval",
+        "max_limit_reached",
+        "max_guarantor_limit"
+      ]
+    },
+    "reject_reasons": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": ["msg", "dt", "reject_reasons"]
+}

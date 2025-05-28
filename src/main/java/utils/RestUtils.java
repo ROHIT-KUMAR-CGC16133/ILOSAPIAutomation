@@ -93,7 +93,10 @@ public class RestUtils {
     }
 
     public static Response performGet(String endPoint, Map<String, Object> headers, Map<String, Object> queryParams) {
-        RequestSpecification requestSpec = getRequestSpecification_with_queryparam(endPoint,queryParams, headers);
+        if (queryParams == null) {
+            queryParams = Map.of(); // Initialize to an empty map if null
+        }
+        RequestSpecification requestSpec = getRequestSpecification_with_queryparam(endPoint, queryParams, headers);
         Response response = requestSpec.get();
         logRequestResponse(requestSpec, response);
         return response;
