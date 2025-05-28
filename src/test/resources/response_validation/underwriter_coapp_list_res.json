@@ -1,0 +1,36 @@
+{
+  "msg": "Success",
+  "dt": {
+    "applicant_name": "VIKAS",
+    "applicant_email": "vikas234@gmail.com",
+    "applicant_cibil": 760,
+    "applicant_cibil_pdf": "https://pragati-prod-senp-backend.s3.ap-south-1.amazonaws.com/cibil_pdfs/APMS50173PS000146387-313070-2891768-cibil_report.pdf",
+    "applicant_type": "Primary Applicant",
+    "borrower_type": "senp",
+    "co_applicants": [
+      {
+        "id": 313081,
+        "name": "DAYARAM PRAJAPATI",
+        "relationship": "father",
+        "cibil": 766,
+        "cbill_pdf": "https://pragati-prod-senp-backend.s3.ap-south-1.amazonaws.com/cibil_pdfs/APMS50173PS000146387-313081-38655546-cibil_report.pdf",
+        "is_financial_co_applicant": false,
+        "applicant_type": "Non-Financial Co-Applicant",
+        "borrower_type": "senp"
+      },
+      {
+        "id": 313086,
+        "name": "BHAGVANTI BAI",
+        "relationship": "mother",
+        "cibil": -1,
+        "cbill_pdf": "https://pragati-prod-senp-backend.s3.ap-south-1.amazonaws.com/cibil_pdfs/APMS50173PS000146387-313086-3727729-cibil_report.pdf",
+        "is_financial_co_applicant": false,
+        "applicant_type": "Non-Financial Co-Applicant",
+        "borrower_type": "senp"
+      }
+    ],
+    "guarantors": [],
+    "seller_list": []
+  },
+  "id ": "682ec1a476e73a98539fb20e"
+}

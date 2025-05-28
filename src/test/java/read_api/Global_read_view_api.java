@@ -131,5 +131,14 @@ public class Global_read_view_api {
                 "response_validation/underwriter_lead_result_res.json"
         );
     }
+    @Test(priority = 10)
+    public void verify_underwriter_coapp_list_api() throws IOException {
+        validateApiResponse(
+                baseUrl + "/ilos/v1/underwriter/lead/co-applicant/list/" + PropertiesReadWrite.getValue("obj_id"),
+                null,
+                "schemas/underwriter_coapp_list_schema.json",
+                "response_validation/underwriter_coapp_list_res.json"
+        );
+    }
 
 }

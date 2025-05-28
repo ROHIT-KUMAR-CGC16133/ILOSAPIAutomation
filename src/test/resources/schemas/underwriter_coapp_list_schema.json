@@ -1,0 +1,100 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "msg": {
+      "type": "string"
+    },
+    "dt": {
+      "type": "object",
+      "properties": {
+        "applicant_name": {
+          "type": "string"
+        },
+        "applicant_email": {
+          "type": "string",
+          "format": "email"
+        },
+        "applicant_cibil": {
+          "type": "integer"
+        },
+        "applicant_cibil_pdf": {
+          "type": "string",
+          "format": "uri"
+        },
+        "applicant_type": {
+          "type": "string"
+        },
+        "borrower_type": {
+          "type": "string"
+        },
+        "co_applicants": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "integer"
+              },
+              "name": {
+                "type": "string"
+              },
+              "relationship": {
+                "type": "string"
+              },
+              "cibil": {
+                "type": "integer"
+              },
+              "cbill_pdf": {
+                "type": "string",
+                "format": "uri"
+              },
+              "is_financial_co_applicant": {
+                "type": "boolean"
+              },
+              "applicant_type": {
+                "type": "string"
+              },
+              "borrower_type": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "id",
+              "name",
+              "relationship",
+              "cibil",
+              "cbill_pdf",
+              "is_financial_co_applicant",
+              "applicant_type",
+              "borrower_type"
+            ]
+          }
+        },
+        "guarantors": {
+          "type": "array",
+          "items": {}
+        },
+        "seller_list": {
+          "type": "array",
+          "items": {}
+        }
+      },
+      "required": [
+        "applicant_name",
+        "applicant_email",
+        "applicant_cibil",
+        "applicant_cibil_pdf",
+        "applicant_type",
+        "borrower_type",
+        "co_applicants",
+        "guarantors",
+        "seller_list"
+      ]
+    },
+    "id ": {
+      "type": "string"
+    }
+  },
+  "required": ["msg", "dt", "id "]
+}
