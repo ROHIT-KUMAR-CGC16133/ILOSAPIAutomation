@@ -1,0 +1,39 @@
+{
+  "msg": "Success",
+  "data": [
+    {
+      "status": "APPROVE",
+      "property_id": [
+        1
+      ],
+      "remarks": "ok case type as bt top up total loan amount 13 lac as per BM discussion, sanction condition fulfill as per legal & technical, credit team check family deed norms seller buyer on loan deal and total loan amount check property gp limit, credit to ensure property owner should be on loan deal.",
+      "created_by": {
+        "name": null,
+        "email": "Virendra.Chouhan@caprihomeloans.com",
+        "emp_code": "CGH7191",
+        "emp_name": "Virendra",
+        "designation": "assistant legal manager",
+        "branch_code": "bhlman",
+        "allowed_branches": [
+          "surman01",
+          "surnee02",
+          "surnee01",
+          "surman03",
+          "surman02",
+          "surshg02",
+          "surshg01",
+          "surrat01",
+          "suralo02",
+          "suralo01"
+        ]
+      },
+      "created_at": 1748095330805,
+      "role": "LM",
+      "reject_reasons": "",
+      "approval_amount": 1500000,
+      "approval_level": 1,
+      "legal_is_referred": false
+    }
+  ],
+  "count": 1
+}

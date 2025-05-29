@@ -1,0 +1,2033 @@
+{
+  "gram_panchayat": {
+    "residential": {
+      "flat": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "row_house": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "shop": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "independent_house": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "godown": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "office": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "builder_floor": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "vacant_land": {
+        "vacant": false,
+        "rented": false,
+        "self_occupied": false,
+        "self_plus_rented": false,
+        "underconstruction": false
+      },
+      "school": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "hospital": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "commercial_premise": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "banquet_hall": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "service_station": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "cinema_hall": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "petrol_pump": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "industrial_premise": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "college": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "marriage_garden": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "hotel_cum_restaurant": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      }
+    },
+    "commercial": {
+      "flat": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "row_house": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "shop": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "independent_house": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "godown": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "office": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "builder_floor": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "vacant_land": {
+        "vacant": false,
+        "rented": false,
+        "self_occupied": false,
+        "self_plus_rented": false,
+        "underconstruction": false
+      },
+      "school": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "hospital": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "commercial_premise": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "banquet_hall": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "service_station": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "cinema_hall": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "petrol_pump": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "industrial_premise": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "college": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "marriage_garden": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "hotel_cum_restaurant": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      }
+    },
+    "industrial": {
+      "flat": {
+        "vacant": false,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "row_house": {
+        "vacant": false,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "shop": {
+        "vacant": false,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "independent_house": {
+        "vacant": false,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "godown": {
+        "vacant": false,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "office": {
+        "vacant": false,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "builder_floor": {
+        "vacant": false,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "vacant_land": {
+        "vacant": false,
+        "rented": false,
+        "self_occupied": false,
+        "self_plus_rented": false,
+        "underconstruction": false
+      },
+      "school": {
+        "vacant": false,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "hospital": {
+        "vacant": false,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "commercial_premise": {
+        "vacant": false,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "banquet_hall": {
+        "vacant": false,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "service_station": {
+        "vacant": false,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "cinema_hall": {
+        "vacant": false,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "petrol_pump": {
+        "vacant": false,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "industrial_premise": {
+        "vacant": false,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "college": {
+        "vacant": false,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "marriage_garden": {
+        "vacant": false,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "hotel_cum_restaurant": {
+        "vacant": false,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      }
+    },
+    "mix_use": {
+      "flat": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "row_house": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "shop": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "independent_house": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "godown": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "office": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "builder_floor": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "vacant_land": {
+        "vacant": false,
+        "rented": false,
+        "self_occupied": false,
+        "self_plus_rented": false,
+        "underconstruction": false
+      },
+      "school": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "hospital": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "commercial_premise": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "banquet_hall": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "service_station": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "cinema_hall": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "petrol_pump": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "industrial_premise": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "college": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "marriage_garden": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "hotel_cum_restaurant": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      }
+    },
+    "non_diverted": {
+      "flat": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "row_house": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "shop": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "independent_house": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "godown": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "office": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "builder_floor": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "vacant_land": {
+        "vacant": false,
+        "rented": false,
+        "self_occupied": false,
+        "self_plus_rented": false,
+        "underconstruction": false
+      },
+      "school": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "hospital": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "commercial_premise": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "banquet_hall": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "service_station": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "cinema_hall": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "petrol_pump": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "industrial_premise": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "college": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "marriage_garden": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "hotel_cum_restaurant": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      }
+    }
+  },
+  "municipal_corporation_municipal_council": {
+    "residential": {
+      "flat": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "row_house": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "shop": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "independent_house": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "godown": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "office": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "builder_floor": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "vacant_land": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "school": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "hospital": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "commercial_premise": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "banquet_hall": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "service_station": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "cinema_hall": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "petrol_pump": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "industrial_premise": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "college": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "marriage_garden": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "hotel_cum_restaurant": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      }
+    },
+    "commercial": {
+      "flat": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "row_house": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "shop": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "independent_house": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "godown": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "office": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "builder_floor": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "vacant_land": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "school": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "hospital": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "commercial_premise": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "banquet_hall": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "service_station": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "cinema_hall": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "petrol_pump": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "industrial_premise": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "college": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "marriage_garden": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "hotel_cum_restaurant": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      }
+    },
+    "industrial": {
+      "flat": {
+        "vacant": false,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "row_house": {
+        "vacant": false,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "shop": {
+        "vacant": false,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "independent_house": {
+        "vacant": false,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "godown": {
+        "vacant": false,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "office": {
+        "vacant": false,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "builder_floor": {
+        "vacant": false,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "vacant_land": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "school": {
+        "vacant": false,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "hospital": {
+        "vacant": false,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "commercial_premise": {
+        "vacant": false,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "banquet_hall": {
+        "vacant": false,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "service_station": {
+        "vacant": false,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "cinema_hall": {
+        "vacant": false,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "petrol_pump": {
+        "vacant": false,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "industrial_premise": {
+        "vacant": false,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "college": {
+        "vacant": false,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "marriage_garden": {
+        "vacant": false,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "hotel_cum_restaurant": {
+        "vacant": false,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      }
+    },
+    "mix_use": {
+      "flat": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "row_house": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "shop": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "independent_house": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "godown": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "office": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "builder_floor": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "vacant_land": {
+        "vacant": false,
+        "rented": false,
+        "self_occupied": false,
+        "self_plus_rented": false,
+        "underconstruction": false
+      },
+      "school": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "hospital": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "commercial_premise": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "banquet_hall": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "service_station": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "cinema_hall": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "petrol_pump": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "industrial_premise": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "college": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "marriage_garden": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "hotel_cum_restaurant": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      }
+    },
+    "non_diverted": {
+      "flat": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "row_house": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "shop": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "independent_house": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "godown": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "office": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "builder_floor": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "vacant_land": {
+        "vacant": false,
+        "rented": false,
+        "self_occupied": false,
+        "self_plus_rented": false,
+        "underconstruction": false
+      },
+      "school": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "hospital": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "commercial_premise": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "banquet_hall": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "service_station": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "cinema_hall": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "petrol_pump": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "industrial_premise": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "college": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "marriage_garden": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "hotel_cum_restaurant": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      }
+    }
+  },
+  "urban_development_authority": {
+    "residential": {
+      "flat": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "row_house": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "shop": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "independent_house": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "godown": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "office": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "builder_floor": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "vacant_land": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "school": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "hospital": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "commercial_premise": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "banquet_hall": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "service_station": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "cinema_hall": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "petrol_pump": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "industrial_premise": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "college": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "marriage_garden": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "hotel_cum_restaurant": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      }
+    },
+    "commercial": {
+      "flat": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "row_house": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "shop": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "independent_house": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "godown": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "office": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "builder_floor": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "vacant_land": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "school": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "hospital": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "commercial_premise": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "banquet_hall": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "service_station": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "cinema_hall": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "petrol_pump": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "industrial_premise": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "college": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "marriage_garden": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "hotel_cum_restaurant": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      }
+    },
+    "industrial": {
+      "flat": {
+        "vacant": false,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "row_house": {
+        "vacant": false,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "shop": {
+        "vacant": false,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "independent_house": {
+        "vacant": false,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "godown": {
+        "vacant": false,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "office": {
+        "vacant": false,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "builder_floor": {
+        "vacant": false,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "vacant_land": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "school": {
+        "vacant": false,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "hospital": {
+        "vacant": false,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "commercial_premise": {
+        "vacant": false,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "banquet_hall": {
+        "vacant": false,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "service_station": {
+        "vacant": false,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "cinema_hall": {
+        "vacant": false,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "petrol_pump": {
+        "vacant": false,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "industrial_premise": {
+        "vacant": false,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "college": {
+        "vacant": false,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "marriage_garden": {
+        "vacant": false,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "hotel_cum_restaurant": {
+        "vacant": false,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      }
+    },
+    "mix_use": {
+      "flat": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "row_house": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "shop": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "independent_house": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "godown": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "office": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "builder_floor": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "vacant_land": {
+        "vacant": false,
+        "rented": false,
+        "self_occupied": false,
+        "self_plus_rented": false,
+        "underconstruction": false
+      },
+      "school": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "hospital": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "commercial_premise": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "banquet_hall": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "service_station": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "cinema_hall": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "petrol_pump": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "industrial_premise": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "college": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "marriage_garden": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "hotel_cum_restaurant": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      }
+    },
+    "non_diverted": {
+      "flat": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "row_house": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "shop": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "independent_house": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "godown": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "office": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "builder_floor": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "vacant_land": {
+        "vacant": false,
+        "rented": false,
+        "self_occupied": false,
+        "self_plus_rented": false,
+        "underconstruction": false
+      },
+      "school": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "hospital": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "commercial_premise": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "banquet_hall": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "service_station": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "cinema_hall": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "petrol_pump": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "industrial_premise": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "college": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "marriage_garden": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      },
+      "hotel_cum_restaurant": {
+        "vacant": true,
+        "rented": true,
+        "self_occupied": true,
+        "self_plus_rented": true,
+        "underconstruction": true
+      }
+    }
+  }
+}

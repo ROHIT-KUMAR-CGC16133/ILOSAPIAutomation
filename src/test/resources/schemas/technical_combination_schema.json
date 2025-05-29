@@ -1,0 +1,59 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "gram_panchayat": {
+      "type": "object",
+      "properties": {
+        "residential": {
+          "type": "object",
+          "properties": {
+            "flat": { "$ref": "#/definitions/property_status" },
+            "row_house": { "$ref": "#/definitions/property_status" },
+            "shop": { "$ref": "#/definitions/property_status" },
+            "independent_house": { "$ref": "#/definitions/property_status" },
+            "godown": { "$ref": "#/definitions/property_status" },
+            "office": { "$ref": "#/definitions/property_status" },
+            "builder_floor": { "$ref": "#/definitions/property_status" },
+            "vacant_land": { "$ref": "#/definitions/property_status" },
+            "school": { "$ref": "#/definitions/property_status" },
+            "hospital": { "$ref": "#/definitions/property_status" },
+            "commercial_premise": { "$ref": "#/definitions/property_status" },
+            "banquet_hall": { "$ref": "#/definitions/property_status" },
+            "service_station": { "$ref": "#/definitions/property_status" },
+            "cinema_hall": { "$ref": "#/definitions/property_status" },
+            "petrol_pump": { "$ref": "#/definitions/property_status" },
+            "industrial_premise": { "$ref": "#/definitions/property_status" },
+            "college": { "$ref": "#/definitions/property_status" },
+            "marriage_garden": { "$ref": "#/definitions/property_status" },
+            "hotel_cum_restaurant": { "$ref": "#/definitions/property_status" }
+          }
+        },
+        "commercial": { "$ref": "#/properties/gram_panchayat/properties/residential" },
+        "industrial": { "$ref": "#/properties/gram_panchayat/properties/residential" },
+        "mix_use": { "$ref": "#/properties/gram_panchayat/properties/residential" },
+        "non_diverted": { "$ref": "#/properties/gram_panchayat/properties/residential" }
+      }
+    },
+    "municipal_corporation_municipal_council": {
+      "$ref": "#/properties/gram_panchayat"
+    },
+    "urban_development_authority": {
+      "$ref": "#/properties/gram_panchayat"
+    }
+  },
+  "definitions": {
+    "property_status": {
+      "type": "object",
+      "properties": {
+        "vacant": { "type": "boolean" },
+        "rented": { "type": "boolean" },
+        "self_occupied": { "type": "boolean" },
+        "self_plus_rented": { "type": "boolean" },
+        "underconstruction": { "type": "boolean" }
+      },
+      "required": ["vacant", "rented", "self_occupied", "self_plus_rented", "underconstruction"]
+    }
+  },
+  "required": ["gram_panchayat", "municipal_corporation_municipal_council", "urban_development_authority"]
+}

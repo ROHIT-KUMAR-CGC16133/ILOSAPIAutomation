@@ -32,14 +32,6 @@ public void getAllOpenLead(){
 
     headers = getHeaders(CPuser,CPpassword); // Get headers with the token
      response = RestUtils.performGet(endPoint, headers, queryParams);
-
-//    if (response.getStatusCode() == 403) { // Token expired
-//        String newToken = Generic.getToken(PropertiesReadWrite.getValue("CPUser"),PropertiesReadWrite.getValue("CPPassword"));
-//        PropertiesReadWrite.setValue("token", newToken);
-//        headers = getHeaders(newToken); // Update headers with the new token
-//        response=RestUtils.performGet(endPoint, headers, queryParams);
-//    }
-   // response.prettyPrint();
     validateResponse(response);
 
    int leadcount = JsonPath.from(response.asString()).getInt("tct");

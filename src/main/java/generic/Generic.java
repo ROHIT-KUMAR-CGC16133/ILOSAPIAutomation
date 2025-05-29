@@ -1,6 +1,7 @@
 package generic;
 
 import io.restassured.RestAssured;
+import io.restassured.http.ContentType;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import org.testng.Assert;
@@ -20,7 +21,12 @@ public class Generic {
         String tokenvalue =null;
         String endPoint = PropertiesReadWrite.getValue("baseURL") +"/ilosuser/v1/login";
         Map<String, Object> payload = LoginPayload.getLoginPayloadMap(user, password);
-        Response response = RestUtils.performPost(endPoint, payload, new HashMap<>());
+       // Response response = RestUtils.performPost(endPoint, payload, new HashMap<>());
+        Response response = RestAssured.given()
+                .baseUri(endPoint)
+                .headers(new HashMap<>())
+                .contentType(ContentType.JSON)
+                .body(payload).post();
         Generic.validateResponse(response);
         tokenvalue = JsonPath.from(response.asString()).getString("dt.token");
       //  PropertiesReadWrite.setValue("token",tokenvalue);

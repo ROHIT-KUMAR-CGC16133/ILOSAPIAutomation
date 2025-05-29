@@ -1,0 +1,498 @@
+{
+  "application_details": {
+    "application_id": "146387",
+    "technical_approvals": {
+      "is_eligible": null,
+      "approvals": [
+        {
+          "status": "POSITIVE",
+          "remarks": "OK BT+Topup case",
+          "created_by": {
+            "name": null,
+            "email": "Gaurav.Thakur@capriglobal.in",
+            "emp_code": "CGC17023",
+            "emp_name": null,
+            "designation": "area technical manager",
+            "branch_code": null,
+            "allowed_branches": null
+          },
+          "created_at": 1748009258421,
+          "is_subsequent": false
+        }
+      ],
+      "technical_approval_submitted_by": {
+        "name": null,
+        "email": "Gaurav.Thakur@capriglobal.in",
+        "emp_code": "CGC17023",
+        "emp_name": null,
+        "designation": "area technical manager",
+        "branch_code": null,
+        "allowed_branches": null
+      },
+      "technical_approval_submitted_at": "1748009258421"
+    },
+    "reassign_hierarchy": null,
+    "pushback_hierarchy": null,
+    "technical_approver_designation": null,
+    "last_comment_id": null,
+    "consolidated_loan_amount": 1300000,
+    "pd_loan_recommended_range": "LESS_THAN_50"
+  },
+  "property_list": [
+    {
+      "id": 1,
+      "lat": 24.1937342,
+      "long": 75.6457386,
+      "occupancy": "self-occupied",
+      "created_at": "2025-05-21 19:08:50",
+      "updated_at": "2025-05-21 19:08:50",
+      "area_in_sqft": "1500",
+      "property_type": "residential",
+      "is_it_seller_bt": false,
+      "lat_long_address": "5JVW+C8R, Azad Nagar Colony, Shamgarh, Madhya Pradesh 458883, India",
+      "property_address": {
+        "area": "MANDSAUR",
+        "city": "MANDSAUR",
+        "state": "MADHYA PRADESH",
+        "taluka": "MANDSAUR",
+        "pincode": 458883,
+        "district": "MANDSAUR",
+        "landmark": "",
+        "address_line_1": "KHASRA NO 297 PH NO 09 GRAM CHANDWASA ",
+        "address_line_2": "TEHSIL SHAMGARH JILA MANDSAUR",
+        "same_as_current_address": true,
+        "same_as_permanent_address": false
+      },
+      "address_belongs_to": [
+        {
+          "owner_id": 313081,
+          "owner_name": "DAYARAM PRAJAPATI",
+          "owner_type": "Non-Financial Co-Applicant"
+        },
+        {
+          "owner_id": 313086,
+          "owner_name": "BHAGVANTI BAI",
+          "owner_type": "Non-Financial Co-Applicant"
+        }
+      ],
+      "property_ownership": {
+        "type": "joint",
+        "property_owners": [
+          {
+            "owner_id": 313081,
+            "owner_name": "DAYARAM PRAJAPATI",
+            "owner_type": "Non-Financial Co-Applicant"
+          },
+          {
+            "owner_id": 313086,
+            "owner_name": "BHAGVANTI BAI",
+            "owner_type": "Non-Financial Co-Applicant"
+          }
+        ]
+      },
+      "refinance_transaction": true,
+      "tentative_property_value": "3500000",
+      "property_documents": [
+        {
+          "lat": 24.1937342,
+          "long": 75.6457386,
+          "document_url": [
+            "https://pragati-prod-senp-backend.s3.ap-south-1.amazonaws.com/uploads/f8409af0-1b82-4229-aaba-b63b0ec55f0d_APPL00151563_PROPERTY_20DOCS_466931_1pdf.pdf"
+          ],
+          "document_type": "title_documents",
+          "lat_long_address": "5JVW+C8R, Azad Nagar Colony, Shamgarh, Madhya Pradesh 458883, India"
+        }
+      ],
+      "collateral": {
+        "collateral_id": "AP146387CL1",
+        "collateral_code": "3112",
+        "collateral_value": "1345444.0",
+        "collateral_priority": null,
+        "is_collateral_modified": null,
+        "is_collateral_linked": true,
+        "is_linkage_modified": null
+      },
+      "legal_reference": {
+        "legal_branch_code": "surshg01",
+        "legal_coordinator": "Ankush.Sharma2@caprihomeloans.com",
+        "assigned_on": null,
+        "legal_manager": "Virendra.Chouhan@caprihomeloans.com",
+        "legal_approver_designation": null,
+        "legal_branch_name": null,
+        "legal_coordinator_emp_code": null,
+        "legal_coordinator_name": null,
+        "la_status": "APPROVE",
+        "legal_approver_submitted_on": 1748095330805,
+        "legal_approver_assigned_on": null,
+        "legal_manager_assigned_on": 1748083930650
+      },
+      "property_legal_status": "REFERRED_LA_SUBMITTED",
+      "vendor_reference": {
+        "vendor_id": "661162c4d8b2bbfd3e93c2ee",
+        "vendor_name": "RAJESH KUMAR RATHORE",
+        "vendor_phone": null,
+        "vendor_email": "RajeshKumarRathore@capriapps.in",
+        "assigned_on": 1748072699789,
+        "submitted_on": 1748082363328,
+        "v_type": "external"
+      },
+      "legal_send_back": [
+
+      ],
+      "legal_re_trigger": [
+
+      ],
+      "technical_verification": [
+        {
+          "valuer_email": "Neelesh.Chandel@capriglobal.in",
+          "valuer_code": "CGC10144",
+          "activity_code": "TECHNICAL_1",
+          "valuation_report": {
+            "report_filename": "report_20250523_123644.pdf",
+            "report_document": "tech-xpress-prod/tech_app/reports/TVR146387P1VT1/report_20250523_123644.pdf",
+            "report_meta": {
+              "branch_distance_in_kms": 19,
+              "property_type": "RESIDENTIAL",
+              "property_sub_type": "INDEPENDENT HOUSE",
+              "occupancy_type": "SELF-OCCUPIED",
+              "occupied_by": "Self",
+              "occupancy_since": "MORE THAN 5 YEARS",
+              "development_authority_type": "GRAM PANCHAYAT",
+              "development_authority_sub_type": "Aabadi Village",
+              "property_address_line_1": "PH No.09, House Saral No.297, Village Chandwasa, Tehsil Shamgarh,Dist.Mandsaur, Madhya Pradesh ",
+              "property_address_line_2": "PH No.09, House Saral No.297, Village Chandwasa, Tehsil Shamgarh,Dist.Mandsaur, Madhya Pradesh ",
+              "property_state": "Madhya Pradesh",
+              "property_district": "MANDSAUR",
+              "property_taluka": "MANDSAUR",
+              "property_town": "MANDSAUR",
+              "property_landmark": "Kheda Road",
+              "population": "POPULATION LESS THAN 10000",
+              "development_stage": 60,
+              "is_under_construction": false,
+              "completion_date": "2025-05-23",
+              "completion_percentage": 100.0,
+              "is_apf": false,
+              "apf_projects": null,
+              "apf_wing": null,
+              "apf_block": null,
+              "is_builder_project": false,
+              "builder_name": null,
+              "project_classification": null,
+              "builder_project_name": null,
+              "relation_with_builder": null,
+              "project_type": null,
+              "is_layout_approved": null,
+              "is_building_plan_approved": false,
+              "is_rera_approved": null,
+              "is_rera_applicable": null,
+              "habitation_percentage": 60.0,
+              "property_hold_type": "Freehold",
+              "is_multi_tenanted": null,
+              "property_residual_age": 53,
+              "property_structure_type": "LOAD BEARING",
+              "property_land_area_sqft": 1600.0,
+              "property_land_rate_sqft": 800.0,
+              "property_carpet_area_sqft": 1080.0,
+              "construction_area": 1080.0,
+              "construction_value": 1188000.0,
+              "proposed_construction_area": 0.0,
+              "proposed_construction_value": 0.0,
+              "build_up_area": 1080.0,
+              "build_up_value": 1188000.0,
+              "proposed_build_up_area": 0.0,
+              "proposed_build_up_value": 0.0,
+              "super_build_up_area": 1080.0,
+              "super_build_up_value": 1188000.0,
+              "proposed_super_build_up_area": 0.0,
+              "proposed_super_build_up_value": 0.0,
+              "current_market_value": 2468000.0,
+              "stage_percentage_of_construction": 100.0,
+              "is_converted_residential_use": false,
+              "is_building_construction_approval_plan": false,
+              "is_property_in_community_dominated_area": false,
+              "longitude": "75.463165",
+              "latitude": "24.202060"
+            },
+            "is_uploaded": false,
+            "techapp_unique_id": "TVR146387P1VT1"
+          },
+          "report_history": null,
+          "valuer_type": "INTERNAL",
+          "is_discarded": false,
+          "is_final_value": true,
+          "is_send_back": false,
+          "assignor_code": "CGC30042",
+          "assignor_email": "Rajvir.Singh@capriglobal.in",
+          "assigned_at": 1747992550830,
+          "is_re_triggered": false,
+          "is_reassigned": true,
+          "sendback_requested_by": null,
+          "re_trigger_requested_by": null,
+          "created_at": 1747991623199,
+          "valuer_name": "Neelesh Chandel",
+          "remarks": "na",
+          "is_subsequent": false,
+          "is_active_subsequent": false,
+          "techapp_unique_id": null,
+          "lp_transition": false,
+          "report_id": "TVR146387P1VT1"
+        }
+      ],
+      "branch_code": "surshg01",
+      "tech_coordinator": {
+        "name": null,
+        "email": "Rajvir.Singh@capriglobal.in",
+        "emp_code": "CGC30042",
+        "emp_name": null,
+        "designation": "technical administrator",
+        "branch_code": null,
+        "allowed_branches": null
+      },
+      "tech_vetting": {
+        "name": null,
+        "email": "Gaurav.Thakur@capriglobal.in",
+        "emp_code": "CGC17023",
+        "emp_name": null,
+        "designation": "area technical manager",
+        "branch_code": null,
+        "allowed_branches": null
+      },
+      "apf_data": null,
+      "upid": null,
+      "final_property_valuation": 2468000.0,
+      "technical_status": "FINAL_VALUATION_SUBMIT",
+      "posidex_request_id": null,
+      "is_referred": false,
+      "legal_doc": {
+        "lor_report": {
+          "file_path": "loanxpress-cgcl-prod-backend/upload_docs/application_form/LORreport_146387_1_1748081390542.pdf",
+          "form_data": {
+            "deal_no": "146387",
+            "property_id": 1,
+            "date": "1748080655129",
+            "property_details": {
+              "addressLine1": "Saral No. 297",
+              "addressLine2": "Ph No. 09",
+              "addressLine3": "Village Chandwasa, Tehsil Shamgarh Distt. Mandsaur (M.P) ",
+              "addressLine4": "admeasuring total Area 1600 Sq. ft. ",
+              "pincode": "458883",
+              "tehsil": "Shamgarh",
+              "district": "MANDSAUR",
+              "state": "Madhya Pradesh",
+              "country": "India"
+            },
+            "property_boundaries": {
+              "south": "Common Road",
+              "north": "Own Land",
+              "east": "House of Satyanarayan S/o Mangilal Prajapati",
+              "west": "House of Mangilal S/O Bheruji"
+            },
+            "examined_doc_text": "<ol><li>Copy of Registered Co-ownership Deed No. MP249422023A12483685, dated 19/10/2023</li><li>Copy of Mutaiton Certificate No. Q/Pancha/23, &nbsp;Dated 21/10/2023</li><li>Copy of NOC No. Q/Pancha/23, &nbsp;Dated 21/10/2023</li><li>Copy of Gram Panchayat Certificate NO. &nbsp;Q/Pan/2023/24/156, dated 02/10/2023</li></ol>",
+            "pre_disbursal_text": "<ol><li>Copy of Registered Co-ownership Deed No. MP249422023A12483685, dated 19/10/2023</li><li>Copy of Mutaiton Certificate No. Q/Pancha/23, &nbsp;Dated 21/10/2023</li><li>Copy of NOC No. Q/Pancha/23, &nbsp;Dated 21/10/2023</li><li>Copy of Gram Panchayat Certificate NO. &nbsp;Q/Pan/2023/24/156, dated 02/10/2023</li><li>Original Lod issued by Electronica Finance Ltd&nbsp;</li></ol>",
+            "report_status": "positive",
+            "lop_person_name": "Mr. Vikas",
+            "payment_made_favor_of": "Mr. Vikas",
+            "conclusion_text": {
+              "type": "yes",
+              "summary": "<p>After Perusal of documents produced before me as per that the above&nbsp;Property House Situated at Saral No. 297, Ph No. 09,Village Chandwasa, Tehsil Shamgarh Distt. Mandsaur (M.P)admeasuring total Area 1600 Sq. ft.&nbsp;originally owned and possessed by&nbsp;Mr Dayaram Prajapati S/O Mr Mangilal Prajapati, R/O Chandwasa, Tehsil Shamgarh, Distt. Mandsaur (M.P) as recorded in Gram Panchayat Records in the name of Mr Dayaram Prajapati S/O Mr Mangilal Prajapati, R/O Chandwasa, Tehsil Shamgarh, Distt. Mandsaur (M.P)&nbsp; .<br><br>&nbsp;</p><p>Further the said Owner Mr Dayaram Prajapati S/O Mr Mangilal Prajapati, R/O Chandwasa, Tehsil Shamgarh, Distt. Mandsaur (M.P) declared his wife Smt. Bhagvanti Bai W/O Mr. Dayaram Prajapati, R/O Chandwasa, Tehsil Shamgarh, Distt. Mandsaur (M.P) as a co-owner of equal parts of the said Property House Situated at Saral No. 297, Ph No. 09,Village Chandwasa, Tehsil Shamgarh Distt. Mandsaur (M.P)&nbsp;admeasuring total Area 1600 Sq. ft. Vide Registered Co-ownership Deed No. MP249422023A12483685, dated 19/10/2023.</p><p>As per provision of Law,&nbsp;Mr Dayaram Prajapati S/O Mr Mangilal Prajapati and&nbsp;Smt. Bhagvanti Bai W/O Mr. Dayaram Prajapati are the legal title holder of the said property till today.</p><p>The said property is already Mortgaged in favor of Electronica Finance Ltd. except the charges of Electronica Finance Ltd The title is clear, marketable free from encumbrances and SARFAESI is applicable on the property</p>"
+            },
+            "legal_firm_name": "Rajesh kumar Rathor",
+            "authorized_person_name": "Rajesh kumar Rathor",
+            "authorized_person_designation": "Advocate",
+            "logo_url": "loanxpress-cgcl-prod-backend/upload_docs/user/146387_advocate_logo.jpeg_1748080867140.jpeg",
+            "letterhead": "Rajesh Kumar Rathor Advocate",
+            "proposed_owner_names": [
+              "Mr Dayaram Prajapati  And Smt. Bhagvanti Bai "
+            ],
+            "legal_intervention_text": {
+              "type": "no",
+              "summary": ""
+            },
+            "nature_of_property_text": {
+              "land_type": "Freehold",
+              "property_type": "Residential"
+            },
+            "footer_text": "Rajesh Kumar Rathor",
+            "receipt_no": "WTXN210520252024275",
+            "receipt_date": "1747821455000",
+            "pdd_text": "<ol><li>Original Registered Co-ownership Deed No. MP249422023A12483685, dated 19/10/2023</li><li>Original Mutaiton Certificate No. Q/Pancha/23, &nbsp;Dated 21/10/2023</li><li>Original NOC No. Q/Pancha/23, &nbsp;Dated 21/10/2023</li><li>Original Gram Panchayat Certificate NO. &nbsp;Q/Pan/2023/24/156, dated 02/10/2023</li><li>Original NOC issued byElectronica Finance Ltd&nbsp;</li><li>Original Latest Property tax receipt</li><li>Original Equitable Mortgage Deed executed by Mr Dayaram Prajapati S/O Mr Mangilal Prajapati and&nbsp;Smt. Bhagvanti Bai W/O Mr. Dayaram Prajapati&nbsp; in favor of Capri Global Capital Finance</li></ol>",
+            "enclosure_type": "<p>TSR</p>",
+            "to_address_text": "\n            Tower A, Peninsula Business Park, Senapati Bapat Marg, Lower Parel, Mumbai 400013.\n            ",
+            "applicant_name": "Mr. VIKAS",
+            "co_applicant_names": [
+              "Mr. DAYARAM PRAJAPATI",
+              "Mrs. BHAGVANTI BAI"
+            ],
+            "property_owners": "[{\"owner_id\":313081,\"owner_name\":\"DAYARAM PRAJAPATI\",\"owner_type\":\"Non-Financial Co-Applicant\"},{\"owner_id\":313086,\"owner_name\":\"BHAGVANTI BAI\",\"owner_type\":\"Non-Financial Co-Applicant\"}]",
+            "current_owner_names": [
+              "Mr. Dayaram Prajapati",
+              "Mrs. Bhagvanti Bai"
+            ],
+            "product_type": "CGCL",
+            "product_type_str": "Capri Global Capital Ltd",
+            "transaction_type": "balance transfer with top up",
+            "property_boundaries_exists": true
+          },
+          "updated_by": "RajeshKumarRathore@capriapps.in",
+          "updated_on": 1748081390511,
+          "generated_by": "RajeshKumarRathore@capriapps.in",
+          "generated_on": 1748081390542
+        },
+        "search_report": {
+          "file_path": "loanxpress-cgcl-prod-backend/upload_docs/user/146387_Tsr_Shamgarh_2.pdf_1748082325363.pdf",
+          "form_data": {
+
+          },
+          "updated_by": "RajeshKumarRathore@capriapps.in",
+          "updated_on": 1748082354,
+          "generated_by": "RajeshKumarRathore@capriapps.in",
+          "generated_on": 1748082354
+        }
+      },
+      "vendor_status": "positive",
+      "legal_submit_history": [
+        {
+          "re_trigger_prop_id": -1,
+          "vendor_email": "AvijitSinghChouhan@capriapps.in",
+          "vendor_id": "661162c33f01c6f8496cc9c0",
+          "vendor_name": "AVIJIT SINGH CHOUHAN (ADVOCATE)",
+          "assigned_on": null,
+          "created_at": 1748009126380,
+          "created_by": "Ankush.Sharma2@caprihomeloans.com",
+          "v_type": "external"
+        },
+        {
+          "re_trigger_prop_id": -1,
+          "vendor_email": "RajeshKumarRathore@capriapps.in",
+          "vendor_id": "661162c4d8b2bbfd3e93c2ee",
+          "vendor_name": "RAJESH KUMAR RATHORE",
+          "assigned_on": 1748072699789,
+          "created_at": 1748072699789,
+          "created_by": "Ankush.Sharma2@caprihomeloans.com",
+          "v_type": "external"
+        }
+      ],
+      "legal_is_referred": false,
+      "legal_remarks": null,
+      "property_history_data": [
+
+      ],
+      "property_locality": "Rural",
+      "technical_report_submitted_at": 1748003815700,
+      "legal_report_submitted_at": null,
+      "legal_lp_transition": false,
+      "lp_notify_vendor": false,
+      "customer_name": "VIKAS",
+      "application_number": "146387",
+      "product": "msme tl semi fixed",
+      "source": "CGCL",
+      "email": "vikas234@gmail.com",
+      "roi": null,
+      "final_valuation": {
+        "valuer_email": "Neelesh.Chandel@capriglobal.in",
+        "valuer_code": "CGC10144",
+        "activity_code": "TECHNICAL_1",
+        "valuation_report": {
+          "report_filename": "report_20250523_123644.pdf",
+          "report_document": "tech-xpress-prod/tech_app/reports/TVR146387P1VT1/report_20250523_123644.pdf",
+          "report_meta": {
+            "branch_distance_in_kms": 19,
+            "property_type": "RESIDENTIAL",
+            "property_sub_type": "INDEPENDENT HOUSE",
+            "occupancy_type": "SELF-OCCUPIED",
+            "occupied_by": "Self",
+            "occupancy_since": "MORE THAN 5 YEARS",
+            "development_authority_type": "GRAM PANCHAYAT",
+            "development_authority_sub_type": "Aabadi Village",
+            "property_address_line_1": "PH No.09, House Saral No.297, Village Chandwasa, Tehsil Shamgarh,Dist.Mandsaur, Madhya Pradesh ",
+            "property_address_line_2": "PH No.09, House Saral No.297, Village Chandwasa, Tehsil Shamgarh,Dist.Mandsaur, Madhya Pradesh ",
+            "property_state": "Madhya Pradesh",
+            "property_district": "MANDSAUR",
+            "property_taluka": "MANDSAUR",
+            "property_town": "MANDSAUR",
+            "property_landmark": "Kheda Road",
+            "population": "POPULATION LESS THAN 10000",
+            "development_stage": 60,
+            "is_under_construction": false,
+            "completion_date": "2025-05-23",
+            "completion_percentage": 100.0,
+            "is_apf": false,
+            "apf_projects": null,
+            "apf_wing": null,
+            "apf_block": null,
+            "is_builder_project": false,
+            "builder_name": null,
+            "project_classification": null,
+            "builder_project_name": null,
+            "relation_with_builder": null,
+            "project_type": null,
+            "is_layout_approved": null,
+            "is_building_plan_approved": false,
+            "is_rera_approved": null,
+            "is_rera_applicable": null,
+            "habitation_percentage": 60.0,
+            "property_hold_type": "Freehold",
+            "is_multi_tenanted": null,
+            "property_residual_age": 53,
+            "property_structure_type": "LOAD BEARING",
+            "property_land_area_sqft": 1600.0,
+            "property_land_rate_sqft": 800.0,
+            "property_carpet_area_sqft": 1080.0,
+            "construction_area": 1080.0,
+            "construction_value": 1188000.0,
+            "proposed_construction_area": 0.0,
+            "proposed_construction_value": 0.0,
+            "build_up_area": 1080.0,
+            "build_up_value": 1188000.0,
+            "proposed_build_up_area": 0.0,
+            "proposed_build_up_value": 0.0,
+            "super_build_up_area": 1080.0,
+            "super_build_up_value": 1188000.0,
+            "proposed_super_build_up_area": 0.0,
+            "proposed_super_build_up_value": 0.0,
+            "current_market_value": 2468000.0,
+            "stage_percentage_of_construction": 100.0,
+            "is_converted_residential_use": false,
+            "is_building_construction_approval_plan": false,
+            "is_property_in_community_dominated_area": false,
+            "longitude": "75.463165",
+            "latitude": "24.202060"
+          },
+          "is_uploaded": false,
+          "techapp_unique_id": "TVR146387P1VT1"
+        },
+        "report_history": null,
+        "valuer_type": "INTERNAL",
+        "is_discarded": false,
+        "is_final_value": true,
+        "is_send_back": false,
+        "assignor_code": "CGC30042",
+        "assignor_email": "Rajvir.Singh@capriglobal.in",
+        "assigned_at": 1747992550830,
+        "is_re_triggered": false,
+        "is_reassigned": true,
+        "sendback_requested_by": null,
+        "re_trigger_requested_by": null,
+        "created_at": 1747991623199,
+        "valuer_name": "Neelesh Chandel",
+        "remarks": "na",
+        "is_subsequent": false,
+        "is_active_subsequent": false,
+        "techapp_unique_id": null,
+        "lp_transition": false,
+        "report_id": "TVR146387P1VT1"
+      },
+      "full_address": "KHASRA NO 297 PH NO 09 GRAM CHANDWASA  TEHSIL SHAMGARH JILA MANDSAUR MANDSAUR, MANDSAUR, MANDSAUR MADHYA PRADESH, 458883",
+      "valuations": [
+        {
+          "valuation": 2468000.0,
+          "report_link": "tech-xpress-prod/tech_app/reports/TVR146387P1VT1/report_20250523_123644.pdf",
+          "is_final_value": true,
+          "activity_code": "TECHNICAL_1"
+        }
+      ],
+      "is_subsequent_started": false,
+      "enable_sendback": false
+    }
+  ]
+}

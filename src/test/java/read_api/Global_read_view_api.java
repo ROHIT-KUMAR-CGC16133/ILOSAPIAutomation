@@ -140,5 +140,77 @@ public class Global_read_view_api {
                 "response_validation/underwriter_coapp_list_res.json"
         );
     }
+    @Test(priority = 11)
+    public void verify_technical_get_property_api() throws IOException {
+        validateApiResponse(
+                baseUrl + "/ilos/v1/technical/get-property-list",
+                Map.of("obj_id", PropertiesReadWrite.getValue("obj_id"), "role", "GLOBAL_READ_ONLY"),
+                "schemas/technical_get_property_schema.json",
+                "response_validation/technical_get_property_res.json"
+        );
+    }
+    @Test(priority = 12)
+    public void verify_get_technical_combination_api() throws IOException {
+        validateApiResponse(
+                baseUrl + "/ilos/v1/technical/get-technical-combinations",
+                Map.of("portfolio", "msme tl"),
+                "schemas/technical_combination_schema.json",
+                "response_validation/technical_combination_res.json"
+        );
+    }
+    @Test(priority = 13)
+    public void verify_deviation_data_technical_api() throws IOException {
+        validateApiResponse(
+                baseUrl + "/ilos/v1/misc/deviation-data",
+                Map.of("obj_id", PropertiesReadWrite.getValue("obj_id"),"module", "technical"),
+                "schemas/deviation_data_technical_schema.json",
+                "response_validation/deviation_data_technical_res.json"
+        );
+    }
+    @Test(priority = 14)
+    public void verify_deviation_condition_LE_api() throws IOException {
+        validateApiResponse(
+                baseUrl + "/ilos/v1/misc/deviation-condition",
+                Map.of("portfolio_type", "msme tl", "module", "loan_eligibility"),
+                "schemas/deviation_condition_LE_schema.json",
+                "response_validation/deviation_condition_LE_res.json"
+        );
+    }
+    @Test(priority = 15)
+    public void verify_legal_remarks_api() throws IOException {
+        validateApiResponse(
+                baseUrl + "/ilos/v1/legal/remarks/" + PropertiesReadWrite.getValue("obj_id"),
+                Map.of("role", "GLOBAL_READ_ONLY"   ),
+                "schemas/legal_remarks_schema.json",
+                "response_validation/legal_remarks_res.json"
+        );
+    }
+    @Test(priority = 16)
+    public void verify_deviation_data_legal_api() throws IOException {
+        validateApiResponse(
+                baseUrl + "/ilos/v1/misc/deviation-data",
+                Map.of("obj_id", PropertiesReadWrite.getValue("obj_id"), "module", "legal"),
+                "schemas/deviation_data_legal_schema.json",
+                "response_validation/deviation_data_legal_res.json"
+        );
+    }
+    @Test(priority = 17)
+    public void verify_lead_config_section_legal_api() throws IOException {
+        validateApiResponse(
+                baseUrl + "/ilos/v1/misc/lead-config",
+                Map.of("section", "legal"),
+                "schemas/lead_config_section_legal_schema.json",
+                "response_validation/lead_config_section_legal_res.json"
+        );
+    }
+    @Test(priority = 18)
+    public void verify_deviation_condition_legal_api() throws IOException {
+        validateApiResponse(
+                baseUrl + "/ilos/v1/misc/deviation-condition",
+                Map.of("application_id",appId, "module", "legal","portfolio_type", "msme tl"),
+                "schemas/deviation_condition_legal_schema.json",
+                "response_validation/deviation_condition_legal_res.json"
+        );
+    }
 
 }

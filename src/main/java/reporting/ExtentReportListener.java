@@ -7,6 +7,8 @@ import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 
+import java.io.PrintWriter;
+import java.io.StringWriter;
 import java.util.Arrays;
 
 public class ExtentReportListener implements ITestListener {
@@ -27,13 +29,34 @@ public class ExtentReportListener implements ITestListener {
     }
 
     public void onTestStart(ITestResult result) {
-        ExtentTest test = extentReports.createTest("Test Name " + result.getTestClass().getName() + " - " + result.getMethod().getMethodName(),
+        String className = result.getTestClass().getRealClass().getSimpleName();
+        String methodName = result.getMethod().getMethodName();
+
+        ExtentTest test = extentReports.createTest("Test Name: " + className + " - " + methodName,
                 result.getMethod().getDescription());
         extentTest.set(test);
     }
 
     public void onTestFailure(ITestResult result) {
-        ExtentReportManager.logFailureDetails(result.getThrowable().getMessage());
+        String msg = result.getThrowable().getMessage();
+        if (msg != null && !msg.isEmpty()) {
+            // Escape HTML characters first
+            msg = msg.replace("&", "&amp;")
+                    .replace("<", "&lt;")
+                    .replace(">", "&gt;");
+
+            // Then split and insert <br>
+            String[] words = msg.split("\\s+");
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < words.length; i++)
+                sb.append(words[i]).append(" ").append((i + 1) % 5 == 0 ? "<br>" : "");
+
+            // Output to HTML report
+          //  System.out.println("Error (HTML):<br>" + sb.toString());
+            String htmlMsg = "<div style='text-align:left; font-size:12px;'>" + sb.toString() + "</div>";
+            ExtentReportManager.logFailureDetails(htmlMsg);
+        }
+      //  ExtentReportManager.logFailureDetails(result.getThrowable().getMessage());
         String stackTrace = Arrays.toString(result.getThrowable().getStackTrace());
         stackTrace = stackTrace.replaceAll(",", "<br>");
         String formmatedTrace = "<details>\n" +

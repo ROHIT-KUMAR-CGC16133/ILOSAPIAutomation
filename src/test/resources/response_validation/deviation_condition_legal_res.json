@@ -1,0 +1,365 @@
+{
+  "message": "Success",
+  "data": [
+    {
+      "condition": "Borrower Office out of Geo-limits",
+      "deviation_type": "Higher Delegation Approval",
+      "level": 2,
+      "designation": "Area Credit Manager"
+    },
+    {
+      "condition": "Negative Dedupe",
+      "deviation_type": "Higher Delegation Approval",
+      "level": 2,
+      "designation": "Area Credit Manager"
+    },
+    {
+      "condition": "Waiver of FCU of any document",
+      "deviation_type": "Higher Delegation Approval",
+      "level": 6,
+      "designation": "FCU Head"
+    },
+    {
+      "condition": "Any Deviation undefined",
+      "deviation_type": "Higher Delegation Approval",
+      "level": 7,
+      "designation": "Managing Director, Cluster Head, Business Head"
+    },
+    {
+      "condition": "Waiver of any OPP document (N-1) < 13 years",
+      "deviation_type": "Higher Delegation Approval",
+      "level": 4,
+      "designation": "Regional Legal Manager"
+    },
+    {
+      "condition": "Waiver of any original/ copies of document (N-2 & prior) < 13 years",
+      "deviation_type": "Higher Delegation Approval",
+      "level": 4,
+      "designation": "Regional Legal Manager"
+    },
+    {
+      "condition": "Loss of RR where <= 13 years OR of latest (N) title deed",
+      "deviation_type": "Higher Delegation Approval",
+      "level": 1,
+      "designation": "Legal Manager"
+    },
+    {
+      "condition": "Property within 25 ft of HT line of 33 kVA and above(upto 100 lacs)",
+      "deviation_type": "Higher Delegation Approval",
+      "level": 5,
+      "designation": "Zonal Technical Manager"
+    },
+    {
+      "condition": "Waiver of Property/ House Tax Receipt, in cases where not applicable,\nlike new property, fresh purchase from builder and house tax survey yet not completed etc = Area Legal Manager/ Regional Credit Manager",
+      "deviation_type": "Higher Delegation Approval",
+      "level": 3,
+      "designation": "Area Legal Manager"
+    },
+    {
+      "condition": "Laminated OPP Documents",
+      "deviation_type": "Higher Delegation Approval",
+      "level": 1,
+      "designation": "Legal Manager"
+    },
+    {
+      "condition": "Cash sale deed norms not met",
+      "deviation_type": "Higher Delegation Approval",
+      "level": 5,
+      "designation": "Zonal Credit Manager"
+    },
+    {
+      "condition": "Waiver of Property/ House Tax, where applicable, supported by any other secondary ownership document like electricity/ water/ society maintenance bill etc",
+      "deviation_type": "Higher Delegation Approval",
+      "level": 4,
+      "designation": "Regional Legal Manager"
+    },
+    {
+      "condition": "Loan to Negative Profile",
+      "deviation_type": "Higher Delegation Approval",
+      "level": 4,
+      "designation": "Regional Credit Manager"
+    },
+    {
+      "condition": "BT within 6-12 months",
+      "deviation_type": "Higher Delegation Approval",
+      "level": 5,
+      "designation": "Zonal Credit Manager"
+    },
+    {
+      "condition": "Negative CIBIL with respect to SUB/SMA/ NPA/Suit Filed/ Settled / Restructured in any tradeline in last 36 months",
+      "deviation_type": "Higher Delegation Approval",
+      "level": 4,
+      "designation": "Regional Credit Manager"
+    },
+    {
+      "condition": "Waiver of ITR/ Form 16 for Salaried (provided one is available)",
+      "deviation_type": "Higher Delegation Approval",
+      "level": 4,
+      "designation": "Regional Credit Manager"
+    },
+    {
+      "condition": "Negative CIBIL/CRIF Report (Up to 30 days) DPD in last 12 months)",
+      "deviation_type": "Higher Delegation Approval",
+      "level": 1,
+      "designation": "Branch Credit Manager"
+    },
+    {
+      "condition": "Family transfer deed norms not met",
+      "deviation_type": "Higher Delegation Approval",
+      "level": 5,
+      "designation": "Zonal Credit Manager"
+    },
+    {
+      "condition": "Boundary mismatch",
+      "deviation_type": "Higher Delegation Approval",
+      "level": 2,
+      "designation": "Area Technical Manager"
+    },
+    {
+      "condition": "Waiver of FCU of NOC/ PTM/ TPT if the same collected from builder office by Capri employee directly",
+      "deviation_type": "Higher Delegation Approval",
+      "level": 4,
+      "designation": "Regional Credit Manager"
+    },
+    {
+      "condition": "Waiver of Confirmation Letter (For Salaried Borrower - Co – Borrower)",
+      "deviation_type": "Higher Delegation Approval",
+      "level": 2,
+      "designation": "Area Credit Manager"
+    },
+    {
+      "condition": "Number of tenants > 3 (Subject to No Sitting Tenant)",
+      "deviation_type": "Higher Delegation Approval",
+      "level": 2,
+      "designation": "Area Credit Manager"
+    },
+    {
+      "condition": "In case Top Up is less than 50% but not below 25% of the target loan",
+      "deviation_type": "Higher Delegation Approval",
+      "level": 4,
+      "designation": "Regional Credit Manager"
+    },
+    {
+      "condition": "Property within 25 ft of HT line of 33 kVA and above(above 100 lacs)",
+      "deviation_type": "Higher Delegation Approval",
+      "level": 7,
+      "designation": "National Technical Manager"
+    },
+    {
+      "condition": "Waiver of Probate of Will/ Court Letter of Administration in the name of Seller or prior on the merit of detailed assessment of family tree",
+      "deviation_type": "Higher Delegation Approval",
+      "level": 6,
+      "designation": "National Legal Manager"
+    },
+    {
+      "condition": "Bank statements up to minimum 3 months with at least 2 salary credits / Bank statements less than prescribed limit of product programme",
+      "deviation_type": "Higher Delegation Approval",
+      "level": 4,
+      "designation": "Regional Credit Manager"
+    },
+    {
+      "condition": "Commercial-institutional premise like school, college, dhaba, hotel service centres, showrooms irrespective of surrounding development and habitation(upto 50 lacs)",
+      "deviation_type": "Higher Delegation Approval",
+      "level": 4,
+      "designation": "Regional Technical Manager"
+    },
+    {
+      "condition": "Borrower Residence out of Geo-limits",
+      "deviation_type": "Higher Delegation Approval",
+      "level": 2,
+      "designation": "Area Credit Manager"
+    },
+    {
+      "condition": "Waiver of Work-ex norm/ PF deduction/ probation employee ( For Salaried Borrower / Co-Borrower)",
+      "deviation_type": "Higher Delegation Approval",
+      "level": 4,
+      "designation": "Regional Credit Manager"
+    },
+    {
+      "condition": "Waiver of Registration of Firm (ROF) Certificate",
+      "deviation_type": "Higher Delegation Approval",
+      "level": 4,
+      "designation": "Regional Credit Manager"
+    },
+    {
+      "condition": "Bouncing due to technical reasons - in BT Loan",
+      "deviation_type": "Higher Delegation Approval",
+      "level": 1,
+      "designation": "Branch Credit Manager"
+    },
+    {
+      "condition": "Waiver of Probate of Will/ Succession Order in the name of borrower",
+      "deviation_type": "Higher Delegation Approval",
+      "level": 6,
+      "designation": "National Legal Manager"
+    },
+    {
+      "condition": "Repayment from any other Bank A/c",
+      "deviation_type": "Higher Delegation Approval",
+      "level": 4,
+      "designation": "Regional Credit Manager"
+    },
+    {
+      "condition": "In states where RMOE is applicable, copy of RMOE in lieu of LOD",
+      "deviation_type": "Higher Delegation Approval",
+      "level": 1,
+      "designation": "Regional Legal Manager"
+    },
+    {
+      "condition": "Less than 100% shareholder of collateral owning company on loan",
+      "deviation_type": "Higher Delegation Approval",
+      "level": 5,
+      "designation": "Zonal Credit Manager"
+    },
+    {
+      "condition": "Commercial-institutional premise like school, college, dhaba, hotel service centres, showrooms irrespective of surrounding development and habitation(upto 100 lacs)",
+      "deviation_type": "Higher Delegation Approval",
+      "level": 5,
+      "designation": "Zonal Technical Manager"
+    },
+    {
+      "condition": "Waiver of Possession Proof (Under Sahaj Loans)",
+      "deviation_type": "Higher Delegation Approval",
+      "level": 4,
+      "designation": "Regional Legal Manager"
+    },
+    {
+      "condition": "Commercial-institutional premise like school, college, dhaba, hotel service centres, showrooms irrespective of surrounding development and habitation(above 100 lacs)",
+      "deviation_type": "Higher Delegation Approval",
+      "level": 7,
+      "designation": "National Technical Manager"
+    },
+    {
+      "condition": "Qualifier norms for loan > 25 lacs not met",
+      "deviation_type": "Higher Delegation Approval",
+      "level": 4,
+      "designation": "Regional Credit Manager"
+    },
+    {
+      "condition": "Release of Collateral/ Borrower under existing loan structure after BT to Capri",
+      "deviation_type": "Higher Delegation Approval",
+      "level": 4,
+      "designation": "Regional Credit Manager"
+    },
+    {
+      "condition": "Negative CIBIL/ CRIF Report (> 30 days DPD in last 12 months)",
+      "deviation_type": "Higher Delegation Approval",
+      "level": 2,
+      "designation": "Area Credit Manager"
+    },
+    {
+      "condition": "Work experience / business continuity norms not met - Documentary Proof is < 2 years / Not available but vintage of business is > 2 years (Supported by FI / FCU)",
+      "deviation_type": "Higher Delegation Approval",
+      "level": 1,
+      "designation": "Branch Credit Manager"
+    },
+    {
+      "condition": "Waiver of KYC of any developer where disbursal favouring the builder",
+      "deviation_type": "Higher Delegation Approval",
+      "level": 4,
+      "designation": "Regional Credit Manager"
+    },
+    {
+      "condition": "Work experience/ business continuity norms not met Business established within 2 years",
+      "deviation_type": "Higher Delegation Approval",
+      "level": 4,
+      "designation": "Regional Credit Manager"
+    },
+    {
+      "condition": "Waiver of FIR/ Newspaper Publication",
+      "deviation_type": "Higher Delegation Approval",
+      "level": 6,
+      "designation": "National Legal Manager"
+    },
+    {
+      "condition": "Qualifier norms for loan < 25 lacs not met",
+      "deviation_type": "Higher Delegation Approval",
+      "level": 2,
+      "designation": "Area Credit Manager"
+    },
+    {
+      "condition": "Bouncing due to non-technical reasons - In BT Loan",
+      "deviation_type": "Higher Delegation Approval",
+      "level": 4,
+      "designation": "Regional Credit Manager"
+    },
+    {
+      "condition": "Waver of Approved Building Plan for completed property less than 5 years old",
+      "deviation_type": "Higher Delegation Approval",
+      "level": 4,
+      "designation": "Regional Technical Manager"
+    },
+    {
+      "condition": "Valuer Selfie not available in Report",
+      "deviation_type": "Higher Delegation Approval",
+      "level": 4,
+      "designation": "Regional Technical Manager"
+    },
+    {
+      "condition": "Waiver of any OPP document (N-1) > 13 years",
+      "deviation_type": "Higher Delegation Approval",
+      "level": 3,
+      "designation": "Area Legal Manager"
+    },
+    {
+      "condition": "BT from Non-Approved NBFC / Micro Housing Finance Companies/ Co- operative Societies / Co-operative Bank/ Path Pedhi - Subject to LOD is received and Original Property Papers Verified by Legal / Credit Team",
+      "deviation_type": "Higher Delegation Approval",
+      "level": 4,
+      "designation": "Regional Credit Manager"
+    },
+    {
+      "condition": "Waiver of TSR/ OPP Vetting/ Both in APF (only in Maharashtra)",
+      "deviation_type": "Higher Delegation Approval",
+      "level": 6,
+      "designation": "National Legal Manager"
+    },
+    {
+      "condition": "Area Mismatch between documents and site visit Value considered of lower area",
+      "deviation_type": "Higher Delegation Approval",
+      "level": 4,
+      "designation": "Regional Technical Manager"
+    },
+    {
+      "condition": "Any one boundary mismatch (Road Boundary mismatch is not allowed)",
+      "deviation_type": "Higher Delegation Approval",
+      "level": 4,
+      "designation": "Regional Technical Manager"
+    },
+    {
+      "condition": "Property within 25 ft of HT line of 33 kVA and above(upto 50 lacs)",
+      "deviation_type": "Higher Delegation Approval",
+      "level": 4,
+      "designation": "Regional Technical Manager"
+    },
+    {
+      "condition": "Waiver of any original/ copies of document (N-2 & prior) > 13 years",
+      "deviation_type": "Higher Delegation Approval",
+      "level": 1,
+      "designation": "Legal Manager"
+    },
+    {
+      "condition": "Income ownership norms not met",
+      "deviation_type": "Higher Delegation Approval",
+      "level": 4,
+      "designation": "Regional Credit Manager"
+    },
+    {
+      "condition": "Loan to High Risk Profiles",
+      "deviation_type": "Higher Delegation Approval",
+      "level": 4,
+      "designation": "Regional Credit Manager"
+    },
+    {
+      "condition": "Office Address Proof: Waiver (Subject to Positive PD)",
+      "deviation_type": "Higher Delegation Approval",
+      "level": 1,
+      "designation": "Branch Credit Manager"
+    },
+    {
+      "condition": "Waiver of FCU of Bank statement for the verification of OCR by the original bank passbook/ bank statement from where the OCR is paid",
+      "deviation_type": "Higher Delegation Approval",
+      "level": 4,
+      "designation": "Regional Credit Manager"
+    }
+  ]
+}

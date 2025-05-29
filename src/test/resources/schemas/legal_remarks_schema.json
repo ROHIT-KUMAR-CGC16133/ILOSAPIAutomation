@@ -1,0 +1,100 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "msg": {
+      "type": "string"
+    },
+    "data": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string"
+          },
+          "property_id": {
+            "type": "array",
+            "items": {
+              "type": "integer"
+            }
+          },
+          "remarks": {
+            "type": "string"
+          },
+          "created_by": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": ["string", "null"]
+              },
+              "email": {
+                "type": "string"
+              },
+              "emp_code": {
+                "type": "string"
+              },
+              "emp_name": {
+                "type": "string"
+              },
+              "designation": {
+                "type": "string"
+              },
+              "branch_code": {
+                "type": "string"
+              },
+              "allowed_branches": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            },
+            "required": [
+              "email",
+              "emp_code",
+              "emp_name",
+              "designation",
+              "branch_code",
+              "allowed_branches"
+            ]
+          },
+          "created_at": {
+            "type": "integer"
+          },
+          "role": {
+            "type": "string"
+          },
+          "reject_reasons": {
+            "type": "string"
+          },
+          "approval_amount": {
+            "type": "integer"
+          },
+          "approval_level": {
+            "type": "integer"
+          },
+          "legal_is_referred": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "status",
+          "property_id",
+          "remarks",
+          "created_by",
+          "created_at",
+          "role",
+          "reject_reasons",
+          "approval_amount",
+          "approval_level",
+          "legal_is_referred"
+        ]
+      }
+    },
+    "count": {
+      "type": "integer"
+    }
+  },
+  "required": ["msg", "data", "count"]
+}

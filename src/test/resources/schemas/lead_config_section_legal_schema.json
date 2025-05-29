@@ -1,0 +1,28 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "msg": {
+      "type": "string"
+    },
+    "data": {
+      "type": "object",
+      "properties": {
+        "soft": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "hard": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": ["soft", "hard"]
+    }
+  },
+  "required": ["msg", "data"]
+}
