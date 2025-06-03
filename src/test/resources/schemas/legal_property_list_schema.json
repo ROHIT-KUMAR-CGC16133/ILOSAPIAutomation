@@ -1,0 +1,170 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "data": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string" },
+          "application_id": { "type": "string" },
+          "loan_amount": { "type": "string" },
+          "portfolio_type": { "type": "string" },
+          "legal_stage": { "type": "string" },
+          "home_branch_code": { "type": ["string", "null"] },
+          "loan_branch": { "type": ["string", "null"] },
+          "property_ids": { "type": ["string", "null"] },
+          "queries": { "type": ["string", "null"] },
+          "query_raised_on": { "type": "integer" },
+          "applicant_name": { "type": "string" },
+          "transaction_type": { "type": ["string", "null"] },
+          "vendors": { "type": ["string", "null"] },
+          "updated_at": { "type": ["string", "null"] },
+          "homeAccess": { "type": "integer" },
+          "filter": { "type": ["string", "null"] },
+          "bt_application_id": { "type": ["string", "null"] },
+          "case_bt": { "type": ["string", "null"] },
+          "case_topup": { "type": ["string", "null"] },
+          "case_bt_topup": { "type": ["string", "null"] },
+          "property_id": { "type": "integer" },
+          "property_type": { "type": "string" },
+          "vendor_email": { "type": ["string", "null"] },
+          "property_address": {
+            "type": "object",
+            "properties": {
+              "area": { "type": "string" },
+              "city": { "type": "string" },
+              "state": { "type": "string" },
+              "taluka": { "type": "string" },
+              "pincode": { "type": "integer" },
+              "district": { "type": "string" },
+              "landmark": { "type": "string" },
+              "address_line_1": { "type": "string" },
+              "address_line_2": { "type": "string" },
+              "same_as_current_address": { "type": "boolean" },
+              "same_as_permanent_address": { "type": "boolean" }
+            },
+            "required": [
+              "area",
+              "city",
+              "state",
+              "taluka",
+              "pincode",
+              "district",
+              "address_line_1",
+              "address_line_2",
+              "same_as_current_address",
+              "same_as_permanent_address"
+            ]
+          },
+          "property_ownership": {
+            "type": "object",
+            "properties": {
+              "type": { "type": "string" },
+              "property_owners": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "owner_id": { "type": "integer" },
+                    "owner_name": { "type": "string" },
+                    "owner_type": { "type": "string" }
+                  },
+                  "required": ["owner_id", "owner_name", "owner_type"]
+                }
+              }
+            },
+            "required": ["type", "property_owners"]
+          },
+          "vendor_remarks": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "remark_id": { "type": "integer" },
+                "send_back_prop_id": { "type": "integer" },
+                "re_trigger_prop_id": { "type": "integer" },
+                "text": { "type": "string" },
+                "section": { "type": "string" },
+                "sub_section": { "type": "string" },
+                "role": { "type": "string" },
+                "created_by": {
+                  "type": "object",
+                  "properties": {
+                    "name": { "type": ["string", "null"] },
+                    "email": { "type": "string" },
+                    "emp_code": { "type": "string" },
+                    "emp_name": { "type": "string" },
+                    "designation": { "type": "string" },
+                    "branch_code": { "type": ["string", "null"] },
+                    "allowed_branches": {
+                      "type": "array",
+                      "items": { "type": "string" }
+                    }
+                  },
+                  "required": ["email", "emp_code", "emp_name", "designation", "allowed_branches"]
+                },
+                "created_at": { "type": "integer" },
+                "property_ids": {
+                  "type": "array",
+                  "items": { "type": "integer" }
+                }
+              },
+              "required": ["remark_id", "text", "section", "sub_section", "role", "created_by", "created_at"]
+            }
+          },
+          "sendback_remarks": { "type": "array" },
+          "legal_reference": {
+            "type": "object",
+            "properties": {
+              "legal_branch_code": { "type": "string" },
+              "legal_coordinator": { "type": "string" },
+              "assigned_on": { "type": ["string", "null"] },
+              "legal_manager": { "type": "string" },
+              "legal_approver_designation": { "type": ["string", "null"] },
+              "legal_branch_name": { "type": ["string", "null"] },
+              "legal_coordinator_emp_code": { "type": ["string", "null"] },
+              "legal_coordinator_name": { "type": ["string", "null"] },
+              "la_status": { "type": "string" },
+              "legal_approver_submitted_on": { "type": "integer" },
+              "legal_approver_assigned_on": { "type": ["string", "null"] },
+              "legal_manager_assigned_on": { "type": "integer" }
+            },
+            "required": ["legal_branch_code", "legal_coordinator", "legal_manager", "la_status", "legal_approver_submitted_on", "legal_manager_assigned_on"]
+          },
+          "vendor_reference": {
+            "type": "object",
+            "properties": {
+              "re_trigger_prop_id": { "type": "integer" },
+              "vendor_email": { "type": "string" },
+              "vendor_id": { "type": "string" },
+              "vendor_name": { "type": "string" },
+              "assigned_on": { "type": "integer" },
+              "created_at": { "type": "integer" },
+              "created_by": { "type": "string" },
+              "v_type": { "type": "string" }
+            },
+            "required": ["vendor_email", "vendor_id", "vendor_name", "assigned_on", "created_at", "created_by", "v_type"]
+          },
+          "is_referred": { "type": ["boolean", "null"] },
+          "is_reassign": { "type": ["boolean", "null"] },
+          "is_retrigger": { "type": "boolean" },
+          "is_disabled": { "type": ["boolean", "null"] },
+          "legal_opinion_report": { "type": "string" },
+          "search_report": { "type": "string" },
+          "is_send_back": { "type": "boolean" },
+          "decision": { "type": "string" },
+          "query_resolved_on": { "type": ["string", "null"] }
+        },
+        "required": ["id", "application_id", "loan_amount", "portfolio_type", "legal_stage", "query_raised_on", "applicant_name", "homeAccess", "property_id", "property_type", "property_address", "property_ownership", "vendor_remarks", "legal_reference", "vendor_reference", "is_retrigger", "legal_opinion_report", "search_report", "is_send_back", "decision"]
+      }
+    },
+    "msg": { "type": "string" },
+    "count": { "type": "integer" },
+    "is_submitted": { "type": "boolean" },
+    "refer_user": { "type": "boolean" },
+    "is_single_prop": { "type": "boolean" }
+  },
+  "required": ["data", "msg", "count", "is_submitted", "refer_user", "is_single_prop"]
+}

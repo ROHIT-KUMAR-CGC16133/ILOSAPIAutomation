@@ -1,0 +1,259 @@
+{
+  "message": "Success",
+  "data": {
+    "esign_status": null,
+    "docs": {
+      "created_at": 1748244536215,
+      "created_by": "Lucky.Sharma@caprihomeloans.com",
+      "presigned_url": "https://s3.ap-south-1.amazonaws.com/loanxpress-cgcl-prod-backend/upload_docs/esign-doc/146387/FINAL.pdf?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=ASIAQCOKAJI6426MWVSF%2F20250526%2Fap-south-1%2Fs3%2Faws4_request&X-Amz-Date=20250526T072856Z&X-Amz-Expires=120&X-Amz-SignedHeaders=host&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEHcaCmFwLXNvdXRoLTEiSDBGAiEAqLADmqUwA8UNp1kotkNt7FfNr0JfgpiI4J9qqQtKw5ICIQD6JrHwmsvdNFIhNt79%2Fg%2FIOcbbnTCPaoG%2ByNHgb%2F48SiqYBAhAEAMaDDAwNTI1NTQ4MTkxNyIMO8u5gR9HtOdy0Xj4KvUD7v4HCg8WYzmMGIaB8axwUVio0bdCExogvcOOvN7OYoApW7xOqhH2CH8FoY3CXeTUkzeSuAq8Uxrom5ZTHLQxJekE5X60mgvV%2B9%2B1sGL3OiUkrDBIszkT9B4YCvdDoAls4AKsx1Xvm%2Bz%2Fk3MPgS87%2BQHR64jKxj%2FL8efDJUMdx%2B6CiajPrH0YjqCSB2K6s7CtZN3HSKSMxUmqTI4ka7OBfVEo2mSst55IWBzaR7Mcrb70HF63Coho1D6XalKuybDDNCIfEJjja7GqoyROVRV7Oj%2BgfWMph%2FxaswJBmP3PGtty%2BrLatUrSGRQbcaM%2Fgxk4fROGXALGiFHLWLlED%2FYELwxrU6jmwVc945C7w0uwmemiQBWduw5eDHc5wdVynAXjIppLq4UOwH2znPPEjUCiU%2FNojgSBVkRWBcQnmBpSyM2Fe3xyp6gmlGk06moovnJnjfhE0iwvvYNdmP9qVNPJXcOQk2MpeNmgvmxRAnLLPxnwwOroL8r4bfeyp0iCc6zAZ6fGJdGTIm8EEQ%2F9utBDPzY4Hr8FoWrXYTQXzuZBtxDMELOZHrpSe2hIDfy5qKHqL9RUYUpy5SuXNbjXOS6T81C30zHndY2IqtFXTM2vmbzrogDp7W6jR%2FIEZf8CHxcw%2FYUCrOJ69f1JbDddl4PE4nd9DWpRMNag0MEGOqUBhgSqVPILHZFPP3wc4MmhXBhQMJt%2BUE7Gd69WwpoQppox%2BhZ0nJVHR56Vsox%2Fohqhvj0btCLfXwi91aKFbaz%2Ba8aun3ekBrJj6wWT%2F%2FWKFrhWWBZy1VYExIB%2BsiP8zSVeg%2F8AgKwUBu%2Fij8e061%2Fk9dff1A3JIhemXA5x45fWbGsVCB46RV5GdzZoJ7T%2BngWGa%2FBC33pwR8X%2B96IB%2FsFv7vgzodG6&X-Amz-Signature=0c8f5d4591fd014ce450d0f057e6326d71616c448c5c4010a67c479a79590e43",
+      "final_doc": "loanxpress-cgcl-prod-backend/upload_docs/disbursement_final_doc/146387_loan_document_final_1748244613038.pdf",
+      "docs_urls": [
+        {
+          "id": "cbf65a24-eb06-4295-a2df-ab968bf28904",
+          "alias": "life",
+          "label": "PNB METLIFE INDIA LIFE INSURANCE CO LTD",
+          "link": "loanxpress-cgcl-prod-backend/upload_docs/user/146387_PNB_FORM_PNB_CAL_merged__6_.pdf_1748328185887.pdf",
+          "created_at": 1748242946426,
+          "created_by": "Lucky.Sharma@caprihomeloans.com",
+          "manual_insurance": true,
+          "status": "MANUAL_ESIGN"
+        },
+        {
+          "id": "8ae52a0e-d416-454e-8c8c-e6a7c5e9c92d",
+          "alias": "property",
+          "label": "ICICI LOMBARD GIC LTD",
+          "link": "loanxpress-cgcl-prod-backend/upload_docs/user/146387_ICICI_FORM_merged__5_.pdf_1748328126622.pdf",
+          "created_at": 1748242946426,
+          "created_by": "Lucky.Sharma@caprihomeloans.com",
+          "manual_insurance": true,
+          "status": "MANUAL_ESIGN"
+        },
+        {
+          "id": "9f5a1fb2-3600-4732-87bc-b754bd0067e2",
+          "alias": "health",
+          "label": "Care Health Insurance Limited",
+          "link": "loanxpress-cgcl-prod-backend/upload_docs/user/146387_CARE_FORM_CARE_CAL_merged__3_.pdf_1748328055509.pdf",
+          "created_at": 1748242946426,
+          "created_by": "Lucky.Sharma@caprihomeloans.com",
+          "manual_insurance": true,
+          "status": "MANUAL_ESIGN"
+        },
+        {
+          "id": "0bc53152-a7fe-41e9-b16a-784ad81f8a98",
+          "alias": "CAM",
+          "label": "CAM",
+          "link": "esign-doc/CGCL/146387/CAM.pdf",
+          "signature_type": "NA"
+        },
+        {
+          "id": "74a0c41b-35b1-4cbc-956e-9f46745d1846",
+          "alias": "SL",
+          "label": "Sanction Letter (Note 1)",
+          "link": "esign-doc/CGCL/146387/SL.pdf",
+          "signature_type": "Esign"
+        },
+        {
+          "id": "222364e6-be09-4a42-bfe4-ebf037df05e6",
+          "alias": "LOC",
+          "label": "Letter of Continuity",
+          "link": "esign-doc/CGCL/146387/LOC.pdf",
+          "signature_type": "Esign"
+        },
+        {
+          "id": "8ed473c0-62e0-44b9-a287-01812249098c",
+          "alias": "SCH",
+          "label": "Schedule",
+          "link": "esign-doc/CGCL/146387/SCH.pdf",
+          "signature_type": "Esign"
+        },
+        {
+          "id": "1915671b-64a9-43b2-b40c-6dcae629bcbb",
+          "alias": "DPN",
+          "label": "DPN",
+          "link": "esign-doc/CGCL/146387/DPN.pdf",
+          "signature_type": "Esign"
+        },
+        {
+          "id": "6ce57627-ebc2-4e37-9f77-73ed963a9ca3",
+          "alias": "AF",
+          "label": "Application form",
+          "link": "loanxpress-cgcl-prod-backend/upload_docs/application_form/146387_application_form_1748244505351.pdf",
+          "signature_type": "Esign"
+        },
+        {
+          "id": "05ddc539-0f5c-441b-ba48-3fde735789f1",
+          "alias": "BS",
+          "label": "Bank statement",
+          "link": "",
+          "signature_type": "Esign/Wet signature"
+        },
+        {
+          "id": "9d8c605b-cda7-4f13-b183-806595b6fe51",
+          "alias": "OKD",
+          "label": "Other KYC Doc",
+          "link": "",
+          "signature_type": "Wet signature"
+        },
+        {
+          "id": "95d8b710-59ec-43c9-8431-7597d89a9da7",
+          "alias": "GD",
+          "label": "Guarantor Deed",
+          "link": "",
+          "signature_type": "Esign"
+        },
+        {
+          "id": "b640ba10-b30c-4c10-8c37-83731df00b56",
+          "alias": "DEC",
+          "label": "Declaration",
+          "link": "esign-doc/CGCL/146387/DEC.pdf",
+          "signature_type": "Esign"
+        },
+        {
+          "id": "0c3fb664-8c0c-4ce7-98b7-d49377d4e353",
+          "alias": "DRF",
+          "label": "DRF",
+          "link": "esign-doc/CGCL/146387/DRF.pdf",
+          "signature_type": "Esign"
+        },
+        {
+          "id": "cdef5fe0-1f33-49e9-a3fa-82c960185430",
+          "alias": "FA",
+          "label": "Facility Agreement",
+          "link": "esign-doc/CGCL/146387/FA.pdf",
+          "signature_type": "Esign"
+        },
+        {
+          "id": "43902449-f746-41b7-8395-de3c89c37a32",
+          "alias": "EUL",
+          "label": "End use letter",
+          "link": "esign-doc/CGCL/146387/EUL.pdf",
+          "signature_type": "Esign"
+        },
+        {
+          "id": "4fb5a0b9-66bb-4bf7-b238-1167a8871e1a",
+          "alias": "MITC",
+          "label": "MITC",
+          "link": "esign-doc/CGCL/146387/MITC.pdf",
+          "signature_type": "Esign"
+        },
+        {
+          "id": "4c46985d-82c8-4648-b56d-b269bb7f325e",
+          "alias": "KFS",
+          "label": "KFS",
+          "link": "loanxpress-cgcl-prod-backend/upload_docs/146387/english/kfs_doc.pdf",
+          "signature_type": "Esign",
+          "language": "english"
+        },
+        {
+          "id": "4255fcf5-b866-425c-9391-897c0cd9121e",
+          "alias": "KFS VERNACULAR",
+          "label": "KFS VERNACULAR",
+          "link": "loanxpress-cgcl-prod-backend/upload_docs/146387/hindi/kfs_doc.pdf",
+          "signature_type": "Esign",
+          "language": "hindi"
+        },
+        {
+          "id": "ef40a9f7-7788-47ec-8004-59e0091c5399",
+          "alias": "DOC_ALIAS",
+          "label": "FAVORING MAIL",
+          "link": "loanxpress-cgcl-prod-backend/upload_docs/user/146387_FAVORING_MAIL.pdf_1748334051551.pdf",
+          "signature_type": null,
+          "created_at": 1748334053510,
+          "created_by": "Lucky.Sharma@caprihomeloans.com",
+          "status": "MANUAL_ESIGN"
+        },
+        {
+          "id": "e428197b-a9ad-4d4a-8327-0c19616499d3",
+          "alias": "DOC_ALIAS",
+          "label": "FAVORING PROOF FC LETTER",
+          "link": "loanxpress-cgcl-prod-backend/upload_docs/user/146387_FC_LETTER.pdf_1748334078545.pdf",
+          "signature_type": null,
+          "created_at": 1748334080290,
+          "created_by": "Lucky.Sharma@caprihomeloans.com",
+          "status": "MANUAL_ESIGN"
+        },
+        {
+          "id": "db34e488-cd1a-4a9a-9ca6-c7e3aab5d8b8",
+          "alias": "DOC_ALIAS",
+          "label": "REPAYMENT CHEQUE",
+          "link": "loanxpress-cgcl-prod-backend/upload_docs/user/146387_Repayment_cheque.pdf_1748334098111.pdf",
+          "signature_type": null,
+          "created_at": 1748334099687,
+          "created_by": "Lucky.Sharma@caprihomeloans.com",
+          "status": "MANUAL_ESIGN"
+        },
+        {
+          "id": "374a971b-0ea1-467c-96e2-079d6ca46fcd",
+          "alias": "DOC_ALIAS",
+          "label": "MANUAL NACH",
+          "link": "loanxpress-cgcl-prod-backend/upload_docs/user/146387_MANUAL_NACH.pdf_1748334122575.pdf",
+          "signature_type": null,
+          "created_at": 1748334124395,
+          "created_by": "Lucky.Sharma@caprihomeloans.com",
+          "status": "MANUAL_ESIGN"
+        },
+        {
+          "id": "1cb893d2-4eee-4e9c-9961-717ff0ce1104",
+          "alias": "DOC_ALIAS",
+          "label": "MSME CERTIFICATE",
+          "link": "loanxpress-cgcl-prod-backend/upload_docs/user/146387_VIKAS_MSME.pdf_1748334146841.pdf",
+          "signature_type": null,
+          "created_at": 1748334148392,
+          "created_by": "Lucky.Sharma@caprihomeloans.com",
+          "status": "MANUAL_ESIGN"
+        },
+        {
+          "id": "f4586a5d-a5f7-4660-a4d1-a4a35447b274",
+          "alias": "DOC_ALIAS",
+          "label": "NOTRY AND AFFIDAVIT",
+          "link": "loanxpress-cgcl-prod-backend/upload_docs/user/146387_NTRY_AND_AFFIDAVIT.pdf_1748334168515.pdf",
+          "signature_type": null,
+          "created_at": 1748334170783,
+          "created_by": "Lucky.Sharma@caprihomeloans.com",
+          "status": "MANUAL_ESIGN"
+        },
+        {
+          "id": "fcc921e2-fb28-450c-9646-851df43b7ab5",
+          "alias": "DOC_ALIAS",
+          "label": "DISBURSEMENT RELATED DOCUMENTS",
+          "link": "loanxpress-cgcl-prod-backend/upload_docs/user/146387_CSF_merged__1_.pdf_1748334304737.pdf",
+          "signature_type": null,
+          "created_at": 1748334307552,
+          "created_by": "Lucky.Sharma@caprihomeloans.com",
+          "status": "MANUAL_ESIGN"
+        },
+        {
+          "id": "bfd89200-9284-409d-844d-84e4c4dd2200",
+          "alias": "DOC_ALIAS",
+          "label": "KYC",
+          "link": "loanxpress-cgcl-prod-backend/upload_docs/user/146387_KYC1_merged__1_.pdf_1748334484174.pdf",
+          "signature_type": null,
+          "created_at": 1748334486552,
+          "created_by": "Lucky.Sharma@caprihomeloans.com",
+          "status": "MANUAL_ESIGN"
+        },
+        {
+          "id": "0758e758-d5ad-450b-b4bc-3a3d3d680432",
+          "alias": "DOC_ALIAS",
+          "label": "ESIGN",
+          "link": "loanxpress-cgcl-prod-backend/upload_docs/user/146387_esign__50_.pdf_1748345164212.pdf",
+          "signature_type": null,
+          "created_at": 1748345166288,
+          "created_by": "Lucky.Sharma@caprihomeloans.com",
+          "status": "MANUAL_ESIGN"
+        },
+        {
+          "id": "0582fe6b-3a6f-48ae-b778-8c2d4677c584",
+          "alias": "DOC_ALIAS",
+          "label": "Audit Trail",
+          "link": "loanxpress-cgcl-prod-backend/upload_docs/user/146387_AuditTrail__44_.pdf_1748345187751.pdf",
+          "signature_type": null,
+          "created_at": 1748345189546,
+          "created_by": "Lucky.Sharma@caprihomeloans.com",
+          "status": "MANUAL_ESIGN"
+        }
+      ],
+      "status": "DOCUMENT_GENERATED"
+    }
+  }
+}

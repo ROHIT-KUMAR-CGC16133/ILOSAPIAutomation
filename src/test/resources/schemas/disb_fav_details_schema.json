@@ -1,0 +1,189 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "required": ["message", "data"],
+  "properties": {
+    "message": { "type": "string" },
+    "data": {
+      "type": "object",
+      "required": ["favoring_details", "amount_details"],
+      "properties": {
+        "favoring_details": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "is_deleted",
+              "application_id",
+              "favoring_type",
+              "favoring_details",
+              "mode_of_disbursement",
+              "bank_name",
+              "account_status",
+              "amount",
+              "maker_action",
+              "remarks",
+              "maker_details",
+              "maker_date",
+              "id",
+              "decision",
+              "checker_details",
+              "checker_date",
+              "updated_at",
+              "is_disbursed",
+              "tranche_number"
+            ],
+            "properties": {
+              "is_deleted": { "type": "boolean" },
+              "application_id": { "type": "string" },
+              "favoring_type": { "type": "string" },
+              "favoring_details": { "type": "string" },
+              "mode_of_disbursement": { "type": "string" },
+              "instrument_number": { "type": ["string", "null"] },
+              "ifsc_code": { "type": ["string", "null"] },
+              "bank_name": { "type": "string" },
+              "account_number": { "type": ["string", "null"] },
+              "branch_name": { "type": ["string", "null"] },
+              "account_holder_name": { "type": ["string", "null"] },
+              "match_percentage": { "type": ["number", "null"] },
+              "account_status": { "type": "boolean" },
+              "passbook_or_cheque": { "type": ["string", "null"] },
+              "amount": { "type": "number" },
+              "maker_details": {
+                "type": "object",
+                "required": ["emp_code", "name", "email"],
+                "properties": {
+                  "emp_code": { "type": "string" },
+                  "name": { "type": "string" },
+                  "email": { "type": "string" },
+                  "level": { "type": ["string", "null"] }
+                }
+              },
+              "maker_date": { "type": "string" },
+              "maker_action": { "type": "string" },
+              "checker_details": {
+                "type": "object",
+                "required": ["emp_code", "name", "email"],
+                "properties": {
+                  "emp_code": { "type": "string" },
+                  "name": { "type": "string" },
+                  "email": { "type": "string" },
+                  "level": { "type": ["string", "null"] }
+                }
+              },
+              "checker_date": { "type": "string" },
+              "decision": { "type": "string" },
+              "remarks": { "type": "string" },
+              "auto": { "type": ["boolean", "null"] },
+              "bpi": { "type": ["string", "null"] },
+              "updated_at": { "type": "number" },
+              "capri_disbursal_account": {
+                "type": ["object", "null"],
+                "properties": {
+                  "bank_partner_code": { "type": "number" },
+                  "bank_name": { "type": "string" },
+                  "account_number": { "type": "string" },
+                  "type": { "type": "string" }
+                },
+                "required": ["bank_partner_code", "bank_name", "account_number", "type"]
+              },
+              "id": { "type": "string" },
+              "is_disbursed": { "type": "boolean" },
+              "tranche_number": { "type": "number" }
+            }
+          }
+        },
+        "amount_details": {
+          "type": "object",
+          "required": [
+            "sanctioned_loan_amount_with_insurance",
+            "net_disbursed_loan_amount",
+            "fees_and_charges",
+            "insurance_amount",
+            "stage_of_construction",
+            "property_details",
+            "extra_document_handling_charges",
+            "active_favoring_amount",
+            "proposed_disbursement_stage",
+            "vacant_land",
+            "total_disbursed_amount",
+            "pending_amount",
+            "proposed_disbursement_amount",
+            "amount_to_be_disbursed",
+            "proposed_and_disbursement_stage_difference",
+            "disbursal_status"
+          ],
+          "properties": {
+            "sanctioned_loan_amount_with_insurance": { "type": "number" },
+            "net_disbursed_loan_amount": { "type": "number" },
+            "fees_and_charges": { "type": "number" },
+            "insurance_amount": { "type": "number" },
+            "stage_of_construction": { "type": "number" },
+            "property_details": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": [
+                  "id",
+                  "address",
+                  "subsequent_initiated",
+                  "current_market_value",
+                  "stage_percentage_of_construction"
+                ],
+                "properties": {
+                  "id": { "type": "number" },
+                  "address": {
+                    "type": "object",
+                    "required": [
+                      "area",
+                      "city",
+                      "state",
+                      "taluka",
+                      "pincode",
+                      "district",
+                      "landmark",
+                      "address_line_1",
+                      "address_line_2",
+                      "same_as_current_address",
+                      "same_as_permanent_address",
+                      "address_line_3",
+                      "address_line_4"
+                    ],
+                    "properties": {
+                      "area": { "type": "string" },
+                      "city": { "type": "string" },
+                      "state": { "type": "string" },
+                      "taluka": { "type": "string" },
+                      "pincode": { "type": "number" },
+                      "district": { "type": "string" },
+                      "landmark": { "type": "string" },
+                      "address_line_1": { "type": "string" },
+                      "address_line_2": { "type": "string" },
+                      "same_as_current_address": { "type": "boolean" },
+                      "same_as_permanent_address": { "type": "boolean" },
+                      "address_line_3": { "type": "string" },
+                      "address_line_4": { "type": "string" }
+                    }
+                  },
+                  "subsequent_initiated": { "type": "boolean" },
+                  "current_market_value": { "type": "number" },
+                  "stage_percentage_of_construction": { "type": "number" }
+                }
+              }
+            },
+            "extra_document_handling_charges": { "type": "number" },
+            "active_favoring_amount": { "type": "number" },
+            "proposed_disbursement_stage": { "type": "number" },
+            "vacant_land": { "type": "number" },
+            "total_disbursed_amount": { "type": "number" },
+            "pending_amount": { "type": "number" },
+            "proposed_disbursement_amount": { "type": "number" },
+            "amount_to_be_disbursed": { "type": "number" },
+            "proposed_and_disbursement_stage_difference": { "type": "number" },
+            "disbursal_status": { "type": "string" }
+          }
+        }
+      }
+    }
+  }
+}

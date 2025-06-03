@@ -1,0 +1,33 @@
+{
+  "favoring_details": [
+    "VIKAS",
+    "DAYARAM PRAJAPATI",
+    "BHAGVANTI BAI"
+  ],
+  "capri_disbursal_accounts": [
+    {
+      "bank_partner_code": 1226.0,
+      "bank_name": "Yes Bank Ltd - 4285",
+      "account_number": "04285",
+      "type": "CGCL"
+    },
+    {
+      "bank_partner_code": 1225.0,
+      "bank_name": "State Bank Of India - 9622",
+      "account_number": "19622",
+      "type": "CGCL"
+    },
+    {
+      "bank_partner_code": 1436.0,
+      "bank_name": "YES BANK LTD - Disbursement - 04368",
+      "account_number": "04368",
+      "type": "CGHFL"
+    },
+    {
+      "bank_partner_code": 1437.0,
+      "bank_name": "SBI CA a/c 37343784275",
+      "account_number": "84275",
+      "type": "CGHFL"
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "msg": "Success",
+  "data": [
+    {
+      "id": 0,
+      "lat": "24.1937307",
+      "long": "75.6457333",
+      "source": "RM",
+      "bank_name": "UCO BANK",
+      "ifsc_code": "UCBA0001288",
+      "statement": "https://pragati-prod-senp-backend.s3.ap-south-1.amazonaws.com/bank_statement_pdfs/APMS50173PS000146387_313070_1202555_bank_statement.pdf",
+      "branch_name": "CHANDWASA",
+      "account_type": "Savings",
+      "account_since": "Less than 1 year",
+      "account_number": "12880110054956",
+      "bank_aggregator": false,
+      "lat_long_address": "5JVW+C8R, Azad Nagar Colony, Shamgarh, Madhya Pradesh 458883, India",
+      "is_aadhaar_linked": true,
+      "bank_aggregator_id": null,
+      "aggregator_response": {
+
+      },
+      "name_of_account_holder": "VIKASH",
+      "novel_doc_id": "DOC18252987",
+      "novel_status": "In Progress",
+      "novel_url": "",
+      "applicant_type": "applicant",
+      "applicant_id": 313070,
+      "applicant_name": "VIKAS",
+      "uid": "0d311459-01e8-4d6c-9d28-09a5ec2e57b4",
+      "default_repayment": true
+    }
+  ]
+}

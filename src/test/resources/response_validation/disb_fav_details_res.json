@@ -1,0 +1,211 @@
+{
+  "message": "Success",
+  "data": {
+    "favoring_details": [
+      {
+        "is_deleted": false,
+        "application_id": "146387",
+        "favoring_type": "INSURANCE_VENDOR",
+        "favoring_details": "PNB METLIFE INDIA LIFE INSURANCE CO LTD",
+        "mode_of_disbursement": "NEFT",
+        "instrument_number": null,
+        "ifsc_code": "CITI0000004",
+        "bank_name": "CITI Bank",
+        "account_number": "35216014",
+        "branch_name": "BANGALORE",
+        "account_holder_name": null,
+        "match_percentage": null,
+        "account_status": true,
+        "passbook_or_cheque": null,
+        "amount": 31907.0,
+        "maker_details": {
+          "emp_code": "CGC4868",
+          "name": "Sachin Kumar Soni",
+          "email": "soni.sachin@capriglobal.in",
+          "level": null
+        },
+        "maker_date": "24/05/2025",
+        "maker_action": "RECOMMENDED",
+        "checker_details": {
+          "emp_code": "CGC30975",
+          "name": "Deepak Gupta",
+          "email": "Deepak.Gupta2@capriglobal.in",
+          "level": null
+        },
+        "checker_date": "27/05/2025",
+        "decision": "APPROVED",
+        "remarks": "OK",
+        "auto": true,
+        "bpi": null,
+        "updated_at": 1748349314820,
+        "capri_disbursal_account": null,
+        "id": "332db41c-4a15-4e94-8074-c66f046ba73a",
+        "is_disbursed": true,
+        "tranche_number": 1
+      },
+      {
+        "is_deleted": false,
+        "application_id": "146387",
+        "favoring_type": "INSURANCE_VENDOR",
+        "favoring_details": "ICICI LOMBARD GIC LTD",
+        "mode_of_disbursement": "NEFT",
+        "instrument_number": null,
+        "ifsc_code": "ICIC0000004",
+        "bank_name": "ICICI Bank",
+        "account_number": "405007307",
+        "branch_name": "MUMBAINARIMAN POINT",
+        "account_holder_name": null,
+        "match_percentage": null,
+        "account_status": true,
+        "passbook_or_cheque": null,
+        "amount": 5541.0,
+        "maker_details": {
+          "emp_code": "CGC4868",
+          "name": "Sachin Kumar Soni",
+          "email": "soni.sachin@capriglobal.in",
+          "level": null
+        },
+        "maker_date": "24/05/2025",
+        "maker_action": "RECOMMENDED",
+        "checker_details": {
+          "emp_code": "CGC30975",
+          "name": "Deepak Gupta",
+          "email": "Deepak.Gupta2@capriglobal.in",
+          "level": null
+        },
+        "checker_date": "27/05/2025",
+        "decision": "APPROVED",
+        "remarks": "OK",
+        "auto": true,
+        "bpi": null,
+        "updated_at": 1748349319488,
+        "capri_disbursal_account": null,
+        "id": "0f9eb3ed-ced5-4d70-addd-cfd15186be37",
+        "is_disbursed": true,
+        "tranche_number": 1
+      },
+      {
+        "is_deleted": false,
+        "application_id": "146387",
+        "favoring_type": "INSURANCE_VENDOR",
+        "favoring_details": "Care Health Insurance Limited",
+        "mode_of_disbursement": "NEFT",
+        "instrument_number": null,
+        "ifsc_code": "HDFC0000003",
+        "bank_name": "HDFC Bank",
+        "account_number": "30350019383",
+        "branch_name": "K G MARG",
+        "account_holder_name": null,
+        "match_percentage": null,
+        "account_status": true,
+        "passbook_or_cheque": null,
+        "amount": 7996.0,
+        "maker_details": {
+          "emp_code": "CGC4868",
+          "name": "Sachin Kumar Soni",
+          "email": "soni.sachin@capriglobal.in",
+          "level": null
+        },
+        "maker_date": "24/05/2025",
+        "maker_action": "RECOMMENDED",
+        "checker_details": {
+          "emp_code": "CGC30975",
+          "name": "Deepak Gupta",
+          "email": "Deepak.Gupta2@capriglobal.in",
+          "level": null
+        },
+        "checker_date": "27/05/2025",
+        "decision": "APPROVED",
+        "remarks": "ok",
+        "auto": true,
+        "bpi": null,
+        "updated_at": 1748349324292,
+        "capri_disbursal_account": null,
+        "id": "d57470ee-f9a6-4785-bcfd-2a895bebbbf4",
+        "is_disbursed": true,
+        "tranche_number": 1
+      },
+      {
+        "is_deleted": false,
+        "application_id": "146387",
+        "favoring_type": "BT_BANK",
+        "favoring_details": "ELECTRONICA FINANCE LIMITED",
+        "mode_of_disbursement": "CHEQUE",
+        "instrument_number": "058823",
+        "ifsc_code": "IDFB0010209",
+        "bank_name": "IDFC FIRST BANK LTD",
+        "branch_name": "CLEARING HUB MUMBAI",
+        "account_status": false,
+        "passbook_or_cheque": "loanxpress-cgcl-prod-backend/upload_docs/user/146387_FC_LETTER.pdf_1748244359592.pdf",
+        "amount": 412247.0,
+        "maker_action": "RECOMMENDED",
+        "remarks": "OK",
+        "capri_disbursal_account": {
+          "bank_partner_code": 1226,
+          "bank_name": "Yes Bank Ltd - 4285",
+          "account_number": "04285",
+          "type": "CGCL"
+        },
+        "maker_details": {
+          "emp_code": "CGH6618",
+          "name": "Lucky Sharma",
+          "email": "Lucky.Sharma@caprihomeloans.com",
+          "level": null
+        },
+        "maker_date": "26/05/2025",
+        "id": "4b7a1d58-f915-48d1-b111-4de5cb729311",
+        "decision": "APPROVED",
+        "checker_details": {
+          "emp_code": "CGC30975",
+          "name": "Deepak Gupta",
+          "email": "Deepak.Gupta2@capriglobal.in",
+          "level": null
+        },
+        "checker_date": "27/05/2025",
+        "updated_at": 1748349330304,
+        "is_disbursed": true,
+        "tranche_number": 1
+      }
+    ],
+    "amount_details": {
+      "sanctioned_loan_amount_with_insurance": 1345444,
+      "net_disbursed_loan_amount": 457691,
+      "fees_and_charges": 38205,
+      "insurance_amount": 45444,
+      "stage_of_construction": 100.0,
+      "property_details": [
+        {
+          "id": 1,
+          "address": {
+            "area": "MANDSAUR",
+            "city": "MANDSAUR",
+            "state": "Madhya Pradesh",
+            "taluka": "MANDSAUR",
+            "pincode": 458883,
+            "district": "MANDSAUR",
+            "landmark": "",
+            "address_line_1": "KHASRA NO 297 PH NO 09 GRAM CHANDWASA ",
+            "address_line_2": "TEHSIL SHAMGARH JILA MANDSAUR",
+            "same_as_current_address": true,
+            "same_as_permanent_address": false,
+            "address_line_3": "",
+            "address_line_4": ""
+          },
+          "subsequent_initiated": false,
+          "current_market_value": 2468000.0,
+          "stage_percentage_of_construction": 100.0
+        }
+      ],
+      "extra_document_handling_charges": 0.02,
+      "active_favoring_amount": 0,
+      "proposed_disbursement_stage": 34.65,
+      "vacant_land": 0,
+      "total_disbursed_amount": 495896,
+      "pending_amount": 849548,
+      "proposed_disbursement_amount": 450452,
+      "amount_to_be_disbursed": 1300000,
+      "proposed_and_disbursement_stage_difference": -65.35,
+      "disbursal_status": "PART_DISBURSED"
+    }
+  }
+}

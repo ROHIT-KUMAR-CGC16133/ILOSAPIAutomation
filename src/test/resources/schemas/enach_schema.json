@@ -1,0 +1,80 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "required": ["msg", "data"],
+  "properties": {
+    "msg": { "type": "string" },
+    "data": {
+      "type": "object",
+      "required": [
+        "mobile_number",
+        "consumer_reference_number",
+        "account_holder_name",
+        "account_type",
+        "account_number",
+        "bank_name",
+        "amount",
+        "debit_type",
+        "start_date",
+        "end_date",
+        "frequency",
+        "customer_pan_number",
+        "mandates"
+      ],
+      "properties": {
+        "mobile_number": { "type": "string" },
+        "consumer_reference_number": { "type": "string" },
+        "account_holder_name": { "type": "string" },
+        "account_type": { "type": "string" },
+        "account_number": { "type": "string" },
+        "bank_name": { "type": "string" },
+        "amount": { "type": "string" },
+        "debit_type": { "type": "string" },
+        "start_date": { "type": "string" },
+        "end_date": { "type": "string" },
+        "frequency": { "type": "string" },
+        "customer_pan_number": { "type": "string" },
+        "mandates": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "id",
+              "mandate_id",
+              "state",
+              "bank_details",
+              "created_at",
+              "mode",
+              "provider",
+              "status",
+              "umrn"
+            ],
+            "properties": {
+              "id": { "type": "string" },
+              "mandate_id": { "type": "string" },
+              "state": { "type": "string" },
+              "bank_details": {
+                "type": "object",
+                "required": [
+                  "shared_with_bank",
+                  "bank_name",
+                  "state"
+                ],
+                "properties": {
+                  "shared_with_bank": { "type": "string" },
+                  "bank_name": { "type": "string" },
+                  "state": { "type": "string" }
+                }
+              },
+              "created_at": { "type": "string" },
+              "mode": { "type": "string" },
+              "provider": { "type": "string" },
+              "status": { "type": "string" },
+              "umrn": { "type": "string" }
+            }
+          }
+        }
+      }
+    }
+  }
+}

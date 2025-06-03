@@ -1,0 +1,70 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "required": ["msg", "data"],
+  "properties": {
+    "msg": {
+      "type": "string"
+    },
+    "data": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "lat",
+          "long",
+          "source",
+          "bank_name",
+          "ifsc_code",
+          "statement",
+          "branch_name",
+          "account_type",
+          "account_since",
+          "account_number",
+          "bank_aggregator",
+          "lat_long_address",
+          "is_aadhaar_linked",
+          "bank_aggregator_id",
+          "aggregator_response",
+          "name_of_account_holder",
+          "novel_doc_id",
+          "novel_status",
+          "novel_url",
+          "applicant_type",
+          "applicant_id",
+          "applicant_name",
+          "uid",
+          "default_repayment"
+        ],
+        "properties": {
+          "id": { "type": "integer" },
+          "lat": { "type": "string" },
+          "long": { "type": "string" },
+          "source": { "type": "string" },
+          "bank_name": { "type": "string" },
+          "ifsc_code": { "type": "string" },
+          "statement": { "type": "string" },
+          "branch_name": { "type": "string" },
+          "account_type": { "type": "string" },
+          "account_since": { "type": "string" },
+          "account_number": { "type": "string" },
+          "bank_aggregator": { "type": "boolean" },
+          "lat_long_address": { "type": "string" },
+          "is_aadhaar_linked": { "type": "boolean" },
+          "bank_aggregator_id": { "type": ["integer", "null"] },
+          "aggregator_response": { "type": "object" },
+          "name_of_account_holder": { "type": "string" },
+          "novel_doc_id": { "type": "string" },
+          "novel_status": { "type": "string" },
+          "novel_url": { "type": "string" },
+          "applicant_type": { "type": "string" },
+          "applicant_id": { "type": "integer" },
+          "applicant_name": { "type": "string" },
+          "uid": { "type": "string" },
+          "default_repayment": { "type": "boolean" }
+        }
+      }
+    }
+  }
+}

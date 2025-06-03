@@ -1,0 +1,105 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "status": { "type": "integer" },
+    "timestamp": { "type": "integer" },
+    "message": { "type": "string" },
+    "result": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string" },
+          "parentPdId": { "type": ["string", "null"] },
+          "appId": { "type": "string" },
+          "pdType": { "type": "string" },
+          "assignedEmpId": { "type": "string" },
+          "assignedEmpName": { "type": "string" },
+          "assignedDate": { "type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}$" },
+          "isSaved": { "type": "boolean" },
+          "createdAt": { "type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}$" },
+          "updatedAt": { "type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}$" },
+          "status": { "type": "string" },
+          "applicantId": { "type": "string" },
+          "remark": { "type": "string" },
+          "applicantName": { "type": "string" },
+          "applicantPhoneNumber": { "type": ["string", "null"] },
+          "applicantSalutation": { "type": ["string", "null"] },
+          "applicantType": { "type": "string" },
+          "assignedBranchId": { "type": "string" },
+          "assignedBranchName": { "type": "string" },
+          "addressTypeInfo": {
+            "type": "object",
+            "properties": {
+              "area": { "type": "string" },
+              "city": { "type": "string" },
+              "state": { "type": "string" },
+              "taluka": { "type": "string" },
+              "pincode": { "type": "string" },
+              "district": { "type": "string" },
+              "landmark": { "type": "string" },
+              "address_line_1": { "type": "string" },
+              "address_line_2": { "type": "string" }
+            },
+            "required": ["area", "city", "state", "taluka", "pincode", "district", "address_line_1", "address_line_2"]
+          },
+          "isReferred": { "type": "boolean" },
+          "isPhotoUploaded": { "type": "boolean" },
+          "isQuestionnaireSubmitted": { "type": "boolean" },
+          "isMandatory": { "type": "boolean" },
+          "eventSnapshotList": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "event": { "type": "string" },
+                "timestamp": { "type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}$" },
+                "pdStatus": { "type": "string" },
+                "assignedEmpId": { "type": "string" },
+                "assignedBranchId": { "type": "string" }
+              },
+              "required": ["event", "timestamp", "pdStatus", "assignedEmpId", "assignedBranchId"]
+            }
+          },
+          "questionnaireStage": { "type": "string" },
+          "tatValue": { "type": "integer" },
+          "isTelePd": { "type": ["boolean", "null"] },
+          "isPhysicalPdWaived": { "type": ["boolean", "null"] },
+          "telePd": { "type": ["string", "null"] },
+          "isDiscarded": { "type": ["boolean", "null"] },
+          "isCbpKyc": { "type": ["boolean", "null"] },
+          "isHlSalaried": { "type": "boolean" }
+        },
+        "required": [
+          "id",
+          "appId",
+          "pdType",
+          "assignedEmpId",
+          "assignedEmpName",
+          "assignedDate",
+          "isSaved",
+          "createdAt",
+          "updatedAt",
+          "status",
+          "applicantId",
+          "remark",
+          "applicantName",
+          "applicantType",
+          "assignedBranchId",
+          "assignedBranchName",
+          "addressTypeInfo",
+          "isReferred",
+          "isPhotoUploaded",
+          "isQuestionnaireSubmitted",
+          "isMandatory",
+          "eventSnapshotList",
+          "questionnaireStage",
+          "tatValue",
+          "isHlSalaried"
+        ]
+      }
+    }
+  },
+  "required": ["status", "timestamp", "message", "result"]
+}

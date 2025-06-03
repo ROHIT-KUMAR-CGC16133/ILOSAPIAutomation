@@ -1,0 +1,222 @@
+{
+  "status": 200,
+  "timestamp": 1748860269521,
+  "message": "success",
+  "result": [
+    {
+      "id": "683030befd6f9f14e983ec20",
+      "parentPdId": null,
+      "appId": "146387",
+      "pdType": "BUSINESS",
+      "assignedEmpId": "CGC31157",
+      "assignedEmpName": "Somesh Chouhan",
+      "assignedDate": "2025-05-24T10:40:27.248",
+      "isSaved": true,
+      "createdAt": "2025-05-23T13:54:30.366",
+      "updatedAt": "2025-05-24T10:44:23.736",
+      "status": "POSITIVE",
+      "applicantId": "313070",
+      "remark": "Ok",
+      "applicantName": "VIKAS",
+      "applicantPhoneNumber": "9098480299",
+      "applicantSalutation": "Mr",
+      "applicantType": "Primary Applicant",
+      "assignedBranchId": "SURSHG01",
+      "assignedBranchName": "SHAMGARH_UR_1",
+      "addressTypeInfo": {
+        "area": "MANDSAUR",
+        "city": "MANDSAUR",
+        "state": "Madhya Pradesh",
+        "taluka": "MANDSAUR",
+        "pincode": "458883",
+        "district": "MANDSAUR",
+        "landmark": "",
+        "address_line_1": "GRAM CHANDVASA POST CHANDVASA",
+        "address_line_2": "JILA MANDSOUR WARD N 3 CHANDWASA"
+      },
+      "isReferred": false,
+      "isPhotoUploaded": true,
+      "isQuestionnaireSubmitted": true,
+      "isMandatory": true,
+      "eventSnapshotList": [
+        {
+          "event": "PD_ASSIGNED",
+          "timestamp": "2025-05-23T13:55:58.212",
+          "pdStatus": "PENDING",
+          "assignedEmpId": "CGC31157",
+          "assignedBranchId": "SURSHG01"
+        },
+        {
+          "event": "PD_SUBMITTED",
+          "timestamp": "2025-05-23T18:16:51.618",
+          "pdStatus": "POSITIVE",
+          "assignedEmpId": "CGC31157",
+          "assignedBranchId": "SURSHG01"
+        },
+        {
+          "event": "PD_SUBMITTED",
+          "timestamp": "2025-05-23T19:04:30.954",
+          "pdStatus": "POSITIVE",
+          "assignedEmpId": "CGC31157",
+          "assignedBranchId": "SURSHG01"
+        },
+        {
+          "event": "PD_RE_ASSIGNED",
+          "timestamp": "2025-05-24T10:40:27.248",
+          "pdStatus": "PENDING_RE",
+          "assignedEmpId": "CGC31157",
+          "assignedBranchId": "SURSHG01"
+        },
+        {
+          "event": "PD_SUBMITTED",
+          "timestamp": "2025-05-24T10:44:23.736",
+          "pdStatus": "POSITIVE",
+          "assignedEmpId": "CGC31157",
+          "assignedBranchId": "SURSHG01"
+        }
+      ],
+      "questionnaireStage": "QUESTIONNAIRE_COMPLETED",
+      "tatValue": 2,
+      "isTelePd": null,
+      "isPhysicalPdWaived": null,
+      "telePd": null,
+      "isDiscarded": null,
+      "isCbpKyc": null,
+      "isHlSalaried": false
+    },
+    {
+      "id": "683030befd6f9f14e983ec21",
+      "parentPdId": null,
+      "appId": "146387",
+      "pdType": "COLLATERAL",
+      "assignedEmpId": "CGC31157",
+      "assignedEmpName": "Somesh Chouhan",
+      "assignedDate": "2025-05-23T13:55:58.213",
+      "isSaved": true,
+      "createdAt": "2025-05-23T13:54:30.366",
+      "updatedAt": "2025-05-23T19:04:32.444",
+      "status": "POSITIVE",
+      "applicantId": "313081",
+      "remark": "Ok",
+      "applicantName": "DAYARAM PRAJAPATI",
+      "applicantPhoneNumber": null,
+      "applicantSalutation": null,
+      "applicantType": "Non-Financial Co-Applicant",
+      "assignedBranchId": "SURSHG01",
+      "assignedBranchName": "SHAMGARH_UR_1",
+      "addressTypeInfo": {
+        "area": "MANDSAUR",
+        "city": "MANDSAUR",
+        "state": "Madhya Pradesh",
+        "taluka": "MANDSAUR",
+        "pincode": "458883",
+        "district": "MANDSAUR",
+        "landmark": "",
+        "address_line_1": "KHASRA NO 297 PH NO 09 GRAM CHANDWASA ",
+        "address_line_2": "TEHSIL SHAMGARH JILA MANDSAUR"
+      },
+      "isReferred": false,
+      "isPhotoUploaded": true,
+      "isQuestionnaireSubmitted": true,
+      "isMandatory": true,
+      "eventSnapshotList": [
+        {
+          "event": "PD_ASSIGNED",
+          "timestamp": "2025-05-23T13:55:58.213",
+          "pdStatus": "PENDING",
+          "assignedEmpId": "CGC31157",
+          "assignedBranchId": "SURSHG01"
+        },
+        {
+          "event": "PD_SUBMITTED",
+          "timestamp": "2025-05-23T18:19:25.755",
+          "pdStatus": "POSITIVE",
+          "assignedEmpId": "CGC31157",
+          "assignedBranchId": "SURSHG01"
+        },
+        {
+          "event": "PD_SUBMITTED",
+          "timestamp": "2025-05-23T19:04:32.443",
+          "pdStatus": "POSITIVE",
+          "assignedEmpId": "CGC31157",
+          "assignedBranchId": "SURSHG01"
+        }
+      ],
+      "questionnaireStage": "QUESTIONNAIRE_COMPLETED",
+      "tatValue": 2,
+      "isTelePd": null,
+      "isPhysicalPdWaived": null,
+      "telePd": null,
+      "isDiscarded": null,
+      "isCbpKyc": null,
+      "isHlSalaried": false
+    },
+    {
+      "id": "683030befd6f9f14e983ec22",
+      "parentPdId": null,
+      "appId": "146387",
+      "pdType": "CURRENT_RESIDENCE",
+      "assignedEmpId": "CGC31157",
+      "assignedEmpName": "Somesh Chouhan",
+      "assignedDate": "2025-05-23T13:55:58.213",
+      "isSaved": true,
+      "createdAt": "2025-05-23T13:54:30.366",
+      "updatedAt": "2025-05-23T19:04:31.589",
+      "status": "POSITIVE",
+      "applicantId": "313070",
+      "remark": "Ok",
+      "applicantName": "VIKAS",
+      "applicantPhoneNumber": "9098480299",
+      "applicantSalutation": "Mr",
+      "applicantType": "Primary Applicant",
+      "assignedBranchId": "SURSHG01",
+      "assignedBranchName": "SHAMGARH_UR_1",
+      "addressTypeInfo": {
+        "area": "MANDSAUR",
+        "city": "MANDSAUR",
+        "state": "Madhya Pradesh",
+        "taluka": "MANDSAUR",
+        "pincode": "458883",
+        "district": "MANDSAUR",
+        "landmark": "MANDSAUR",
+        "address_line_1": "GRAM CHANDVASA POST CHANDVASA ",
+        "address_line_2": "JILA MANDSOUR WARD N 3 CHANDWASA"
+      },
+      "isReferred": false,
+      "isPhotoUploaded": true,
+      "isQuestionnaireSubmitted": true,
+      "isMandatory": true,
+      "eventSnapshotList": [
+        {
+          "event": "PD_ASSIGNED",
+          "timestamp": "2025-05-23T13:55:58.213",
+          "pdStatus": "PENDING",
+          "assignedEmpId": "CGC31157",
+          "assignedBranchId": "SURSHG01"
+        },
+        {
+          "event": "PD_SUBMITTED",
+          "timestamp": "2025-05-23T18:22:01.329",
+          "pdStatus": "POSITIVE",
+          "assignedEmpId": "CGC31157",
+          "assignedBranchId": "SURSHG01"
+        },
+        {
+          "event": "PD_SUBMITTED",
+          "timestamp": "2025-05-23T19:04:31.589",
+          "pdStatus": "POSITIVE",
+          "assignedEmpId": "CGC31157",
+          "assignedBranchId": "SURSHG01"
+        }
+      ],
+      "questionnaireStage": "QUESTIONNAIRE_COMPLETED",
+      "tatValue": 2,
+      "isTelePd": null,
+      "isPhysicalPdWaived": null,
+      "telePd": null,
+      "isDiscarded": null,
+      "isCbpKyc": null,
+      "isHlSalaried": false
+    }
+  ]
+}

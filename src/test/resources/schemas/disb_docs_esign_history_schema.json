@@ -1,0 +1,55 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "required": ["data"],
+  "properties": {
+    "data": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "created_at": { "type": "number" },
+          "created_by": { "type": "string" },
+          "presigned_url": { "type": "string" },
+          "final_doc": { "type": "string" },
+          "docs_urls": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["id", "alias", "label"],
+              "properties": {
+                "id": { "type": "string" },
+                "alias": { "type": "string" },
+                "label": { "type": "string" },
+                "link": { "type": "string" },
+                "created_at": { "type": "number" },
+                "created_by": { "type": "string" },
+                "manual_insurance": { "type": "boolean" },
+                "signature_type": { "type": "string" },
+                "language": { "type": "string" }
+              }
+            }
+          },
+          "status": { "type": "string" },
+          "id": { "type": "string" },
+          "final_esign_doc_url": { "type": "string" },
+          "application_id": { "type": "string" },
+          "documentId": { "type": "string" },
+          "stamp_details": {
+            "type": "object",
+            "required": ["state", "amount", "customer_stamp_paper"],
+            "properties": {
+              "state": { "type": "string" },
+              "amount": { "type": "string" },
+              "customer_stamp_paper": { "type": "boolean" }
+            }
+          }
+        },
+        "anyOf": [
+          { "required": ["created_at", "created_by", "presigned_url", "final_doc", "docs_urls", "status"] },
+          { "required": ["id", "created_at", "created_by", "status", "final_esign_doc_url", "application_id", "documentId", "stamp_details"] }
+        ]
+      }
+    }
+  }
+}
